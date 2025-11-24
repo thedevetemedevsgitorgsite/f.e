@@ -1,1 +1,821 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DevTemple Dashboard</title><meta name="keywords" content="web templates, code snippets, web development, professional services, dashboard"><meta name="author" content="DevTemple"><meta name="robots" content="index, follow"><meta name="language" content="English"><meta property="og:title" content="Dashboard - Web Templates & Code Snippets"><meta property="og:description" content="Your one-stop hub for web templates, code snippets, and professional development services."><meta property="og:type" content="website"><meta property="og:url" content="https://devtem.org"><meta property="og:site_name" content="DevTemple"><meta property="og:image" content="https://devtem.org/assets/images/logo.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="Dashboard Preview"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Dashboard - Web Templates & Code Snippets"><meta name="twitter:description" content="Your one-stop hub for web templates, code snippets, and professional development services."><meta name="twitter:image" content="https://devtem.org/assets/images/logo.png"><meta name="twitter:site" content="@fscss_ttr"><meta name="theme-color" content="#06f"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><link rel="canonical" href="https://devtem.org/dashboard"><meta name="description" content="Your one-stop hub for web templates, code snippets, and professional development services."><link rel="icon" href="/assets/images/logo.png"><link rel="stylesheet" href="/assets/styles/dash.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide"><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"><script src="" defer></script><script src="https://kit.fontawesome.com/a076d05399" crossorigin="anonymous"></script><script type="application/ld+json">{ "@context": "https://schema.org", "@type": "Organization", "name": "DevTemple Dashboard", "url": "https://devtem.org/dashboard.html", "logo": "https://devtem.org/assets/images/logo.png", "sameAs": [ "https://www.facebook.com/profile.php?id=61582984827911", "https://twitter.com/fscss_ttr" ]} </script></head><body><section class="top-menu main"><input type="checkbox" id="toggle" class="toggle" hidden><label for="toggle" class="toggle-btn top-btn"><i class="fas fa-bars"></i></label><div class="side-menu"><div class="side-menu-header"><div class="brand"><img src="/assets/images/20250918_223801.png" alt="DevTemple"><span>DevTemple</span></div><label for="notoggle" class="close-btn"><i class="fas fa-times"></i></label></div><div class="side-menu-content"><div class="menu-section"><h4 class="menu-label"><i class="fas fa-palette"></i> Display</h4><ul><li><button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme"><div class="theme-option"><i class="fas fa-sun sun-icon"></i><span>Light</span></div><div class="theme-option"><i class="fas fa-moon moon-icon"></i><span>Dark</span></div></button></li></ul></div><div class="menu-section"><h4 class="menu-label"><i class="fas fa-compass"></i> Navigation</h4><ul><li><a href="/"><i class="fas fa-home"></i> Home</a></li><li><a href="/home.html"><i class="fas fa-th-large"></i> Templates</a></li><li><a href="/dashboard.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li></ul></div><div class="menu-section search-section"><h4 class="menu-label"><i class="fas fa-tags"></i> Browse Tags</h4><div class="side-search"><i class="fas fa-search"></i><input type="search" placeholder="Search tags..." id="sideSearch"></div><ul class="tags-list"><li><a href="/home#search?q=%23PHP"><i class="fab fa-php"></i> PHP</a></li><li><a href="/home#search?q=%23JavaScript"><i class="fab fa-js"></i> JavaScript</a></li><li><a href="/home#search?q=%23CSS"><i class="fab fa-css3-alt"></i> CSS</a></li><li><a href="/home#search?q=%23HTML"><i class="fab fa-html5"></i> HTML</a></li><li><a href="/home#search?q=%23WordPress"><i class="fab fa-wordpress"></i> WordPress</a></li><li><a href="/home#search?q=%23eCommerce"><i class="fas fa-shopping-cart"></i> eCommerce</a></li><li><a href="/home#search?q=%23AI"><i class="fas fa-robot"></i> AI Tools</a></li><li><a href="/home#search?q=%23WPThemes"><i class="fas fa-paint-brush"></i> WP Themes</a></li><li><a href="/home#search?q=%23Plugins"><i class="fas fa-puzzle-piece"></i> Plugins</a></li><li><a href="/home#search?q=%23mobile"><i class="fas fa-mobile-alt"></i> Mobile</a></li><li><a href="/home#search?q=%23design"><i class="fas fa-palette"></i> Designs</a></li><li><a href="/home#search?q=%23UI"><i class="fas fa-object-group"></i> UI Designs</a></li><li><a href="/home#search?q=%23UX"><i class="fas fa-users"></i> UX Designs</a></li><li><a href="/home#search?q=%23WebApp"><i class="fas fa-globe"></i> Web App</a></li><li><a href="/home#search?q=%23react"><i class="fab fa-react"></i> React</a></li></ul></div><div class="menu-section"><h4 class="menu-label"><i class="fas fa-life-ring"></i> Support</h4><ul><li><a href="/faq.html"><i class="fas fa-question-circle"></i> FAQ</a></li><li><a href="/index.html#contact"><i class="fas fa-envelope"></i> Contact</a></li><li><a href="/index.html#about"><i class="fas fa-info-circle"></i> About</a></li></ul></div><div class="menu-section"><h4 class="menu-label"><i class="fas fa-gavel"></i> Legal</h4><ul><li><a href="/terms/index.html"><i class="fas fa-file-contract"></i> Terms</a></li><li><a href="/terms/privacy.html"><i class="fas fa-shield-alt"></i> Privacy</a></li><li><a href="/terms/index.html#payment-refunds-heading"><i class="fas fa-credit-card"></i> Refunds</a></li></ul></div></div></div><div class="menu-overlay"></div><form><input type="search" placeholder="Search templates" id="topSch" required><button><i class="fas fa-search"></i></button></form><a href="/home.html"><button class="top-btn home"><i class="fas fa-home"></i></button></a></section><section class="top-menu dash"><button class="top-btn back" onclick="goBack()"><I class="fas fa-arrow-left"></i></button><script>function goBack(){if(window.history.length>1){window.history.back();}else {window.location.href = "/";}}</script><button class="top-btn user blue"><i class="fas fa-user"></i></button><button class="top-btn pen"><I class="fas fa-pen"></I></button><button class="top-btn sales"><i class="fas fa-bank"></i></button><button class="top-btn chart"><i class="fas fa-chart-line"></i></button><button class="top-btn notify" onclick="javascript:document.querySelector('.red-top').style.visibility='hidden';"><sup class="red-top" onclick="javascript:document.querySelector('.red-top').style.visibility='hidden';"></sup><I class="fas fa-bell"></I></button></section><main><section id="hero" class="hero"><h2></h2><p>Manage your uploads, check sales, and track performance.</p></section><button class="top-btn notify-btn" style="display:none;"><i class="fas fa-bell"></i></button><section id="user-section" class="section user"><div class="user-profile-container"><div class="view public"><div class="profile-header"><img src="/assets/images/20250918_223801.png" class="user img" onclick="cAlert('Your profile picture', 'success', 'user')"/><div class="profile-info"><div style="word-break: keep-all; white-space: nowrap;"><h2 id="profileName">Loading...</h2></div><span class="skill" id="profileSkill">Loading...</span></div></div><div class="stats-grid"><div class="stat-card"><div class="stat-value" id="statUploads">0</div><div class="stat-label">Uploads</div></div><div class="stat-card"><div class="stat-value" id="statSales">0</div><div class="stat-label">Sales</div></div><div class="stat-card"><div class="stat-value" id="statEarnings" ><i class="fas fa-bank"></i></div><div class="stat-label">Earnings</div></div></div><form name="user edit"><h3><i class="fas fa-user-edit"></i> Profile Information</h3><div class="form-row"><div><label for="userName">Username</label><input type="text" maxlength="30" required placeholder="Username*" name="user-name" minlength="3" id="userName" class="username" value=""></div><div><label for="fullName">Full Name</label><input type="text" maxlength="50" placeholder="Full Name" name="full-name" id="fullName" value=""></div></div><div class="form-row" ><div hidden style="display: none !important;"><label for="email">Email Address</label><input type="email" required placeholder="Email Address*" name="email" id="email" value="NULL"></div><div><label for="phone">Phone Number</label><input type="tel" placeholder="Phone Number" name="phone" id="phone" value=""></div></div><div><label for="bio">Bio</label><textarea minlength="10" maxlength="200" required placeholder="Let people know a little bit about you*" name="bio" id="bio" class="bio">NULL</textarea><div style="text-align: right; font-size: 0.8em; color: var(--text-dim); margin-top: 0.5em;"><span id="bioCharCount">0</span>/200 characters </div></div><div class="form-row"><div><label for="skill">Primary Skill</label><select name="skills" required id="skill" class="skill"><option value="">What's your skills*</option><option value="software_developer">Software Developer</option><option value="web_developer">Web Developer</option><option value="data_scientist">Data Scientist</option><option value="machine_learning_engineer">Machine Learning Engineer</option><option value="cloud_architect">Cloud Architect</option><option value="devops_engineer">DevOps Engineer</option><option value="cybersecurity_analyst">Cybersecurity Analyst</option><option value="mobile_app_developer">Mobile App Developer</option><option value="ui_ux_designer">UI/UX Designer</option><option value="data_analyst">Data Analyst</option><option value="backend_developer">Backend Developer</option><option value="frontend_developer">Frontend Developer</option><option value="full_stack_developer">Full Stack Developer</option><option value="database_administrator">Database Administrator</option><option value="ai_engineer">AI Engineer</option><option value="blockchain_developer">Blockchain Developer</option><option value="systems_administrator">Systems Administrator</option><option value="qa_engineer">QA Engineer</option><option value="project_management">Project Management</option><option value="business_analysis">Business Analysis</option><option value="marketing">Marketing</option><option value="content_creation">Content Creation</option><option value="human_resources">Human Resources</option><option value="financial_analysis">Financial Analysis</option><option value="sales">Sales</option><option value="customer_service">Customer Service</option><option value="public_relations">Public Relations</option><option value="operations_management">Operations Management</option><option value="event_planning">Event Planning</option><option value="supply_chain_management">Supply Chain Management</option><option value="training_and_development">Training and Development</option><option value="legal_advisory">Legal Advisory</option><option value="administrative_support">Administrative Support</option><option value="graphic_design">Graphic Design</option><option value="illustration">Illustration</option><option value="video_editing">Video Editing</option><option value="motion_graphics">Motion Graphics</option><option value="photography">Photography</option><option value="creative_writing">Creative Writing</option><option value="animation">Animation</option><option value="game_design">Game Design</option><option value="fashion_design">Fashion Design</option><option value="interior_design">Interior Design</option><option value="music_production">Music Production</option><option value="copywriting">Copywriting</option><option value="visual_arts">Visual Arts</option><option value="product_design">Product Design</option><option value="branding">Branding</option></select></div><div hidden style="display: none !important;"><label for="experience" hidden>Experience Level</label><select name="experience" id="experience" hidden><option value="">Select experience</option><option value="beginner">Beginner (0-2 years)</option><option value="intermediate" selected>Intermediate (2-5 years)</option><option value="advanced">Advanced (5+ years)</option><option value="expert">Expert (10+ years)</option></select></div></div><div><label for="portfolio">Portfolio URL</label><input type="url" placeholder="https://yourportfolio.com" name="portfolio" id="portfolio" value="https://johndevportfolio.com"></div><div><label for="imgUrl">Profile Photo</label><input type="file" name="photo" placeholder="Profile picture" id="imgUrl" accept="image/*"></div><button type="submit">Save Changes</button></form></div><div><div class="view private"><h3><i class="fas fa-id-card"></i> Account Information</h3><div class="user-info"><p><strong>User ID:</strong><span class="uid">dev_abc122xyz</span></p><p><strong>Email:</strong><span class="email">sample@domain.host</span></p><p><strong>Member Since:</strong><span class="join-date">Loading...</span></p><p><strong>Account Status:</strong><span class="status" style="color: var(--primary-color);" id="account-status">checking...</span></p><p><strong>Last Login:</strong><span class="last-login">NULL</span></p><p><strong>Preferred Language:</strong><span class="language">English</span></p></div></div><label for="settings"><h3><i class="fas fa-cog"></i> More & Settings</h3></label><input type="checkbox" hidden id="settings"><div class="settings-drop"><div class="settings-section"><h3><i class="fas fa-wallet"></i> Withdraw Funds</h3><button class="toggle-btn" id="toggleWithdraw">Request Withdraw</button><form id="withdrawForm" class="hidden"><label for="requestAmt">Amount (₦)</label><input type="number" id="requestAmt" name="amount" min="18000" max="250000" required placeholder="Enter amount"><label for="bankName">Bank Name</label><input type="text" id="bankName" required placeholder="e.g. Access Bank"><label for="accountName">Account Name</label><input type="text" id="accountName" required placeholder="e.g. John Doe"><label for="accountNumber">Account Number</label><input type="text" id="accountNumber" maxlength="10" minlength="10" required placeholder="10-digit account number"><label for="extraNote">Extra Note (Optional)</label><textarea id="extraNote" maxlength="200" placeholder="Any extra information..."></textarea><button type="submit">Send Request</button></form></div><div class="settings-section"><h3><i class="fas fa-bell"></i> Notification Preferences</h3><form id="notificationForm"><label><input type="checkbox" checked> Email notifications </label><label><input type="checkbox" checked> Sales alerts </label><label><input type="checkbox"> Marketing communications </label><label><input type="checkbox" checked> Product updates </label><button type="submit">Save Preferences</button></form></div><div class="settings-section"><h3><i class="fas fa-info-circle"></i> Notices</h3><ul class="notices-list"><li><i class="fas fa-check-circle"></i> No pending post</li><li><i class="fas fa-exclamation-triangle"></i> 30% service fee applies to all sales withdrawals</li><li><i class="fas fa-tools"></i> Update your payout email in account settings <span style="color: var(--danger-color);">⚠ feature not available</span></li><li><i class="fas fa-shield-alt"></i> Your account is secured by your password kindly keep your password saved.</li></ul></div><div class="settings-section "><h3><i class="fas fa-exclamation-triangle"></i></h3><button id="deleteAccountBtn" class="user-btn delete-acct danger" hidden style="display: none !important;">Delete Account</button><button id="logoutBtn" class="user-btn logout" style="background-color: var(--primary-color);">Log Out</button></div></div></div></div></section><section id="pen-section" class="section pen hidden"><div class="create-post-container"><div class="create-post-card"><div class="create-post-header"><i class="fas fa-pen-fancy"></i><h2>New Post</h2></div><form id="publisherForm"><div class="form-grid"><div class="form-group"><label for="cardName" class="form-label">Project Name</label><input type="text" id="cardName" class="form-input" placeholder="e.g., 3D Box with Animations" maxlength="60" minlength="2" required></div><div class="form-group"><label for="cardAmount" class="form-label">Price (₦)</label><input type="number" id="cardAmount" class="form-input" placeholder="e.g., 500" min="0" required></div><div class="form-group full-width"><label for="cardDes" class="form-label">Description</label><textarea id="cardDes" class="form-textarea" placeholder="Describe your project, include relevant tags and key features..." maxlength="200" required></textarea><div style="text-align: right; font-size: 0.8em; color: var(--text-dim); margin-top: 0.5em;"><span id="charCount">0</span>/200 characters </div></div><div class="form-group"><label for="cardCover" class="form-label">Cover Image URL</label><input type="url" id="cardCover" class="form-input" placeholder="https://example.com/cover.png" required></div><div class="form-group"><label for="cardView" class="form-label">Preview Media URL</label><input type="url" id="cardView" class="form-input" placeholder="https://example.com/preview.gif" required></div><div class="form-group full-width"><label class="form-label">Project Files (ZIP)</label><div class="file-upload-area" id="fileUploadArea"><div class="file-upload-icon"><i class="fas fa-file-archive"></i></div><div class="file-upload-text"><p>Drag & drop your ZIP file here or</p></div><button type="button" class="file-upload-btn">Choose File</button><input type="file" accept="application/zip" id="zipInput" hidden required><div class="file-name" id="fileName">No file selected</div></div></div><div class="form-group full-width preview-section"><div class="preview-title">Preview</div><div class="preview-grid"><div class="preview-item"><div class="preview-image" id="coverPreview" style="background-color: var(--gray);"></div><div class="preview-label">Cover Image</div></div><div class="preview-item"><div class="preview-image" id="mediaPreview" style="background-color: var(--gray);"></div><div class="preview-label">Preview Media</div></div></div></div></div><div class="form-actions"><button type="button" class="btn btn-secondary" id="draftBtn" hidden>Save as Draft</button><button type="submit" class="btn btn-primary" id="pushCard"><span class="sending"></span> Publish Project </button></div><div style="margin-top: 1.5em; font-size: 0.85em; color: var(--text-dim);"><p><b>Note:</b> By publishing, you agree to our <a href="/terms/index.html" style="color: var(--primary-color);">Terms of Use</a>, <a href="/terms/privacy.html" style="color: var(--primary-color);">Privacy Policy</a>, and <a href="/terms/index.html#payment-refunds-heading" style="color: var(--primary-color);">Pricing Guidelines</a>. </p></div></form></div></div></section><section id="sales-section" class="section sales hidden"><section id="summary-section" class="section summary"><h3>Dashboard Summary</h3><div class="summary-grid"><div class="summary-card sales-stats"><i class="fas fa-upload"></i><div><p>Total Uploads</p><h4 id="summary-uploads" class="contain-number" >0</h4></div></div><div class="summary-card"><i class="fas fa-dollar-sign"></i><div><p>Total Sales</p><h4 id="summary-sales" class="contain-number">0</h4></div></div><div class="summary-card"><i class="fas fa-wallet"></i><div><p>Earnings</p><h4 id="summary-earnings" class="contain-number">0</h4></div></div></div></section></section><section id="posts-section" class="section posts hidden"></section><section id="notify-section" class="section notifications hidden"><h3 style="var(--text-dim)">Notifications</h3><div class="notify-grid"></div></section><section id="chart-section" class="section static hidden"><h3>Performance</h3><canvas id="salesChart"></canvas><script src="https://cdn.jsdelivr.net/npm/chart.js"></script><script></script><div class="product-grid"><section class="product" id="featuredCard"><div class="loading-post"><button></button><span>Loading...</span><style> .loading-post button{ width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--primary-color); border-top-color: transparent; background: transparent; opacity: 90%; animation: spin 3s linear infinite; } </style></div></div></section><section class="video-view"><h3 onclick="this.parentElement.style.display='none'"><i class="fas fa-times"></i></h3><div style="text-align: center;display: flex;justify-content: center;"><embed src="https://media.tenor.com/xfrF7juLowwAAAAM/vatnik-detected.gif" class="video" autoplay></div><div id="embedLoader"><p><img src="/assets/images/20250918_223801.png" width="30" height="30" style=""></p><p>loading...</p></div></section><button class="scroll-btn"><i class="fas fa-arrow-up"></i></button><style> .scroll-btn{ background: #09f; border-radius: 50%; border: 1px solid rgb(255,255,255, 0.5); opacity: 0.8; padding: 10px; width: 50px; height: 50px; position: fixed !important; z-index: 1900; right: 10px; bottom: 8em; animation: animate 1s ease infinite alternate, slideSUp 0.5s ease 1 forwards; color: #ddd; font-weight: bolder; display: none; } .scroll-btn.show{ display: inline-block; } @keyframes animate{ from{ transform: translateY(3px); } to{ transform: translateY(0); } } @keyframes slideSUp{ from{ bottom: -0.5em; } to{ bottom: 8em; } } </style><script src="/assets/scripts/shortdash.js" async></script></main><section class="alert-container"><div class="alert"><p class="msg">Says: alert</p><button class="ok-btn" onclick="this.parentElement.parentElement.style.display='none';">ok</button></div></section><script></script><script></script><footer class="footer"><div class="container"><div class="footer-grid"><div class="footer-section brand-section"><h3><i class="fas fa-code"></i> DevTemple</h3><p>Your trusted marketplace for high-quality templates, UI components, and code snippets. Empowering creators and developers worldwide.</p><div class="footer-social"><h4>Follow Us</h4><div class="social-icons"><a href="https://www.facebook.com/profile.php?id=61582984827911" aria-label="Facebook"><i class="fab fa-facebook"></i></a><a href="https://x.com/fscss_ttr" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="https://www.youtube.com/@devtem_org" aria-label="YouTube"><i class="fab fa-youtube"></i></a></div></div></div><div class="footer-section"><h4>Quick Links</h4><ul class="footer-links"><li><a href="/home.html">Home</a></li><li><a href="/index.html#about">About</a></li><li><a href="/home.html">Browse Templates</a></li><li><a href="#">Payment</a></li></ul></div><div class="footer-section"><h4>Support</h4><ul class="footer-links"><li><a href="/faq.html">FAQ</a></li><li><a href="/index.html#contact">Contact Us</a></li><li><a href="/terms/index.html">Terms of Service</a></li><li><a href="/terms/privacy.html">Privacy Policy</a></li><li><a href="/terms/index.html#payment-refunds-heading">Refund Policy</a></li></ul></div><div class="footer-section"><h4>Contact</h4><ul class="footer-contact"><li><i class="fas fa-envelope"></i><a href="mailto:office@devtem.org">office@devtem.org</a></li><li><i class="fas fa-globe"></i><span>www.devtem.org</span></li><li><i class="fas fa-clock"></i><span>24/7 Support Available</span></li></ul></div></div><div class="footer-bottom"><p>&copy; 2025 DevTemple. All Rights Reserved.</p><div class="footer-bottom-links"><a href="/terms/index.html">Terms</a><span>•</span><a href="/terms/privacy.html">Privacy</a><span>•</span><a href="/home.html">Home</a></div></div></div></footer><style></style><div class="alert-overlay" id="alertOverlay"></div><section class="custom-alert" id="customAlert"><div class="alert-icon-wrapper"><div class="alert-icon info" id="alertIcon">ℹ️</div></div><div class="alert-content"><h3 class="alert-heading" id="alertHeading">Notification</h3><p class="alert-msg" id="alertMsg"></p></div><div class="alert-actions"><button class="alert-btn secondary" id="alertCancel" style="display: none;">Cancel</button><button class="alert-btn primary" id="alertOk">OK</button></div></section><script></script><section class="search-loader"><img src="/assets/images/logo.png" width="40" height="40" style="margin-top: 10px;animation:spin-bor 2s ease-in-out infinite;border-radius: 50%;border: 1px solid var(--primary-color);border-right: 0;"></section><section class="loader"><img src="/assets/images/logo.png" alt="Loading..."></section><style></style><script></script><script></script><script type="module" defer src="assets/scripts/devdash.js"></script><style></style><script></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTemple Dashboard</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="keywords" content="web templates, code snippets, web development, professional services, dashboard">
+    <meta name="author" content="DevTemple">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Open Graph Meta Tags (for social sharing) -->
+    <meta property="og:title" content="Dashboard - Web Templates & Code Snippets">
+    <meta property="og:description" content="Your one-stop hub for web templates, code snippets, and professional development services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devtem.org">
+    <meta property="og:site_name" content="DevTemple">
+    <meta property="og:image" content="https://devtem.org/assets/images/logo.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Dashboard Preview">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Dashboard - Web Templates & Code Snippets">
+    <meta name="twitter:description" content="Your one-stop hub for web templates, code snippets, and professional development services.">
+    <meta name="twitter:image" content="https://devtem.org/assets/images/logo.png">
+    <meta name="twitter:site" content="@fscss_ttr">
+    
+    <!-- Mobile/App -->
+    <meta name="theme-color" content="#06f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://devtem.org/dashboard">
+    
+    <meta name="description" content="Your one-stop hub for web templates, code snippets, and professional development services.">
+    <link rel="icon" href="/assets/images/logo.png">
+    
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="/assets/styles/dash.css">
+  
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevTemple Dashboard",
+            "url": "https://devtem.org/dashboard.html",
+            "logo": "https://devtem.org/assets/images/logo.png",
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61582984827911",
+                "https://twitter.com/fscss_ttr"
+            ]
+        }
+    </script>
+
+</head>
+
+<body>
+  <section class="top-menu">
+      <button class="top-btn btn tips"><i class="fas fa-lightbulb"></i></button>
+      <button class="theme-btn">
+  <span class="moon">
+      <I class="fas fa-moon"></I>
+</span><span class="sun">
+🔆
+  </span></button>
+  <button class="top-btn btn notify"><I class="fas fa-bell"></I> 
+  </button>
+  <button class="user-btn">
+    <a href="#/user/"><span class="top user-name"><i class="fas fa-user user-cycle"></i> <i id="top-username">User name</i></span></a>
+  </button>
+    
+  </section>
+   <section class="side-menu">
+    <div class="app-name"><h2><span class="name">DevTemple</span><div class="toggle-menu"><span class="menu-cycle">&#x27A7;</span></div></h2>
+    </div>  
+    <div class="line" style="margin-bottom: 40px;margin-block-start: -37.6px;box-shadow: var(--shadow) !important;margin-left: -17px;"></div>
+    <div class="side-list btn pen"><i class="fas fa-plus"></i> <span class="label hide">Add template</span></div>
+    
+    
+    <div class="side-list btn sales"><i class="fas fa-bank"></i> <span class="label hide">Earnings</span></div>
+    
+    <div class="side-list btn wallet"><i class="fas fa-wallet"></i> <span class="label hide">Wallet</span></div>
+    
+    <div class="side-list btn chart active"><i class="fas fa-chart-line"></i> <span class="label hide">Performance</span></div>
+    
+    <div class="side-list btn user"><i class="fas fa-user"></i> <span class="label hide">Profile</span></div>
+    
+    <div class="side-list btn settings"><i class="fas fa-cog"></i> <span class="label hide">Settings</span></div>
+    <div class="line"></div>
+    
+    <a href="https://devtem.org/"><div class="side-list"><i class="fas fa-home"></i> <span class="label hide">Home</span></div></a>
+    
+    <a href="https://devtem.org/home"><div class="side-list"><i class="fas fa-th-large"></i> <span class="label hide">Templates</span></div></a>
+    
+        <a href="https://devtem.org/dashboard"><div class="side-list"><i class="fas fa-tachometer-alt"></i> <span class="label hide">Dashboard</span></div></a>
+        
+        <div class="line"></div>
+        
+            <a href="https://devtem.org/faq"><div class="side-list"><i class="fas fa-question-circle"></i> <span class="label hide">FAQs</span></div></a>
+            
+                <a href="https://devtem.org/#contact"><div class="side-list"><i class="fas fa-envelope"></i> <span class="label hide">Contact</span></div></a>
+                
+                    <a href="https://devtem.org/#about"><div class="side-list"><i class="fas fa-info-circle"></i> <span class="label hide">About</span></div></a>
+                    
+                    <div class="line"></div>
+                    
+                        <a href="https://devtem.org/terms"><div class="side-list"><i class="fas fa-file-contract"></i> <span class="label hide">Terms</span></div></a>
+                        
+                            <a href="//devtem.org/terms/privacy"><div class="side-list"><i class="fas fa-shield-alt"></i> <span class="label hide">Privacy Policy</span></div></a>
+                            
+                                <a href="//devtem.org/terms#payment-refunds-heading"><div class="side-list"><i class="fas fa-credit-card"></i> <span class="label hide">Refunds</span></div></a>
+                                
+           <div class="line"></div>
+    </section>
+  <main>
+   
+    <section class="section pen hidden" id="pen-section">
+        <div class="create-post-container">
+            <div class="create-post-card">
+                <div class="create-post-header">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h2>New Post</h2>
+                </div>
+                
+                <form id="publisherForm">
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="cardName" class="form-label">Project Name</label>
+                            <input type="text" id="cardName" class="form-input" placeholder="e.g., 3D Box with Animations" maxlength="60" minlength="2" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardAmount" class="form-label">Price (₦)</label>
+                            <input type="number" id="cardAmount" class="form-input" placeholder="e.g., 500" min="0" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label for="cardDes" class="form-label">Description</label>
+                            <textarea id="cardDes" class="form-textarea" placeholder="Describe your project, include relevant tags and key features..." maxlength="200" required></textarea>
+                            <div style="text-align: right; font-size: 0.8em; color: var(--text-dim); margin-top: 0.5em;">
+                                <span id="charCount">0</span>/200
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardCover" class="form-label">Cover Image URL</label>
+                            <input type="url" id="cardCover" class="form-input" placeholder="https://example.com/cover.png" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cardView" class="form-label">Preview Media URL</label>
+                            <input type="url" id="cardView" class="form-input" placeholder="https://example.com/preview.gif" required>
+                        </div>
+                        
+                        <div class="form-group full-width">
+                            <label class="form-label">Project Files (ZIP)</label>
+                            <div class="file-upload-area" id="fileUploadArea" onclick="document.querySelector('#zipInput').click()">
+                                <div class="file-upload-icon">
+                                    <i class="fas fa-file-archive"></i>
+                                </div>
+                                <div class="file-upload-text">
+                                    <p>Drag & drop your ZIP file here or</p>
+                                </div>
+                                <button type="button" class="file-upload-btn">Choose File</button>
+                                <input type="file" accept="application/zip" id="zipInput" hidden required>
+                                <div class="file-name" id="fileName">No file selected</div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group full-width preview-section">
+                            <div class="preview-title">Preview</div>
+                            <div class="preview-grid">
+                                <div class="preview-item">
+                                    <div class="preview-image" id="coverPreview" style="background-color: var(--gray);"></div>
+                                    <div class="preview-label">Cover Image</div>
+                                </div>
+                                <div class="preview-item">
+                                    <div class="preview-image" id="mediaPreview" style="background-color: var(--gray);"></div>
+                                    <div class="preview-label">Preview Media</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" id="draftBtn" hidden>Save as Draft</button>
+                        <button type="submit" class="btn btn-primary" id="pushCard">
+                            <span class="sending"></span> Publish Project
+                        </button>
+                    </div>
+                    
+                    <div style="margin-top: 1.5em; font-size: 0.85em; color: var(--text-dim);">
+                        <p><b>Note:</b> By publishing, you agree to our 
+                            <a href="//devtem.org/terms/index.html" style="color: var(--primary-color);">Terms of Use</a>, 
+                            <a href="//devtem.org/terms/privacy.html" style="color: var(--primary-color);">Privacy Policy</a>, and 
+                            <a href="//devtem.org/terms/index.html#payment-refunds-heading" style="color: var(--primary-color);">Pricing Guidelines</a>.
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+    
+    <section class="section user hidden" id="user-section">
+        <div class="user-profile-container">
+            <div class="view public">
+                <div class="profile-header">
+                    <img src="/assets/images/20250918_223801.png" class="user img" onclick="cAlert('Your profile picture', 'success', 'user')"/>
+                    <div class="profile-info">
+                        <div style="word-break: keep-all; white-space: nowrap;"><h3 id="profileName">Loading...</h3></div>
+                        <span class="skill" id="profileSkill">Loading...</span>
+                    </div>
+                </div>
+                                    <div class="preview-bio" id="preview-bio">
+                        Bio
+                    </div>
+                <div class="stats-grid hidden" >
+                    <div class="stat-card">
+                        <div class="stat-value" id="statUploads">0</div>
+                        <div class="stat-label">Uploads</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statSales">0</div>
+                        <div class="stat-label">Sales</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="statEarnings" ><i class="fas fa-bank"></i></div>
+                        <div class="stat-label">Earnings</div>
+                    </div>
+                </div>
+                </div>
+                
+                           <div>
+               <div class="view private">
+                   <h3><i class="fas fa-id-card"></i> Account Information</h3>
+                   <div class="user-info">
+                       <p>
+                           <strong>User ID:</strong>
+                           <span class="uid">dev_abc122xyz</span>
+                       </p>
+                       <p>
+                           <strong>Email:</strong>
+                           <span class="email" id="email">sample@domain.host</span>
+                       </p>
+                       <p>
+                           <strong>Member Since:</strong>
+                           <span class="join-date">Loading...</span>
+                       </p>
+                       <p>
+                           <strong>Account Status:</strong>
+                           <span class="status" style="color: var(--primary-color);" id="account-status">checking...</span>
+                       </p>
+                       <p>
+                           <strong>Last Login:</strong>
+                           <span class="last-login">NULL</span>
+                       </p>
+                       <p>
+                           <strong>Preferred Language:</strong>
+                           <span class="language">English</span>
+                       </p>
+                   </div>
+               </div>
+               </div> 
+   </div>
+   
+    </section>
+    
+    <section class="section stats hidden" id="sales-section">
+        
+        <h3>Dashboard Summary</h3>
+    <div class="summary-grid">
+        <div class="summary-card sales stats">
+            <i class="fas fa-upload"></i>
+            <div>
+                <p>Total Uploads</p>
+                <h4 id="summary-uploads" class="contain-number" >0</h4>
+            </div>
+        </div>
+        <div class="summary-card">
+            <i class="fas fa-dollar-sign"></i>
+            <div>
+                <p>Total Sales</p>
+                <h4 id="summary-sales" class="contain-number">0</h4>
+            </div>
+        </div>
+        
+        <div class="summary-card">
+            <i class="fas fa-wallet"></i>
+            <div>
+                <p>Earnings</p>
+                <h4 id="summary-earnings" class="contain-number">0</h4>
+            </div>
+        </div>
+    </div>
+    
+    <div class="summary-grid sales-stats">
+        </div>
+    </section>
+    
+    <section class="section wallet hidden" id="wallet-section">
+        
+       <div class="summary-grid">
+              <div class="summary-card">
+       <i class="fas fa-wallet"></i>
+       <div>
+           <p>Wallet balance</p>
+           <h4 id="wallet-earnings" class="contain-number">0</h4>
+       </div>
+   </div>
+       </div>
+      
+      <!-- Withdraw Section -->
+<div class="wallet-section edit-profile">
+  
+  <h3 id="toggleWithdraw" class="big-h"><i class="fas fa-wallet"></i> Withdraw Funds</h3>
+  
+  <form id="withdrawForm" class="hidden">
+      <div class="form-row">
+          
+      <div class="form-group">
+    <label for="requestAmt">Amount (₦)</label>
+    <input type="number" id="requestAmt" name="amount" min="18000" max="250000" required placeholder="Enter amount">
+      </div>
+      
+      <div class="form-group">
+    <label for="bankName">Bank Name</label>
+    <input type="text" id="bankName" required placeholder="e.g. Access Bank">
+    </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+    <label for="accountName">Account Name</label>
+    <input type="text" id="accountName" required placeholder="e.g. John Doe">
+    </div>
+    <div class="form-group">
+    <label for="accountNumber">Account Number</label>
+    <input type="text" id="accountNumber" maxlength="10" minlength="10" required placeholder="10-digit account number">
+    </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+    <label for="extraNote">Extra Note (Optional)</label>
+    <textarea id="extraNote" maxlength="200" placeholder="Any extra information..."></textarea>
+    </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group">
+    <button type="submit">Send Request</button>
+        </div>
+    </div>
+    
+  </form>
+</div>
+    </section>
+    
+        <section class="section posts" id="chart-section">
+      
+          <h3>Performance</h3>
+    <canvas id="salesChart"></canvas>
+    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+    
+    </script>
+    
+    <div class="product-grid">
+        
+        <section class="product" id="featuredCard">
+            
+            <div class="loading-post">
+                <button>
+                
+                </button><span>Loading...</span>
+                <style>
+                    .loading-post button {
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50%;
+                        border: 2px solid var(--primary-color);
+                        border-top-color: transparent;
+                        background: transparent;
+                        opacity: 90%;
+                        animation: spin 3s linear infinite;
+                    }
+                </style>
+            </div>
+            
+            
+            
+    </div>
+      
+    </section>
+   <section class="section settings hidden" id="settings-section">
+       
+ <div class="edit-user">
+      
+            <h3 id="toggle-edit" class="big-h"><i class="fas fa-user-edit"></i> Edit profile</h3>
+            
+            <form name="user edit" class="hidden" id="edit-profile">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="userName">Username <span class="required">*</span></label>
+                    <input type="text" maxlength="30" required placeholder="Enter your username" name="user-name" minlength="3" id="userName" class="username" value="">
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name</label>
+                    <input type="text" maxlength="50" placeholder="Enter your full name" name="full-name" id="fullName" value="">
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" placeholder="Enter phone number" name="phone" id="phone" value="">
+                </div>
+                <div class="form-group">
+                    <label for="skill">Primary Skill <span class="required">*</span></label>
+                    <select name="skills" required id="skill" class="skill">
+                        <option value="">Select your primary skill</option>
+                        <optgroup label="Tech Skills">
+                            <option value="software_developer">Software Developer</option>
+                            <option value="web_developer">Web Developer</option>
+                            <option value="data_scientist">Data Scientist</option>
+                            <option value="machine_learning_engineer">Machine Learning Engineer</option>
+                            <option value="cloud_architect">Cloud Architect</option>
+                            <option value="devops_engineer">DevOps Engineer</option>
+                            <option value="cybersecurity_analyst">Cybersecurity Analyst</option>
+                            <option value="mobile_app_developer">Mobile App Developer</option>
+                            <option value="ui_ux_designer">UI/UX Designer</option>
+                            <option value="data_analyst">Data Analyst</option>
+                            <option value="backend_developer">Backend Developer</option>
+                            <option value="frontend_developer">Frontend Developer</option>
+                            <option value="full_stack_developer">Full Stack Developer</option>
+                            <option value="database_administrator">Database Administrator</option>
+                            <option value="ai_engineer">AI Engineer</option>
+                            <option value="blockchain_developer">Blockchain Developer</option>
+                            <option value="systems_administrator">Systems Administrator</option>
+                            <option value="qa_engineer">QA Engineer</option>
+                        </optgroup>
+                        <optgroup label="Business Skills">
+                            <option value="project_management">Project Management</option>
+                            <option value="business_analysis">Business Analysis</option>
+                            <option value="marketing">Marketing</option>
+                            <option value="content_creation">Content Creation</option>
+                            <option value="human_resources">Human Resources</option>
+                            <option value="financial_analysis">Financial Analysis</option>
+                            <option value="sales">Sales</option>
+                            <option value="customer_service">Customer Service</option>
+                            <option value="public_relations">Public Relations</option>
+                            <option value="operations_management">Operations Management</option>
+                            <option value="event_planning">Event Planning</option>
+                            <option value="supply_chain_management">Supply Chain Management</option>
+                            <option value="training_and_development">Training and Development</option>
+                            <option value="legal_advisory">Legal Advisory</option>
+                            <option value="administrative_support">Administrative Support</option>
+                        </optgroup>
+                        <optgroup label="Creative Skills">
+                            <option value="graphic_design">Graphic Design</option>
+                            <option value="illustration">Illustration</option>
+                            <option value="video_editing">Video Editing</option>
+                            <option value="motion_graphics">Motion Graphics</option>
+                            <option value="photography">Photography</option>
+                            <option value="creative_writing">Creative Writing</option>
+                            <option value="animation">Animation</option>
+                            <option value="game_design">Game Design</option>
+                            <option value="fashion_design">Fashion Design</option>
+                            <option value="interior_design">Interior Design</option>
+                            <option value="music_production">Music Production</option>
+                            <option value="copywriting">Copywriting</option>
+                            <option value="visual_arts">Visual Arts</option>
+                            <option value="product_design">Product Design</option>
+                            <option value="branding">Branding</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="bio">Bio <span class="required">*</span></label>
+                <textarea minlength="10" maxlength="200" required placeholder="Tell us a little bit about yourself..." name="bio" id="bio" class="bio"></textarea>
+                <div class="char-count">
+                    <span id="bioCharCount">0</span>/200 characters
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="portfolio">Portfolio URL</label>
+                <input type="url" placeholder="https://yourportfolio.com" name="portfolio" id="portfolio" value="">
+                <input id="experience" class="hidden" type="hidden">
+            </div>
+            
+            <div class="form-group file-input-wrapper">
+                <label for="imgUrl">Profile Photo</label>
+                <input type="file" name="photo" id="imgUrl" accept="image/*">
+            </div>
+            
+            <button type="submit">Save Changes</button>
+        </form>
+        
+     <h3 id="toggleNotifyForm" class="big-h"><i class="fas fa-bell"></i> Notification Preferences</h3>
+     <form id="notifyForm" class="hidden">
+         <div class="settings-section">
+         <label>
+             <input type="checkbox" checked> Email notifications
+         </label>
+         <label>
+             <input type="checkbox" checked> Sales alerts
+         </label>
+         <label>
+             <input type="checkbox"> Marketing communications
+         </label>
+         <label>
+             <input type="checkbox" checked> Product updates
+         </label>
+         <button type="submit">Save Preferences</button>
+     
+ </div>
+ </form>
+         <h3 class="logout-btn big-h" id="toggleAccountForm"><i class="fas fa-cog" id="setAccout" aria-hidden=""></i>Account</h3>
+ <!-- Notices Section -->
+ <form id="accountForm" onsubmit="false" class="hidden">
+ <div class="settings-section">
+     <h3><i class="fas fa-info-circle"></i> </h3>
+     <ul class="notices-list">
+         <li><i class="fas fa-check-circle"></i> No pending post</li>
+         <li><i class="fas fa-exclamation-triangle"></i> 30% service fee applies to all sales withdrawals</li>
+         <li><i class="fas fa-tools"></i> Update your payout email in account settings <span style="color: var(--danger-color);">⚠ feature not available</span></li>
+         <li><i class="fas fa-shield-alt"></i> Your account is secured by your password kindly keep your password saved.</li>
+     </ul>
+ </div>
+ 
+ <!-- Account Section -->
+ <div class="settings-section ">
+     <h3 class="big-h"><i class="fas fa-exclamation-triangle"></i> </h3>
+     <button id="deleteAccountBtn" class="user-btn delete-acct danger" hidden style="display: none !important;">Delete Account</button>
+     <button id="logoutBtn" class="btn logout">Log Out</button>
+     
+ </div>
+</form>
+
+<h3 onclick="themeBtn?.click();" class="big-h"><i class="fas fa-moon"></i>Switch theme</h3>
+    </div>
+
+
+   </section>
+   <section class="section posts hidden" id="posts-section"></section>
+   
+   
+   <!--- top target --->
+   
+       <section class="section notifications hidden" id="notify-section">
+           
+      <h3 style="var(--text-dim)">Notifications</h3>
+<div class="notify-grid"></div>
+
+    </section>
+    
+    <section class="section tips hidden" id="tips-section">
+  <div class="tips-container">
+    <h2><i class="fas fa-lightbulb"></i> Dashboard Tips & Guide</h2>
+    
+    <div class="tips-grid">
+      <!-- Getting Started -->
+      <div class="tip-card">
+        <div class="tip-icon">
+          <i class="fas fa-rocket"></i>
+        </div>
+        <h3>Getting Started</h3>
+        <ul>
+          <li>Complete your profile first - add bio, skills, and profile picture</li>
+          <li>Verify your account status in Profile section</li>
+          <li>Set up your portfolio URL for potential buyers</li>
+        </ul>
+      </div>
+
+      <!-- Creating Posts -->
+      <div class="tip-card">
+        <div class="tip-icon">
+          <i class="fas fa-upload"></i>
+        </div>
+        <h3>Creating Posts</h3>
+        <ul>
+          <li>Use descriptive project names (2-60 characters)</li>
+          <li>Write detailed descriptions with relevant keywords</li>
+          <li>Add high-quality cover images and preview media</li>
+          <li>Package your project files in ZIP format</li>
+          <li>Set competitive pricing for your templates</li>
+        </ul>
+      </div>
+
+      <!-- Managing Content -->
+      <div class="tip-card">
+        <div class="tip-icon">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <h3>Managing Your Content</h3>
+        <ul>
+          <li>Track sales and earnings in Performance section</li>
+          <li>Monitor likes (stars) on your products</li>
+          <li>Use delete option to remove underperforming items</li>
+          <li>Share product links using the share button</li>
+        </ul>
+      </div>
+
+      <!-- Earnings & Withdrawals -->
+      <div class="tip-card">
+        <div class="tip-icon">
+          <i class="fas fa-wallet"></i>
+        </div>
+        <h3>Earnings & Withdrawals</h3>
+        <ul>
+          <li>30% service fee applies to all sales</li>
+          <li>Minimum withdrawal amount: ₦18,000</li>
+          <li>Maximum withdrawal amount: ₦250,000</li>
+          <li>Provide accurate bank details for withdrawals</li>
+          <li>Withdrawal requests are processed manually</li>
+        </ul>
+      </div>
+
+      <!-- Profile Optimization -->
+      <div class="tip-card">
+        <div class="tip-icon">
+          <i class="fas fa-user-edit"></i>
+        </div>
+        <h3>Profile Optimization</h3>
+        <ul>
+          <li>Choose your primary skill from the dropdown</li>
+          <li>Write a compelling bio (10-200 characters)</li>
+          <li>Upload a professional profile picture</li>
+          <li>Keep your contact information updated</li>
+        </ul>
+      </div>
+
+      <!-- Best Practices -->
+      <div class="tip-card">
+        <div class="tip-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <h3>Best Practices</h3>
+        <ul>
+          <li>Regularly update your template portfolio</li>
+          <li>Respond to customer inquiries promptly</li>
+          <li>Follow community guidelines in content creation</li>
+          <li>Use proper file organization in your ZIP files</li>
+          <li>Include documentation with your templates</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Quick Actions Section -->
+    <div class="quick-actions">
+      <h3>Quick Actions</h3>
+      <div class="action-buttons">
+        <button class="action-btn" onclick="window.location.href='#/pen/'">
+          <i class="fas fa-plus"></i>
+          <span>Create New Post</span>
+        </button>
+        <button class="action-btn" onclick="window.location.href='#/settings/'">
+          <i class="fas fa-user-edit"></i>
+          <span>Edit Profile</span>
+        </button>
+        <button class="action-btn" onclick="window.location.href='#/wallet/'">
+          <i class="fas fa-wallet"></i>
+          <span>Check Earnings</span>
+        </button>
+        <button class="action-btn" onclick="window.location.href='#/chart/'">
+          <i class="fas fa-chart-bar"></i>
+          <span>View Analytics</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Support Section -->
+    <div class="support-section">
+      <h3>Need Help?</h3>
+      <div class="support-options">
+        <div class="support-option">
+          <i class="fas fa-question-circle"></i>
+          <div>
+            <h4>FAQs</h4>
+            <p>Find answers to common questions</p>
+            <a href="https://devtem.org/faq" class="support-link">Visit FAQs →</a>
+          </div>
+        </div>
+        <div class="support-option">
+          <i class="fas fa-envelope"></i>
+          <div>
+            <h4>Contact Support</h4>
+            <p>Get help from our support team</p>
+            <a href="mailto:office@devtem.org" class="support-link">Email Support →</a>
+          </div>
+        </div>
+        <div class="support-option">
+          <i class="fas fa-book"></i>
+          <div>
+            <h4>Documentation</h4>
+            <p>Read our terms and policies</p>
+            <a href="https://devtem.org/terms" class="support-link">View Terms →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    </section>
+    
+    
+    <section class="section-load hidden">
+      <div class="load-section"></div>
+    </section>
+    
+    
+  </main>
+  
+  <div class="alert-overlay" id="alertOverlay"></div>
+
+<section class="custom-alert" id="customAlert">
+  <div class="alert-icon-wrapper">
+    <div class="alert-icon info" id="alertIcon">ℹ️</div>
+  </div>
+  <div class="alert-content">
+    <h3 class="alert-heading" id="alertHeading">Notification</h3>
+    <p class="alert-msg" id="alertMsg"></p>
+  </div>
+  <div class="alert-actions">
+    <button class="alert-btn secondary" id="alertCancel" style="display: none;">Cancel</button>
+    <button class="alert-btn primary" id="alertOk">OK</button>
+  </div>
+</section>
+
+  
+  <footer class="footer">
+  <div class="container">
+    <!-- Main Footer Content -->
+    <div class="footer-grid">
+      <!-- Brand Section -->
+      <div class="footer-section brand-section">
+        <h3><i class="fas fa-code"></i> DevTemple</h3>
+        <p>Your trusted marketplace for high-quality templates, UI components, and code snippets. Empowering creators and developers worldwide.</p>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/profile.php?id=61582984827911" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://x.com/fscss_ttr" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.youtube.com/@devtem_org" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Quick Links -->
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="//devtem.org/home">Home</a></li>
+          <li><a href="//devtem.org/#about">About</a></li>
+          <li><a href="//devtem.org/home.html">Browse Templates</a></li>
+          <li><a href="//devtem.org/home#">Payment</a></li>
+          
+        </ul>
+      </div>
+      
+      <!-- Support -->
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul class="footer-links">
+          <li><a href="//devtem.org/faq.html">FAQ</a></li>
+          <li><a href="//devtem.org/index.html#contact">Contact Us</a></li>
+          <li><a href="//devtem.org/terms/index.html">Terms of Service</a></li>
+          <li><a href="//devtem.org/terms/privacy.html">Privacy Policy</a></li>
+          <li><a href="//devtem.org/terms/index.html#payment-refunds-heading">Refund Policy</a></li>
+        </ul>
+      </div>
+      
+      <!-- Contact Info -->
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li>
+            <i class="fas fa-envelope"></i>
+            <a href="mailto:office@devtem.org">office@devtem.org</a>
+          </li>
+          <li>
+            <i class="fas fa-globe"></i>
+            <span>www.devtem.org</span>
+          </li>
+          <li>
+            <i class="fas fa-clock"></i>
+            <span>24/7 Support Available</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <p>&copy; 2025 DevTemple. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/terms/index.html">Terms</a>
+        <span>•</span>
+        <a href="/terms/privacy.html">Privacy</a>
+        <span>•</span>
+        <a href="/home.html">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <script src="/assets/scripts/shortdash.js"></script>
+  <script src="/assets/scripts/devdash.js" type="module" defer></script>
+</body>
+</html>
