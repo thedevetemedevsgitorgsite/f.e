@@ -60,7 +60,7 @@
             ]
         }
     </script>
-
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" async></script>
 </head>
 
 <body>
@@ -363,17 +363,65 @@
 </div>
     </section>
     
-        <section class="section posts" id="chart-section">
-      
-          <h3>Performance</h3>
-    <canvas id="salesChart"></canvas>
+       <section class="section posts" id="chart-section">
+    <div class="chart-header">
+        <h3><i class="fas fa-chart-line"></i>Your product's</h3>
+        <div class="chart-controls hidden">
+            <select id="timeRange" class="chart-select">
+                <option value="7">Last 7 Days</option>
+                <option value="30" selected>Last 30 Days</option>
+                <option value="90">Last 90 Days</option>
+                <option value="365">Last Year</option>
+            </select>
+            <button class="chart-refresh" id="refreshChart">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+    </div>
     
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
+    <div class="chart-container">
+        <div class="chart-card hidden">
+            <div class="chart-title">
+                <h4><i class="fas fa-money-bill-wave"></i> Sales & Earnings Overview</h4>
+                <span class="chart-subtitle">Monthly performance metrics</span>
+            </div>
+            <div class="chart-wrapper">
+                <canvas id="salesChart"></canvas>
+            </div> 
+            <div class="chart-stats">
+                <div class="chart-stat">
+                    <span class="stat-label">Avg. Daily Sales</span>
+                    <span class="stat-value" id="avgSales">₦0</span>
+                </div>
+                <div class="chart-stat">
+                    <span class="stat-label">Peak Day</span>
+                    <span class="stat-value" id="peakDay">--</span>
+                </div>
+                <div class="chart-stat">
+                    <span class="stat-label">Growth</span>
+                    <span class="stat-value" id="growthRate">0%</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="charts-grid">
+            <div class="mini-chart hidden">
+                <div class="mini-chart-header">
+                    <h5><i class="fas fa-heart"></i> Engagement</h5>
+                </div>
+                <canvas id="engagementChart"></canvas>
+            </div>
+            
+            <div class="mini-chart">
+                <div class="mini-chart-header">
+                    <h5><i class="fas fa-box"></i> Top Products</h5>
+                </div>
+                <canvas id="productsChart"></canvas>
+            </div>
+        </div>
+    </div>
     
-    </script>
-    
-    <div class="product-grid">
+        <div class="product-grid">
         
         <section class="product" id="featuredCard">
             
@@ -381,25 +429,18 @@
                 <button>
                 
                 </button><span>Loading...</span>
-                <style>
-                    .loading-post button {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 50%;
-                        border: 2px solid var(--primary-color);
-                        border-top-color: transparent;
-                        background: transparent;
-                        opacity: 90%;
-                        animation: spin 3s linear infinite;
-                    }
-                </style>
             </div>
             
             
             
     </div>
-      
-    </section>
+</section>
+
+<!-- Add these styles to your CSS -->
+<style>
+
+</style>
+
    <section class="section settings hidden" id="settings-section">
        
  <div class="edit-user">
