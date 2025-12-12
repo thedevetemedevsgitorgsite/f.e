@@ -90,6 +90,8 @@
     
     <div class="side-list btn wallet"><i class="fas fa-wallet"></i> <span class="label hide">Wallet</span></div>
     
+    <div class="side-list btn reward"><i class="fas fa-gift"></i> <span class="label hide">Rewards</span></div>
+    
     <div class="side-list btn chart active"><i class="fas fa-chart-line"></i> <span class="label hide">Performance</span></div>
     
     <div class="side-list btn user"><i class="fas fa-user"></i> <span class="label hide">Profile</span></div>
@@ -953,11 +955,127 @@
 <!-- Add to JavaScript -->
     
     
+      <section class="rewards-section  hidden" id="rewards">
+    
+    <!--- rewards section --->
+    
+    
+    
+    
+    
+    <section class="rewards" id="reward-section">
+      <div class="rew-card">
+        <h2 class="rew-balance">
+          <span id="rewBalanceAmount">loading...</span>
+          <button class="withdraw-rew" id="rewWithdrawBtn">Withdraw</button>
+        </h2>
+        <span class="rew-balance-label">Available reward Balance</span>
+      </div>
+      
+      <div class="rew-about">
+        <div class="rew-icon">
+          🎁
+        </div>
+        
+        <p class="rew-link">Your referral link:</p>
+        <div class="rew-ref-container">
+          <input type="text" class="rew-ref-input" id="rewRefLink" value="https://devtem.org/home?rew=abc123" readonly />
+          <button class="rew-copy-btn" id="rewCopyBtn">Copy</button>
+        </div>
+        
+        <div class="rew-text">
+          <strong>How to get rewards</strong>
+          Copy your referral link and share with developers.
+          When someone buys through your link, you earn <b>7%</b> of every item they purchase.
+        </div>
+      </div>
+    </section>
+    
+
+  </section>
+  
+  
+  
+  
+    
+    
+    
+    
     <section class="section-load hidden">
       <div class="load-section"></div>
     </section>
     
     
+    
+    
+      <!-- Withdrawal Modal -->
+  <div class="rew-modal-overlay" id="rewWithdrawalModal">
+    <div class="rew-modal">
+      <div class="rew-modal-header">
+        <h3 class="rew-modal-title">Withdraw Funds</h3>
+        <button class="rew-close-modal" id="rewCloseModal">&times;</button>
+      </div>
+      <div class="rew-modal-body">
+        <div class="rew-withdrawal-amount">
+          <div class="rew-withdrawal-amount-label">Amount to withdraw</div>
+          <div class="rew-withdrawal-amount-value" id="rewWithdrawAmount">₦0.00</div>
+        </div>
+
+        <form id="rewWithdrawalForm">
+          <div class="rew-form-group">
+            <label class="rew-form-label">Country <span class="rew-required">*</span></label>
+            <select class="rew-form-select" id="rewCountry" required>
+              <option value="">Select your country</option>
+              <option value="Nigeria">Nigeria</option>
+              <option value="Ghana">Ghana</option>
+              <option value="Kenya">Kenya</option>
+              <option value="South Africa">South Africa</option>
+              <option value="United States">United States</option>
+              <option value="United Kingdom">United Kingdom</option>
+              <option value="Canada">Canada</option>
+              <option value="Other">Other</option>
+            </select>
+            <div class="rew-error-message" id="rewCountryError">Please select your country</div>
+          </div>
+
+          <div class="rew-form-group">
+            <label class="rew-form-label">Bank Name <span class="rew-required">*</span></label>
+            <input type="text" class="rew-form-input" id="rewBankName" placeholder="Enter your bank name" required>
+            <div class="rew-error-message" id="rewBankNameError">Please enter your bank name</div>
+          </div>
+
+          <div class="rew-form-group">
+            <label class="rew-form-label">Account Name <span class="rew-required">*</span></label>
+            <input type="text" class="rew-form-input" id="rewAccountName" placeholder="Enter account holder name" required>
+            <div class="rew-error-message" id="rewAccountNameError">Please enter account holder name</div>
+          </div>
+
+          <div class="rew-form-group">
+            <label class="rew-form-label">Account Number <span class="rew-required">*</span></label>
+            <input type="text" class="rew-form-input" id="rewAccountNumber" placeholder="Enter account number" required>
+            <div class="rew-error-message" id="rewAccountNumberError">Please enter a valid account number</div>
+          </div>
+
+          <div class="rew-form-group">
+            <label class="rew-form-label">Address</label>
+            <input type="text" class="rew-form-input" id="rewAddress" placeholder="Enter your address (optional)">
+          </div>
+
+          <div class="rew-form-group">
+            <label class="rew-form-label">Additional Notes</label>
+            <input type="text" class="rew-form-input" id="rewNotes" placeholder="Any additional information (optional)">
+          </div>
+        </form>
+      </div>
+      <div class="rew-modal-footer">
+        <button class="rew-btn rew-btn-cancel" id="rewCancelBtn">Cancel</button>
+        <button class="rew-btn rew-btn-submit" id="rewSubmitWithdrawal">Submit Withdrawal</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="rew-notification" id="rewNotification"></div>
+
   </main>
   
   <div class="alert-overlay" id="alertOverlay"></div>
@@ -976,6 +1094,8 @@
   </div>
 </section>
 
+
+  
   
   <footer class="footer">
   <div class="container">
@@ -1057,4 +1177,6 @@
   <script src="/assets/scripts/shortdash.js"></script>
   <script src="/assets/scripts/devdash.js" type="module" defer></script>
 </body>
-</html>
+  </html>
+
+
