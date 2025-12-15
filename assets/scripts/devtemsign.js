@@ -2,7 +2,7 @@ import{createClient}from"https://esm.sh/@supabase/supabase-js@2";const btnDr=doc
 export const supabase=createClient(url,key);  
  function backTo(){
 if (window.history.length > 1) {
-window.history.back();
+window.location.href= "/home";
 } else {
 window.location.href = "/home";
 }
