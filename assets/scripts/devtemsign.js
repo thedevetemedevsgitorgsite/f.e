@@ -1,11 +1,20 @@
 import{createClient}from"https://esm.sh/@supabase/supabase-js@2";const btnDr=document.getElementById("btttn");btnDr&&(window.addEventListener("scroll",(function(){window.pageYOffset>=300?btnDr.style.display="block":btnDr.style.display="none"})),btnDr.addEventListener("click",(function(){window.scrollTo({top:0,behavior:"smooth"})})));const res=await fetch("/.netlify/functions/fcnfig");const{url,key}=await res.json();
 export const supabase=createClient(url,key);  
- function backTo(){
-if (window.history.length > 1) {
-window.location.href= "/home";
-} else {
-window.location.href = "/home";
+function getRef(){
+  if(document.referrer.includes("/home")||document.referrer.includes("/dashboard")){
+    return true;
+  }
+  else{
+    return false;
+  }
 }
+ function backTo(){
+if(window.history.length>1&&getRef()){
+    window.history.back();
+  }
+  else{
+    window.location.href="/home";
+  }
  }
 async function verifyRecaptcha() {
   const token = grecaptcha.getResponse();
