@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="UTF-8"?>
+
+    <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://devtem.org/</loc>
+    <loc>https://devtem.org/blog</loc>
     <lastmod>2026-02-09</lastmod>
-    <priority>1.0</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://devtem.org/dashboard</loc>
@@ -14,6 +15,11 @@
     <loc>https://devtem.org/home</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>1.0</priority>
   </url>
   <url>
     <loc>https://devtem.org/about</loc>
@@ -41,7 +47,47 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://devtem.org/convert-images</loc>
+    <loc>https://devtem.org/blog/top-5-JS-tools.html</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/web-development-tips-beginners</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/affiliate-marketing-strategies</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/css-flexbox-vs-grid-complete-guide</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/react-performance-optimization-tips</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/web3-development-beginners-guide</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/seo-best-practices-2026</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/blog/mobile-first-design-strategies</loc>
+    <lastmod>2026-02-09</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://devtem.org/terms/</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
   </url>
@@ -51,12 +97,12 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devtem.org/color-picker</loc>
+    <loc>https://devtem.org/convert-images</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devtem.org/terms/</loc>
+    <loc>https://devtem.org/color-picker</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
   </url>
@@ -66,32 +112,22 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devtem.org/user/logkey</loc>
-    <lastmod>2026-02-09</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://devtem.org/signup.html</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://devtem.org/color-picker/</loc>
+    <loc>https://devtem.org/user/logkey</loc>
     <lastmod>2026-02-09</lastmod>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://devtem.org/convert-images/</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
   </url>
-      <url>
-    <loc>https://devtem.org/blog</loc>
-    <lastmod>2026-02-09</lastmod>
-    <priority>0.9</priority>
-  </url>
-      <url>
-    <loc>https://devtem.org/blog/mobile-first-design-strategies</loc>
+  <url>
+    <loc>https://devtem.org/color-picker/</loc>
     <lastmod>2026-02-09</lastmod>
     <priority>0.9</priority>
   </url>
