@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO (Article) -->
+    <title>Web3 Development: A Beginner's Guide for 2026 | DevTemple Blog</title>
+    <meta name="description" content="Start your Web3 development journey with this comprehensive beginner's guide. Learn blockchain basics, smart contracts, and how to build decentralized applications in 2026.">
+    <meta name="keywords" content="Web3 development, blockchain beginners guide, smart contracts, decentralized applications, Ethereum, Solidity, crypto development, DevTemple blog">
+    <meta name="author" content="DevTemple">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Canonical (Article URL) -->
+    <link rel="canonical" href="https://devtem.org/blog/web3-development-beginners-guide.html">
+    
+    <!-- Open Graph (Article) -->
+    <meta property="og:title" content="Web3 Development: A Beginner's Guide for 2026">
+    <meta property="og:description" content="Everything you need to start building in Web3. From blockchain fundamentals to your first smart contract – learn Web3 development the right way.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devtem.org/blog/web3-development-beginners-guide.html">
+    <meta property="og:site_name" content="DevTemple">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Web3 Development Beginner's Guide – DevTemple Blog">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Web3 Development: A Beginner's Guide for 2026">
+    <meta name="twitter:description" content="Start your Web3 development journey with this step-by-step guide covering blockchain, smart contracts, and dApp development fundamentals.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:site" content="@fscss_ttr">
+    
+    <!-- Mobile / PWA -->
+    <meta name="theme-color" content="#06f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/logo.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/styles/index.css">
+    <link rel="stylesheet" href="/assets/styles/blog.css">
+    
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-8466647951093215">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD: BlogPosting -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "Web3 Development: A Beginner's Guide for 2026",
+            "description": "Complete beginner's guide to Web3 development covering blockchain fundamentals, smart contracts, and decentralized application building.",
+            "image": "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "author": {
+                "@type": "Organization",
+                "name": "DevTemple"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "DevTemple",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://devtem.org/assets/images/logo.png"
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://devtem.org/blog/web3-development-beginners-guide.html"
+            }
+        }
+    </script>
+    
+    <!-- JSON-LD: Organization (Global Branding) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevTemple",
+            "url": "https://devtem.org",
+            "logo": "https://devtem.org/assets/images/logo.png",
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61582984827911",
+                "https://twitter.com/fscss_ttr"
+            ],
+            "description": "DevTemple offers high-quality digital assets, creative resources, and marketing tools. Empowering entrepreneurs and creators to launch faster and scale bigger.",
+            "foundingDate": "2024"
+        }
+    </script>
+</head>
+<body>
+
+<section class="top-ad">
+<div class="text-container"><a href="//devtem.org/dashboard#/reward/">🎁 Start earning today — view rewards</a></div>
+</section>
+<section class="top-menu">
+  <div class="top-btns">
+  <div class="top-left">
+    <button class="top-btn toggle-menu">
+     <svg xmlns="http://www.w3.org/2000/svg" 
+     width="26" height="26" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+    </button>
+    
+    <h3 class="app-name">DevTemple</h3>
+    </button>
+  </div>
+<button class="top-btn add-post" onclick="window.location.href='/dashboard#/pen/'">
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       width="23" height="23" 
+       viewBox="0 0 24 24" 
+       fill="none" stroke="currentColor" 
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Arrow pointing up into a tray -->
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+    <polyline points="7 9 12 4 17 9"/>
+    <line x1="12" y1="4" x2="12" y2="16"/>
+  </svg>
+</button>
+  
+  <button class="top-btn cart" onclick="window.location.href='/home';">
+<svg width="28" height="25" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+</svg>
+  </button>
+  
+      <button class="top-btn gift" onclick="window.location.href='/dashboard#/reward/'">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+     width="25" height="25" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="8" width="18" height="13" rx="2" ry="2" />
+  <path d="M12 8v13" />
+  <path d="M3 12h18" />
+  <path d="M12 8c-1.5-2-4-4-6-2s1.5 4 6 2z" />
+  <path d="M12 8c1.5-2 4-4 6-2s-1.5 4-6 2z" />
+</svg>
+  </button>
+  
+  
+  <button class="top-btn user" onclick="window.location.href='/dashboard#/user/'">
+<svg class="svg-icon" viewBox="0 0 448 512" width="20" height="20">
+  <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+</svg>
+  </button>
+  </div>
+ <div class="top-list keys">
+
+
+</div>
+
+</section>
+
+<section class="hero">
+  
+   <div class="hero-content">
+     <div class="hero-head">
+        <h3 class="hero-title">
+  <span class="title-word title-word-1">Build</span>&nbsp;<span class="title-word title-word-2">Amazing</span>&nbsp;<span class="title-word title-word-3">Projects</span>&nbsp;<span class="title-word title-word-4">Faster</span>
+</h3>
+<p>Discover premium digital assets, creative resources, and marketing tools.</p>
+     </div>
+   </div>
+</section>
+<section class="top-search-bar">
+    <div class="hero-content">
+        <div class="hero-search">
+          <form class="hero-form" action="/home">
+          <input type="search" placeholder="Search DevTemple...">
+          <button type="button" onclick="window.location.href='/home'"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="19" height="19" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+</svg></button>
+          </form>
+        </div>
+   </div>
+  
+</section>
+
+
+<section class="side-menu hidden">
+  <div class="menu-list">
+    
+        <p>
+            <button class="theme-btn">
+            <span class="moon">
+                🌙
+            </span><span class="sun">
+                🔆
+            </span></button>
+    </p>
+    
+  <a href="/index.html#" class="menu-list-item"><h3>Home</h3></a>
+  
+  <a href="/home.html#" class="menu-list-item"><h3>Templates</h3></a>
+  
+  <a href="/dashboard.html#" class="menu-list-item"><h3>Account & Dashboard</h3></a>
+  
+  <div class="line"></div>
+  <a class="menu-list-item" id="supportToggle"><h3>Support <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9" />
+</svg></h3></a>
+  
+  <div class="side-drop hidden" id="supportDrop">
+    <a href="/about#" class="menu-list-item"><h3>About</h3></a>
+      <a href="/contact#" class="menu-list-item"><h3>Contact</h3></a>
+        <a href="/faq#" class="menu-list-item"><h3>Faq</h3></a>
+  </div>
+  
+    <div class="line"></div>
+    
+  <a class="menu-list-item" id="legalToggle"><h3>Legal <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9" />
+</svg></h3></a>
+  
+  <div class="side-drop hidden" id="legalDrop">
+    <a href="/terms#" class="menu-list-item"><h3>Terms and Conditions</h3></a>
+      <a href="/terms/privacy#" class="menu-list-item"><h3>Privacy Policy</h3></a>
+        <a href="/terms#payment-refunds-heading" class="menu-list-item"><h3>Refunds</h3></a>
+  </div>
+  
+
+  </div>
+  
+</section>
+
+
+
+<main>
+  
+<section class="section-contain article-body">
+<div class="temp-search">
+    <div class="search-header">
+        <h2>Developer Insights</h2>
+        <p>Master the modern web with our curated tech deep-dives.</p>
+    </div>
+    
+    <div class="featured-blog-card">
+        <div class="featured-blog-image" style="background-image:url(https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80);"></div>
+        <div class="featured-blog-content">
+            <div class="blog-meta">
+                <span class="blog-category">Web3 & Blockchain</span>
+                <span class="blog-date">February 9, 2026</span>
+                <span class="blog-read-time">8 min read</span>
+            </div>
+            <h1>Web3 Development: A Beginner's Guide for 2026</h1>
+            <p class="lead">Web3 development represents the next evolution of the internet—decentralized, user-owned, and built on blockchain technology. While it may seem complex, starting your Web3 journey in 2026 is more accessible than ever. This guide will walk you through the fundamental concepts, tools, and first steps to become a Web3 developer.</p>
+            
+            <hr class="article-divider">
+            
+            <div class="article-text">
+                <h3>What Exactly is Web3?</h3>
+                <p>Before diving into code, understand what makes Web3 different:</p>
+                <ul>
+                    <li><strong>Web1 (1990s):</strong> Read-only static websites</li>
+                    <li><strong>Web2 (2000s-now):</strong> Read-write interactive applications (social media, SaaS)</li>
+                    <li><strong>Web3 (emerging):</strong> Read-write-own decentralized applications where users control their data and assets</li>
+                </ul>
+                <p>The core innovation is <strong>decentralization</strong>—instead of servers owned by companies, data and logic exist on distributed networks (blockchains) maintained by thousands of computers worldwide.</p>
+                
+                <h3>Blockchain Fundamentals: The Foundation</h3>
+                <p>Blockchain is the underlying technology of Web3. Think of it as:</p>
+                <ul>
+                    <li><strong>A distributed database</strong> that many computers maintain together</li>
+                    <li><strong>Immutable records</strong>—once data is added, it cannot be changed</li>
+                    <li><strong>Transparent transactions</strong> visible to all network participants</li>
+                    <li><strong>Consensus mechanisms</strong> that ensure everyone agrees on the state</li>
+                </ul>
+                <p>Popular blockchains for development in 2026 include Ethereum, Solana, Polygon, and Arbitrum—each with different trade-offs between speed, cost, and decentralization.</p>
+                
+                <h3>Smart Contracts: The "Programs" of Web3</h3>
+                <p>Smart contracts are self-executing code deployed on blockchains. They're like vending machines: predefined rules that execute automatically when conditions are met.</p>
+                <pre><code>// Simple Solidity smart contract example
+pragma solidity ^0.8.0;
+
+contract SimpleStorage {
+    uint256 private value;
+    
+    // Function to store a value
+    function store(uint256 newValue) public {
+        value = newValue;
+    }
+    
+    // Function to retrieve the stored value
+    function retrieve() public view returns (uint256) {
+        return value;
+    }
+}</code></pre>
+                <p>Key characteristics of smart contracts:</p>
+                <ul>
+                    <li><strong>Immutable:</strong> Code can't be changed after deployment</li>
+                    <li><strong>Deterministic:</strong> Same inputs always produce same outputs</li>
+                    <li><strong>Gas fees:</strong> Execution costs cryptocurrency (gas)</li>
+                    <li><strong>Public:</strong> Code and transactions are visible on the blockchain</li>
+                </ul>
+                
+                <h3>Your First Web3 Development Setup</h3>
+                <p>Here's what you need to start building in 2026:</p>
+                <ol>
+                    <li><strong>MetaMask Wallet:</strong> Browser extension for interacting with dApps</li>
+                    <li><strong>Node.js & npm:</strong> JavaScript runtime and package manager</li>
+                    <li><strong>Hardhat or Foundry:</strong> Development environments for Ethereum</li>
+                    <li><strong>Testnet ETH:</strong> Free cryptocurrency for testing (from faucets)</li>
+                    <li><strong>Code Editor:</strong> VS Code with Solidity extensions</li>
+                </ol>
+                
+                <h3>Building Your First dApp (Decentralized Application)</h3>
+                <p>A basic dApp has three components:</p>
+                <ol>
+                    <li><strong>Smart Contract:</strong> Backend logic on the blockchain</li>
+                    <li><strong>Frontend:</strong> Traditional web interface (React, Vue, etc.)</li>
+                    <li><strong>Wallet Connection:</strong> Bridge between frontend and blockchain</li>
+                </ol>
+                
+                <p><strong>Step 1: Write a simple voting contract</strong></p>
+                <pre><code>// Voting.sol
+pragma solidity ^0.8.0;
+
+contract SimpleVoting {
+    mapping(address => bool) public hasVoted;
+    mapping(string => uint256) public votes;
+    string[] public candidates;
+    
+    constructor(string[] memory _candidates) {
+        candidates = _candidates;
+    }
+    
+    function vote(string memory candidate) public {
+        require(!hasVoted[msg.sender], "Already voted");
+        require(isValidCandidate(candidate), "Invalid candidate");
+        
+        hasVoted[msg.sender] = true;
+        votes[candidate] += 1;
+    }
+    
+    function isValidCandidate(string memory candidate) private view returns (bool) {
+        for (uint i = 0; i < candidates.length; i++) {
+            if (keccak256(bytes(candidates[i])) == keccak256(bytes(candidate))) {
+                return true;
+            }
+        }
+        return false;
+    }
+}</code></pre>
+                
+                <p><strong>Step 2: Connect frontend with ethers.js</strong></p>
+                <pre><code>// React component for voting
+import { ethers } from 'ethers';
+import VotingContract from './contracts/Voting.json';
+
+function VotingApp() {
+  const [provider, setProvider] = useState(null);
+  const [contract, setContract] = useState(null);
+  const [account, setAccount] = useState('');
+  
+  // Connect wallet
+  const connectWallet = async () => {
+    if (window.ethereum) {
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      await provider.send("eth_requestAccounts", []);
+      const signer = provider.getSigner();
+      const account = await signer.getAddress();
+      
+      const contractAddress = "YOUR_CONTRACT_ADDRESS";
+      const contract = new ethers.Contract(
+        contractAddress,
+        VotingContract.abi,
+        signer
+      );
+      
+      setProvider(provider);
+      setContract(contract);
+      setAccount(account);
+    }
+  };
+  
+  // Cast a vote
+  const castVote = async (candidate) => {
+    try {
+      const tx = await contract.vote(candidate);
+      await tx.wait(); // Wait for transaction confirmation
+      alert('Vote recorded on blockchain!');
+    } catch (error) {
+      console.error('Voting failed:', error);
+    }
+  };
+  
+  return (
+    &lt;div&gt;
+      &lt;button onClick={connectWallet}&gt;
+        {account ? `Connected: ${account.slice(0,6)}...` : 'Connect Wallet'}
+      &lt;/button&gt;
+      &lt;button onClick={() => castVote('Alice')}&gt;Vote for Alice&lt;/button&gt;
+    &lt;/div&gt;
+  );
+}</code></pre>
+                
+                <h3>Essential Web3 Development Concepts</h3>
+                <p><strong>Wallets & Accounts:</strong></p>
+                <ul>
+                    <li><strong>Public Key:</strong> Your public address (like an email)</li>
+                    <li><strong>Private Key:</strong> Your password (NEVER share this)</li>
+                    <li><strong>Seed Phrase:</strong> 12-24 words that can restore your wallet</li>
+                </ul>
+                
+                <p><strong>Gas Fees:</strong></p>
+                <p>Every blockchain transaction costs "gas"—payment for the computational work. Gas prices fluctuate based on network congestion.</p>
+                
+                <p><strong>Testnets vs Mainnet:</strong></p>
+                <ul>
+                    <li><strong>Testnets:</strong> Practice networks with free test tokens (Goerli, Sepolia)</li>
+                    <li><strong>Mainnet:</strong> The real blockchain with real value</li>
+                </ul>
+                
+                <p><strong>APIs and Services:</strong></p>
+                <ul>
+                    <li><strong>Alchemy/Infura:</strong> Blockchain node providers</li>
+                    <li><strong>IPFS:</strong> Decentralized file storage</li>
+                    <li><strong>The Graph:</strong> Indexing and querying blockchain data</li>
+                </ul>
+                
+                <h3>Common Web3 Development Patterns</h3>
+                <p><strong>1. Token Contracts (ERC-20, ERC-721):</strong></p>
+                <pre><code>// Minimal ERC-20 token implementation
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract MyToken is ERC20 {
+    constructor() ERC20("MyToken", "MTK") {
+        _mint(msg.sender, 1000000 * 10 ** decimals());
+    }
+}</code></pre>
+                
+                <p><strong>2. Decentralized Finance (DeFi) Basics:</strong></p>
+                <ul>
+                    <li><strong>Liquidity Pools:</strong> Automated market makers</li>
+                    <li><strong>Yield Farming:</strong> Earning rewards for providing liquidity</li>
+                    <li><strong>Staking:</strong> Locking tokens to support network operations</li>
+                </ul>
+                
+                <p><strong>3. NFTs (Non-Fungible Tokens):</strong></p>
+                <pre><code>// Simple NFT contract using OpenZeppelin
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract MyNFT is ERC721 {
+    constructor() ERC721("MyNFT", "MNFT") {}
+    
+    function mint(address to, uint256 tokenId) public {
+        _safeMint(to, tokenId);
+    }
+}</code></pre>
+                
+                <h3>Security Best Practices for Web3 Development</h3>
+                <p>Web3 development has unique security considerations:</p>
+                <ol>
+                    <li><strong>Use Established Libraries:</strong> OpenZeppelin for secure contract templates</li>
+                    <li><strong>Always Test Thoroughly:</strong> 90% of security issues are preventable with testing</li>
+                    <li><strong>Implement Access Controls:</strong> Use modifiers like <code>onlyOwner</code></li>
+                    <li><strong>Avoid Integer Overflows:</strong> Use SafeMath or Solidity 0.8+</li>
+                    <li><strong>Get Audited:</strong> Professional audits for production contracts</li>
+                </ol>
+                
+                <blockquote class="article-quote">
+                    "Web3 isn't about replacing all current systems—it's about creating alternatives where decentralization provides clear benefits: ownership, censorship resistance, and transparency."
+                </blockquote>
+                
+                <h3>Learning Path for 2026</h3>
+                <p>Structured approach to becoming a Web3 developer:</p>
+                <ol>
+                    <li><strong>Month 1-2:</strong> Blockchain fundamentals & Solidity basics</li>
+                    <li><strong>Month 3:</strong> Build simple smart contracts (voting, token, NFT)</li>
+                    <li><strong>Month 4:</strong> Learn frontend integration (ethers.js/web3.js)</li>
+                    <li><strong>Month 5:</strong> Explore DeFi concepts and protocols</li>
+                    <li><strong>Month 6:</strong> Contribute to open source Web3 projects</li>
+                </ol>
+                
+                <h3>Tools and Resources for 2026</h3>
+                <ul>
+                    <li><strong>Learning:</strong> CryptoZombies, Ethereum.org, SpeedRunEthereum</li>
+                    <li><strong>Development:</strong> Hardhat, Foundry, Remix IDE</li>
+                    <li><strong>Testing:</strong> Testnets, Hardhat Network, Tenderly</li>
+                    <li><strong>Deployment:</strong> Hardhat scripts, OpenZeppelin Defender</li>
+                    <li><strong>Monitoring:</strong> Etherscan, Alchemy Monitor, Tenderly</li>
+                </ul>
+                
+                <h3>Common Pitfalls for Beginners</h3>
+                <ol>
+                    <li><strong>Deploying to Mainnet Too Early:</strong> Always start with testnets</li>
+                    <li><strong>Ignoring Gas Optimization:</strong> Inefficient code costs users real money</li>
+                    <li><strong>Poor Private Key Management:</strong> Use hardware wallets for significant funds</li>
+                    <li><strong>Copying Untrusted Code:</strong> Understand what you deploy</li>
+                    <li><strong>Underestimating Testing:</strong> Blockchain transactions are irreversible</li>
+                </ol>
+                
+                <h3>The Future of Web3 Development</h3>
+                <p>In 2026, we're seeing several trends:</p>
+                <ul>
+                    <li><strong>Layer 2 Solutions:</strong> Scaling through rollups (Optimism, Arbitrum, zkSync)</li>
+                    <li><strong>Account Abstraction:</strong> Better user experience with smart contract wallets</li>
+                    <li><strong>Zero-Knowledge Proofs:</strong> Privacy-preserving transactions</li>
+                    <li><strong>Cross-Chain Interoperability:</strong> Communication between different blockchains</li>
+                </ul>
+                
+                <h3>Conclusion: Start Building Today</h3>
+                <p>Web3 development represents one of the most exciting frontiers in technology. While the learning curve exists, the fundamentals are accessible to any developer with JavaScript/TypeScript experience. Start small with testnet deployments, learn through building, and join the vibrant Web3 developer community.</p>
+                <p>The best way to learn Web3 is to build Web3. Begin with simple contracts, understand the security implications, and gradually tackle more complex projects. Whether you're interested in DeFi, NFTs, DAOs, or entirely new applications, the decentralized web offers unprecedented opportunities for innovation. DevTemple's Web3 templates provide excellent starting points for your first projects—leverage them to accelerate your learning journey in this transformative space.</p>
+            </div>
+            
+            <div class="blog-author">
+                <svg class="svg-icon" viewBox="0 0 448 512" width="16" height="16">
+                    <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+                </svg>
+                <span>By DevTemple Web3 Team</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="temp-search">
+        <div class="search-header">
+            <h2>Brows DevTemple</h2>
+            <p>Browse our curated collection of templates and resources. Find exactly what you need to build your next project faster.</p>
+        </div>
+        
+        <div class="quick-search-grid">
+            
+            <a href="/home.html#search?q=brutalism" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/qRCg5KbQ/20260105-095829.png);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Brutalism Design</h3>
+                    <p>Explore creative Brutalism Design</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" />
+                        </svg>
+                        brutalism
+                    </span>
+                </div>
+            </a>
+            
+            <a href="/home.html#search?q=figma" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/qRVq3RQV/20260105-100314.png);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Figma Templates</h3>
+                    <p>Effective Figma Templates</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" />
+                        </svg>
+                        Figma
+                    </span>
+                </div>
+            </a>
+            
+            <a href="/home.html#search?q=Blockchain" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/jdr1Fr34/1767602250154.jpg);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Blockchain Integration</h3>
+                    <p>Blockchain Integration snippets</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" />
+                        </svg>
+                        Blockchain
+                    </span>
+                </div>
+            </a>
+            
+            <a href="/home.html#search?q=WordPress" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.ibb.co/0S4nLmh/Showcase1.jpg);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>WordPress Themes</h3>
+                    <p>Professional website themes ready to customize</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                            <path fill="currentColor" d="M256 8C119.3 8 8 119.2 8 256c0 136.7 111.3 248 248 248s248-111.3 248-248C504 119.2 392.7 8 256 8zM32 256c0-123.7 100.3-224 224-224s224 100.3 224 224c0 123.7-100.3 224-224 224S32 379.7 32 256zm295.1-48.9c5.7 0 10.3 4.6 10.3 10.3s-4.6 10.3-10.3 10.3-10.3-4.6-10.3-10.3 4.6-10.3 10.3-10.3zm-70.2 0c5.7 0 10.3 4.6 10.3 10.3s-4.6 10.3-10.3 10.3-10.3-4.6-10.3-10.3 4.6-10.3 10.3-10.3zm70.2 96c-5.7 0-10.3-4.6-10.3-10.3s4.6-10.3 10.3-10.3 10.3 4.6 10.3 10.3-4.6 10.3-10.3 10.3zm-70.2 0c-5.7 0-10.3-4.6-10.3-10.3s4.6-10.3 10.3-10.3 10.3 4.6 10.3 10.3-4.6 10.3-10.3 10.3z" />
+                        </svg>
+                        WordPress
+                    </span>
+                </div>
+            </a>
+            
+            
+            
+            
+            <a href="/home.html#search?q=loading%20page" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/Gp52F0Sz/020a6261-0523-463d-8320-7036a937a184.jpg);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Landing Pages</h3>
+                    <p>SEO-friendly pages with modern UI components</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
+                        </svg>
+                        Pages
+                    </span>
+                </div>
+            </a>
+            
+            
+            <a href="/home.html#search?q=portfolio" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/4d3m9vvw/20260105-094654.png);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Portfolio Templates</h3>
+                    <p>Showcase your work with stunning layouts</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                            <path fill="currentColor" d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z" />
+                        </svg>
+                        Portfolio
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    </section>
+    
+    
+    <div class="rew-promo" id="rewPromo">
+        <div class="rew-promo-icon" aria-hidden="true">
+            <!-- Gift / reward SVG -->
+            <svg id="rewIcon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M3 8h18" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 3v5" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 6.5A2.5 2.5 0 0 1 11.5 9" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M17 6.5A2.5 2.5 0 0 0 12.5 9" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <rect x="4" y="8" width="16" height="3" rx="0.8" fill="#E5E9FF" opacity="0.6" />
+            </svg>
+        </div>
+        
+        <div class="rew-promo-body">
+            
+            <h3 class="rew-promo-title">Turn your link into money!</h3>
+            <p class="rew-promo-text">
+                Share your referral link → someone buys through your link → you get&nbsp;<strong>7% earnings</strong>&nbsp;on every order.
+                <br>
+                No limits. No stress.
+            </p>
+            
+            <div class="rew-promo-actions">
+                <a href="/dashboard#/reward/" id="rewStartBtn" class="rew-btn" role="button" aria-labelledby="rewStartLabel">
+                    <!-- small icon on button -->
+                    <svg class="rew-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 8h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 3v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span id="rewStartLabel">Start earning</span>
+                </a>
+                <strong class="rew-cancel" onclick="this.parentElement.parentElement.parentElement.style.display='none'"> &nbsp; &times;</strong>
+            </div>
+        </div>
+    </div>
+    
+    
+    </main>
+    
+    
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-section brand-section">
+                    <h3>
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="20" height="20" style="margin-right: 8px;">
+                            <path fill="currentColor" d="M160 112c0-44.2 35.8-80 80-80s80 35.8 80 80v48H160v-48zm-48 48H48c-26.5 0-48 21.5-48 48v256c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V208c0-26.5-21.5-48-48-48h-64v-48C336 44.8 291.2 0 240 0S144 44.8 144 112v48z" />
+                        </svg>
+                        DevTemple
+                    </h3>
+                    <p>
+                        The ultimate marketplace for premium digital assets, creative resources, and marketing tools.
+                        Empowering entrepreneurs and creators to launch faster and scale bigger.
+                    </p>
+                    <div class="footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/profile.php?id=61582984827911" aria-label="Facebook">
+                                <svg class="svg-icon" viewBox="0 0 320 512" width="16" height="16">
+                                    <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                                </svg>
+                            </a>
+                            <a href="https://x.com/DevtempT12979" aria-label="Twitter">
+                                <svg class="svg-icon" viewBox="0 0 512 512" width="16" height="16">
+                                    <path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/fscss-ttr/" aria-label="GitHub">
+                                <svg class="svg-icon" viewBox="0 0 480 512" width="16" height="16">
+                                    <path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.youtube.com/@devtem_org" aria-label="YouTube">
+                                <svg class="svg-icon" viewBox="0 0 576 512" width="16" height="16">
+                                    <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/home.html">Home</a></li>
+                        <li><a href="/index.html#about">About</a></li>
+                        <li><a href="/home.html">Browse Templates</a></li>
+                        <li><a href="#">Payment</a></li>
+                        
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/index.html#contact">Contact Us</a></li>
+                        <li><a href="/terms/index.html">Terms of Service</a></li>
+                        <li><a href="/terms/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms/index.html#payment-refunds-heading">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                                <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" />
+                            </svg>
+                            <a href="mailto:office@devtem.org">office@devtem.org</a>
+                        </li>
+                        <li>
+                            <svg class="svg-icon" viewBox="0 0 496 512" width="14" height="14">
+                                <path fill="currentColor" d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" />
+                            </svg>
+                            <span>www.devtem.org</span>
+                        </li>
+                        <li>
+                            <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm-32-316v116h-67c-10.7 0-16 12.9-8.5 20.5l99 99c4.7 4.7 12.3 4.7 17 0l99-99c7.6-7.6 2.2-20.5-8.5-20.5h-67V140c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12z" />
+                            </svg>
+                            <span>24/7 Support Available</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevTemple. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/terms/index.html">Terms</a>
+                    <span>•</span>
+                    <a href="/terms/privacy.html">Privacy</a>
+                    <span>•</span>
+                    <a href="/home.html">Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/assets/scripts/hero.js"></script>
+    </body>
+    
+    </html>

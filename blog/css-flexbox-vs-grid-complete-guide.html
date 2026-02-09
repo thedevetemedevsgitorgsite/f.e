@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Primary SEO (Article) -->
+    <title>CSS Flexbox vs Grid: Complete Guide for 2026 | DevTemple Blog</title>
+    <meta name="description" content="Master CSS layouts with our complete guide to Flexbox vs Grid. Learn when to use each, practical examples, and how to combine them for powerful modern designs.">
+    <meta name="keywords" content="CSS Flexbox, CSS Grid, layout systems, web design 2026, CSS tutorials, responsive design, modern CSS, DevTemple blog">
+    <meta name="author" content="DevTemple">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    
+    <!-- Canonical (Article URL) -->
+    <link rel="canonical" href="https://devtem.org/blog/css-flexbox-vs-grid-complete-guide.html">
+    
+    <!-- Open Graph (Article) -->
+    <meta property="og:title" content="CSS Flexbox vs Grid: Complete Guide for 2026">
+    <meta property="og:description" content="Stop guessing which layout system to use. This comprehensive guide shows exactly when to use Flexbox, when to use Grid, and how to combine them effectively.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://devtem.org/blog/css-flexbox-vs-grid-complete-guide.html">
+    <meta property="og:site_name" content="DevTemple">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="CSS Flexbox vs Grid Complete Guide – DevTemple Blog">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="CSS Flexbox vs Grid: Complete Guide for 2026">
+    <meta name="twitter:description" content="The definitive guide to choosing between CSS Flexbox and Grid for modern web layouts. Practical examples and best practices included.">
+    <meta name="twitter:image" content="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80">
+    <meta name="twitter:site" content="@fscss_ttr">
+    
+    <!-- Mobile / PWA -->
+    <meta name="theme-color" content="#06f">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/assets/images/logo.png">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/assets/styles/index.css">
+    <link rel="stylesheet" href="/assets/styles/blog.css">
+    
+    <!-- Google AdSense -->
+    <meta name="google-adsense-account" content="ca-pub-8466647951093215">
+    
+    <!-- Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- JSON-LD: BlogPosting -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": "CSS Flexbox vs Grid: Complete Guide for 2026",
+            "description": "Comprehensive guide to CSS Flexbox and Grid layout systems with practical examples and best practices for modern web design.",
+            "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
+            "author": {
+                "@type": "Organization",
+                "name": "DevTemple"
+            },
+            "publisher": {
+                "@type": "Organization",
+                "name": "DevTemple",
+                "logo": {
+                    "@type": "ImageObject",
+                    "url": "https://devtem.org/assets/images/logo.png"
+                }
+            },
+            "mainEntityOfPage": {
+                "@type": "WebPage",
+                "@id": "https://devtem.org/blog/css-flexbox-vs-grid-complete-guide.html"
+            }
+        }
+    </script>
+    
+    <!-- JSON-LD: Organization (Global Branding) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "DevTemple",
+            "url": "https://devtem.org",
+            "logo": "https://devtem.org/assets/images/logo.png",
+            "sameAs": [
+                "https://www.facebook.com/profile.php?id=61582984827911",
+                "https://twitter.com/fscss_ttr"
+            ],
+            "description": "DevTemple offers high-quality digital assets, creative resources, and marketing tools. Empowering entrepreneurs and creators to launch faster and scale bigger.",
+            "foundingDate": "2024"
+        }
+    </script>
+</head>
+<body>
+
+<section class="top-ad">
+<div class="text-container"><a href="//devtem.org/dashboard#/reward/">🎁 Start earning today — view rewards</a></div>
+</section>
+<section class="top-menu">
+  <div class="top-btns">
+  <div class="top-left">
+    <button class="top-btn toggle-menu">
+     <svg xmlns="http://www.w3.org/2000/svg" 
+     width="26" height="26" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+    </button>
+    
+    <h3 class="app-name">DevTemple</h3>
+    </button>
+  </div>
+<button class="top-btn add-post" onclick="window.location.href='/dashboard#/pen/'">
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       width="23" height="23" 
+       viewBox="0 0 24 24" 
+       fill="none" stroke="currentColor" 
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Arrow pointing up into a tray -->
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+    <polyline points="7 9 12 4 17 9"/>
+    <line x1="12" y1="4" x2="12" y2="16"/>
+  </svg>
+</button>
+  
+  <button class="top-btn cart" onclick="window.location.href='/home';">
+<svg width="28" height="25" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+</svg>
+  </button>
+  
+      <button class="top-btn gift" onclick="window.location.href='/dashboard#/reward/'">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+     width="25" height="25" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="8" width="18" height="13" rx="2" ry="2" />
+  <path d="M12 8v13" />
+  <path d="M3 12h18" />
+  <path d="M12 8c-1.5-2-4-4-6-2s1.5 4 6 2z" />
+  <path d="M12 8c1.5-2 4-4 6-2s-1.5 4-6 2z" />
+</svg>
+  </button>
+  
+  
+  <button class="top-btn user" onclick="window.location.href='/dashboard#/user/'">
+<svg class="svg-icon" viewBox="0 0 448 512" width="20" height="20">
+  <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+</svg>
+  </button>
+  </div>
+ <div class="top-list keys">
+
+
+</div>
+
+</section>
+
+<section class="hero">
+  
+   <div class="hero-content">
+     <div class="hero-head">
+        <h3 class="hero-title">
+  <span class="title-word title-word-1">Build</span>&nbsp;<span class="title-word title-word-2">Amazing</span>&nbsp;<span class="title-word title-word-3">Projects</span>&nbsp;<span class="title-word title-word-4">Faster</span>
+</h3>
+<p>Discover premium digital assets, creative resources, and marketing tools.</p>
+     </div>
+   </div>
+</section>
+<section class="top-search-bar">
+    <div class="hero-content">
+        <div class="hero-search">
+          <form class="hero-form" action="/home">
+          <input type="search" placeholder="Search DevTemple...">
+          <button type="button" onclick="window.location.href='/home'"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="19" height="19" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+</svg></button>
+          </form>
+        </div>
+   </div>
+  
+</section>
+
+
+<section class="side-menu hidden">
+  <div class="menu-list">
+    
+        <p>
+            <button class="theme-btn">
+            <span class="moon">
+                🌙
+            </span><span class="sun">
+                🔆
+            </span></button>
+    </p>
+    
+  <a href="/index.html#" class="menu-list-item"><h3>Home</h3></a>
+  
+  <a href="/home.html#" class="menu-list-item"><h3>Templates</h3></a>
+  
+  <a href="/dashboard.html#" class="menu-list-item"><h3>Account & Dashboard</h3></a>
+  
+  <div class="line"></div>
+  <a class="menu-list-item" id="supportToggle"><h3>Support <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9" />
+</svg></h3></a>
+  
+  <div class="side-drop hidden" id="supportDrop">
+    <a href="/about#" class="menu-list-item"><h3>About</h3></a>
+      <a href="/contact#" class="menu-list-item"><h3>Contact</h3></a>
+        <a href="/faq#" class="menu-list-item"><h3>Faq</h3></a>
+  </div>
+  
+    <div class="line"></div>
+    
+  <a class="menu-list-item" id="legalToggle"><h3>Legal <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9" />
+</svg></h3></a>
+  
+  <div class="side-drop hidden" id="legalDrop">
+    <a href="/terms#" class="menu-list-item"><h3>Terms and Conditions</h3></a>
+      <a href="/terms/privacy#" class="menu-list-item"><h3>Privacy Policy</h3></a>
+        <a href="/terms#payment-refunds-heading" class="menu-list-item"><h3>Refunds</h3></a>
+  </div>
+  
+
+  </div>
+  
+</section>
+
+
+
+<main>
+  
+<section class="section-contain article-body">
+<div class="temp-search">
+    <div class="search-header">
+        <h2>Developer Insights</h2>
+        <p>Master the modern web with our curated tech deep-dives.</p>
+    </div>
+    
+    <div class="featured-blog-card">
+        <div class="featured-blog-image" style="background-image:url(https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80);"></div>
+        <div class="featured-blog-content">
+            <div class="blog-meta">
+                <span class="blog-category">CSS & Layouts</span>
+                <span class="blog-date">February 9, 2026</span>
+                <span class="blog-read-time">9 min read</span>
+            </div>
+            <h1>CSS Flexbox vs Grid: Complete Guide for Modern Layouts</h1>
+            <p class="lead">CSS Flexbox and Grid have revolutionized web layout design, but many developers still struggle with when to use each. This isn't an "either/or" decision—it's about choosing the right tool for the right job. In 2026, understanding their distinct purposes and mastering their combination separates amateur designs from professional layouts.</p>
+            
+            <hr class="article-divider">
+            
+            <div class="article-text">
+                <h3>The Core Philosophy: One-Dimensional vs Two-Dimensional</h3>
+                <p>Before diving into specific use cases, understand the fundamental difference: <strong>Flexbox is one-dimensional</strong> while <strong>Grid is two-dimensional</strong>. Flexbox works along a single axis (horizontal row OR vertical column), perfect for distributing space within a container along that line. Grid creates a two-dimensional system with rows AND columns that intersect, allowing precise placement anywhere in the grid. Think of Flexbox as organizing items in a line (like a toolbar), while Grid is organizing items in a table-like structure (like a dashboard).</p>
+                
+                <h3>When to Use Flexbox: The Linear Specialist</h3>
+                <p>Flexbox excels in these specific scenarios:</p>
+                <ul>
+                    <li><strong>Navigation bars and menus:</strong> When you need items evenly distributed or aligned in a single row/column</li>
+                    <li><strong>Card components with variable content:</strong> When cards need to stretch to equal heights regardless of content length</li>
+                    <li><strong>Form controls alignment:</strong> Perfect for aligning labels and inputs in complex forms</li>
+                    <li><strong>Centering content vertically and horizontally:</strong> The classic <code>justify-content: center; align-items: center;</code> pattern</li>
+                    <li><strong>Responsive lists that wrap:</strong> When you want items to flow to the next line on smaller screens</li>
+                </ul>
+                <p>Flexbox's <code>flex-grow</code>, <code>flex-shrink</code>, and <code>flex-basis</code> properties give you fine-grained control over how items expand and contract in the available space—something Grid handles differently.</p>
+                
+                <h3>When to Use Grid: The Layout Architect</h3>
+                <p>Grid is your go-to choice for these layout patterns:</p>
+                <ul>
+                    <li><strong>Complete page layouts:</strong> Header, sidebar, main content, footer all precisely positioned</li>
+                    <li><strong>Image galleries with consistent gutters:</strong> The <code>gap</code> property works perfectly here</li>
+                    <li><strong>Dashboard interfaces:</strong> When widgets need specific row/column placements</li>
+                    <li><strong>Magazine-style layouts:</strong> Complex arrangements where items span multiple rows/columns</li>
+                    <li><strong>Responsive designs without media queries:</strong> Using <code>auto-fit</code> and <code>minmax()</code> for intrinsic responsiveness</li>
+                </ul>
+                <p>Grid's <code>grid-template-areas</code> is particularly powerful for readable, maintainable layout code where you can literally visualize the layout in your CSS.</p>
+                
+                <h3>Practical Example: Navigation (Flexbox) vs Dashboard (Grid)</h3>
+                <p>Consider a website navigation. With Flexbox:</p>
+                <pre><code>.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}</code></pre>
+                <p>Clean, simple, and perfectly handles logo on left, menu items centered, CTA button on right.</p>
+                <p>Now consider a dashboard layout. With Grid:</p>
+                <pre><code>.dashboard {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  grid-template-rows: auto 1fr auto;
+  grid-template-areas:
+    "sidebar header"
+    "sidebar main"
+    "sidebar footer";
+  min-height: 100vh;
+}</code></pre>
+                <p>This creates a precise, maintainable layout structure that Flexbox simply can't match.</p>
+                
+                <h3>The Power Combination: Grid for Macro, Flexbox for Micro</h3>
+                <p>This is where magic happens in 2026's most sophisticated layouts. Use <strong>Grid for the overall page structure</strong> and <strong>Flexbox for the internal components</strong>. For example:</p>
+                <pre><code>/* Grid for overall layout */
+.page-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 2rem;
+}
+
+/* Flexbox for individual components within grid cells */
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-within-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}</code></pre>
+                <p>This pattern gives you Grid's powerful two-dimensional control for the big picture, while leveraging Flexbox's superior one-dimensional alignment for components within those areas.</p>
+                
+                <h3>Responsive Design: Different Strategies</h3>
+                <p>Flexbox and Grid handle responsiveness differently:</p>
+                <p><strong>Flexbox responsiveness:</strong> Often uses <code>flex-wrap</code> with media queries. Items flow to the next line when space runs out.</p>
+                <pre><code>.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .flex-item {
+    flex: 1 1 100%; /* Stack vertically on mobile */
+  }
+}</code></pre>
+                <p><strong>Grid responsiveness:</strong> Can be completely media-query-free with intrinsic design:</p>
+                <pre><code>.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}</code></pre>
+                <p>The Grid example automatically creates as many columns as fit the 300px minimum, then makes them all equal width—no media queries needed.</p>
+                
+                <h3>Common Pitfalls and How to Avoid Them</h3>
+                <p><strong>Mistake #1:</strong> Using Flexbox for complex two-dimensional layouts. Result: Nested flex containers and overly complex CSS.</p>
+                <p><strong>Solution:</strong> If you find yourself nesting flex containers to create rows AND columns, switch to Grid.</p>
+                
+                <p><strong>Mistake #2:</strong> Using Grid for simple one-dimensional alignment. Result: Overly complex grid definitions for simple tasks.</p>
+                <p><strong>Solution:</strong> If you're only aligning items in a single direction, Flexbox is simpler and more appropriate.</p>
+                
+                <p><strong>Mistake #3:</strong> Ignoring the <code>gap</code> property. In 2026, <code>gap</code> works in both Flexbox and Grid (after years of only Grid support).</p>
+                <p><strong>Solution:</strong> Use <code>gap: 1rem;</code> instead of margin hacks for consistent spacing.</p>
+                
+                <blockquote class="article-quote">
+                    "Flexbox is for arranging items in a line. Grid is for arranging items in a grid. If your layout is fundamentally linear, use Flexbox. If it's fundamentally rectangular, use Grid."
+                </blockquote>
+                
+                <h3>Browser Support and Fallbacks in 2026</h3>
+                <p>Both Flexbox and Grid have excellent support in modern browsers (98%+ global support). However, for critical applications:</p>
+                <ul>
+                    <li><strong>Use feature queries:</strong> <code>@supports (display: grid)</code> to provide fallbacks</li>
+                    <li><strong>Consider mobile-first:</strong> Often, a single-column mobile layout works fine without Grid, then enhance with Grid for larger screens</li>
+                    <li><strong>Progressive enhancement:</strong> Build a functional layout with Flexbox/float fallbacks, then enhance with Grid where supported</li>
+                </ul>
+                
+                <h3>Real-World Application: DevTemple Template Analysis</h3>
+                <p>Looking at successful DevTemple templates, the pattern is clear: <strong>Grid defines the layout skeleton</strong> (header, main areas, sidebar, footer), while <strong>Flexbox handles internal alignment</strong> (navigation items, card content, form groups, button groups). This separation creates maintainable, scalable templates that adapt beautifully across devices.</p>
+                
+                <h3>Conclusion: Choosing Your Tool</h3>
+                <p>Ask these questions when deciding between Flexbox and Grid:</p>
+                <ol>
+                    <li><strong>Is the layout fundamentally one-directional?</strong> → Flexbox</li>
+                    <li><strong>Do I need precise control over both rows AND columns?</strong> → Grid</li>
+                    <li><strong>Am I centering or distributing items along a single axis?</strong> → Flexbox</li>
+                    <li><strong>Do items need to maintain specific positions in a two-dimensional system?</strong> → Grid</li>
+                    <li><strong>Can I use both?</strong> → Almost always yes! Grid for structure, Flexbox for components</li>
+                </ol>
+                <p>Mastering both systems and knowing when to use each (or combine them) is essential for modern web development. Start with the right mental model: Flexbox for linear arrangements, Grid for spatial arrangements. Practice both separately, then practice combining them. The most elegant, maintainable layouts in 2026 use each tool for what it does best.</p>
+            </div>
+            
+            <div class="blog-author">
+                <svg class="svg-icon" viewBox="0 0 448 512" width="16" height="16">
+                    <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+                </svg>
+                <span>By DevTemple Frontend Experts</span>
+            </div>
+            <div>
+            <a href="/blog.html">Read More Articles </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="temp-search">
+        <div class="search-header">
+            <h2>Brows DevTemple</h2>
+            <p>Browse our curated collection of templates and resources. Find exactly what you need to build your next project faster.</p>
+        </div>
+        
+        <div class="quick-search-grid">
+            
+            <a href="/home.html#search?q=brutalism" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/qRCg5KbQ/20260105-095829.png);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Brutalism Design</h3>
+                    <p>Explore creative Brutalism Design</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" />
+                        </svg>
+                        brutalism
+                    </span>
+                </div>
+            </a>
+            
+            <a href="/home.html#search?q=figma" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/qRVq3RQV/20260105-100314.png);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Figma Templates</h3>
+                    <p>Effective Figma Templates</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" />
+                        </svg>
+                        Figma
+                    </span>
+                </div>
+            </a>
+            
+            <a href="/home.html#search?q=Blockchain" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/jdr1Fr34/1767602250154.jpg);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Blockchain Integration</h3>
+                    <p>Blockchain Integration snippets</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48z" />
+                        </svg>
+                        Blockchain
+                    </span>
+                </div>
+            </a>
+            
+            <a href="/home.html#search?q=WordPress" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.ibb.co/0S4nLmh/Showcase1.jpg);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>WordPress Themes</h3>
+                    <p>Professional website themes ready to customize</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                            <path fill="currentColor" d="M256 8C119.3 8 8 119.2 8 256c0 136.7 111.3 248 248 248s248-111.3 248-248C504 119.2 392.7 8 256 8zM32 256c0-123.7 100.3-224 224-224s224 100.3 224 224c0 123.7-100.3 224-224 224S32 379.7 32 256zm295.1-48.9c5.7 0 10.3 4.6 10.3 10.3s-4.6 10.3-10.3 10.3-10.3-4.6-10.3-10.3 4.6-10.3 10.3-10.3zm-70.2 0c5.7 0 10.3 4.6 10.3 10.3s-4.6 10.3-10.3 10.3-10.3-4.6-10.3-10.3 4.6-10.3 10.3-10.3zm70.2 96c-5.7 0-10.3-4.6-10.3-10.3s4.6-10.3 10.3-10.3 10.3 4.6 10.3 10.3-4.6 10.3-10.3 10.3zm-70.2 0c-5.7 0-10.3-4.6-10.3-10.3s4.6-10.3 10.3-10.3 10.3 4.6 10.3 10.3-4.6 10.3-10.3 10.3z" />
+                        </svg>
+                        WordPress
+                    </span>
+                </div>
+            </a>
+            
+            
+            
+            
+            <a href="/home.html#search?q=loading%20page" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/Gp52F0Sz/020a6261-0523-463d-8320-7036a937a184.jpg);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Landing Pages</h3>
+                    <p>SEO-friendly pages with modern UI components</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="14" height="14">
+                            <path fill="currentColor" d="M190.5 66.9l22.2-22.2c9.4-9.4 24.6-9.4 33.9 0L441 239c9.4 9.4 9.4 24.6 0 33.9L246.6 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.2-22.2c-9.5-9.5-9.3-25 .4-34.3L311.4 296H24c-13.3 0-24-10.7-24-24v-32c0-13.3 10.7-24 24-24h287.4L190.9 101.2c-9.8-9.3-10-24.8-.4-34.3z" />
+                        </svg>
+                        Pages
+                    </span>
+                </div>
+            </a>
+            
+            
+            <a href="/home.html#search?q=portfolio" class="quick-search-card">
+                <div class="search-card-image" style="background-image:url(https://i.postimg.cc/4d3m9vvw/20260105-094654.png);">
+                    <div class="search-overlay">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
+                            <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+                        </svg>
+                    </div>
+                </div>
+                <div class="search-card-content">
+                    <h3>Portfolio Templates</h3>
+                    <p>Showcase your work with stunning layouts</p>
+                    <span class="search-badge">
+                        <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                            <path fill="currentColor" d="M320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48H0v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48V288H320v48zm144-208h-80V80c0-25.6-22.4-48-48-48H176c-25.6 0-48 22.4-48 48v48H48c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0H192V96h128v32z" />
+                        </svg>
+                        Portfolio
+                    </span>
+                </div>
+            </a>
+        </div>
+    </div>
+    
+    
+    
+    
+    
+    </section>
+    
+    
+    <div class="rew-promo" id="rewPromo">
+        <div class="rew-promo-icon" aria-hidden="true">
+            <!-- Gift / reward SVG -->
+            <svg id="rewIcon" width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M3 8h18" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M12 3v5" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M7 6.5A2.5 2.5 0 0 1 11.5 9" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <path d="M17 6.5A2.5 2.5 0 0 0 12.5 9" stroke="#1E2783" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+                <rect x="4" y="8" width="16" height="3" rx="0.8" fill="#E5E9FF" opacity="0.6" />
+            </svg>
+        </div>
+        
+        <div class="rew-promo-body">
+            
+            <h3 class="rew-promo-title">Turn your link into money!</h3>
+            <p class="rew-promo-text">
+                Share your referral link → someone buys through your link → you get&nbsp;<strong>7% earnings</strong>&nbsp;on every order.
+                <br>
+                No limits. No stress.
+            </p>
+            
+            <div class="rew-promo-actions">
+                <a href="/dashboard#/reward/" id="rewStartBtn" class="rew-btn" role="button" aria-labelledby="rewStartLabel">
+                    <!-- small icon on button -->
+                    <svg class="rew-btn-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M21 8v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3 8h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M12 3v5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    <span id="rewStartLabel">Start earning</span>
+                </a>
+                <strong class="rew-cancel" onclick="this.parentElement.parentElement.parentElement.style.display='none'"> &nbsp; &times;</strong>
+            </div>
+        </div>
+    </div>
+    
+    
+    </main>
+    
+    
+    <footer class="footer">
+        <div class="container">
+            <!-- Main Footer Content -->
+            <div class="footer-grid">
+                <!-- Brand Section -->
+                <div class="footer-section brand-section">
+                    <h3>
+                        <svg class="svg-icon" viewBox="0 0 448 512" width="20" height="20" style="margin-right: 8px;">
+                            <path fill="currentColor" d="M160 112c0-44.2 35.8-80 80-80s80 35.8 80 80v48H160v-48zm-48 48H48c-26.5 0-48 21.5-48 48v256c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V208c0-26.5-21.5-48-48-48h-64v-48C336 44.8 291.2 0 240 0S144 44.8 144 112v48z" />
+                        </svg>
+                        DevTemple
+                    </h3>
+                    <p>
+                        The ultimate marketplace for premium digital assets, creative resources, and marketing tools.
+                        Empowering entrepreneurs and creators to launch faster and scale bigger.
+                    </p>
+                    <div class="footer-social">
+                        <h4>Follow Us</h4>
+                        <div class="social-icons">
+                            <a href="https://www.facebook.com/profile.php?id=61582984827911" aria-label="Facebook">
+                                <svg class="svg-icon" viewBox="0 0 320 512" width="16" height="16">
+                                    <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                                </svg>
+                            </a>
+                            <a href="https://x.com/DevtempT12979" aria-label="Twitter">
+                                <svg class="svg-icon" viewBox="0 0 512 512" width="16" height="16">
+                                    <path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
+                                </svg>
+                            </a>
+                            <a href="https://github.com/fscss-ttr/" aria-label="GitHub">
+                                <svg class="svg-icon" viewBox="0 0 480 512" width="16" height="16">
+                                    <path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z" />
+                                </svg>
+                            </a>
+                            <a href="https://www.youtube.com/@devtem_org" aria-label="YouTube">
+                                <svg class="svg-icon" viewBox="0 0 576 512" width="16" height="16">
+                                    <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="/home.html">Home</a></li>
+                        <li><a href="/index.html#about">About</a></li>
+                        <li><a href="/home.html">Browse Templates</a></li>
+                        <li><a href="#">Payment</a></li>
+                        
+                    </ul>
+                </div>
+                
+                <!-- Support -->
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="/faq.html">FAQ</a></li>
+                        <li><a href="/index.html#contact">Contact Us</a></li>
+                        <li><a href="/terms/index.html">Terms of Service</a></li>
+                        <li><a href="/terms/privacy.html">Privacy Policy</a></li>
+                        <li><a href="/terms/index.html#payment-refunds-heading">Refund Policy</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                                <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" />
+                            </svg>
+                            <a href="mailto:office@devtem.org">office@devtem.org</a>
+                        </li>
+                        <li>
+                            <svg class="svg-icon" viewBox="0 0 496 512" width="14" height="14">
+                                <path fill="currentColor" d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" />
+                            </svg>
+                            <span>www.devtem.org</span>
+                        </li>
+                        <li>
+                            <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
+                                <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm-32-316v116h-67c-10.7 0-16 12.9-8.5 20.5l99 99c4.7 4.7 12.3 4.7 17 0l99-99c7.6-7.6 2.2-20.5-8.5-20.5h-67V140c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12z" />
+                            </svg>
+                            <span>24/7 Support Available</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 DevTemple. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="/terms/index.html">Terms</a>
+                    <span>•</span>
+                    <a href="/terms/privacy.html">Privacy</a>
+                    <span>•</span>
+                    <a href="/home.html">Home</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="/assets/scripts/hero.js"></script>
+    </body>
+    
+    </html>
