@@ -149,3 +149,19 @@
         grid-template-columns: 1fr;
     }
 }
+.featured-blog-card pre{
+    background: rgba(0,0,0,0.89);
+    color: #ddd;
+    overflow-x: auto;
+    border-radius: 20px;
+    padding: 10px;
+}
+.featured-blog-card code{
+    background: rgba(10, 10, 10, 0.3);
+    border-radius: 5px;
+    
+}
+.featured-blog-card pre code{
+    background: transparent;
+    
+}
