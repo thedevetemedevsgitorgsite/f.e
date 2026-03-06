@@ -1,0 +1,28 @@
+@import(exec(_init circle-progress))
+@progress-root()
+
+@circle-progress(.progress-circle)
+.progress-circle{
+color: var(--text-dim);
+}
+@arr p1-100[count(100)]
+.p0{@progress-range(0)} 
+.p@arr.p1-100[]{ @progress-range(@arr.p1-100[])}
+
+.progress-circle.blue   { 
+
+    --progress-color-arc: #4d9fff;
+
+    --progress-color-glow: rgba(77,159,255,0.45); 
+
+  }
+
+ .progress-circle.amber  { 
+
+    --progress-color-arc: #ffb830; 
+
+    --progress-color-glow: rgba(255,184,48,0.4);  
+
+    
+
+  }
