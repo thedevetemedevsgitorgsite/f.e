@@ -1,0 +1,419 @@
+:root {
+--progress-size: 180px;
+--progress-stroke: 14px;
+--progress-6fb4d3f: 72; /* 0â€“100 */
+--progress-color-bg: #0b0d12;
+--progress-color-track: rgba(255,255,255,0.06);
+--progress-color-arc: #00e5a0;
+--progress-color-glow: rgba(0, 229, 160, 0.45);
+--progress-color-label: #a0a8b8;
+--progress-color-value: #f0f4ff;
+}
+
+.progress-circle{
+position: relative;
+width: var(--progress-size);
+height: var(--progress-size);
+/* centering inner text via flex */
+display: flex;
+align-items: center;
+justify-content: center;
+/* value label lives directly on the element */
+font-family: 'Syne', sans-serif;
+font-size: 36px;
+font-weight: 800;
+color: var(--progress-color-value);
+letter-spacing: -0.03em;
+}
+/* â”€â”€ ::before  â†’  conic-gradient arc track + progress â”€â”€ */
+.progress-circle::before {
+content: '';
+position: absolute;
+inset: 0;
+border-radius: 50%;
+/*
+We build the arc with a conic-gradient:
+â€¢ coloured slice  = progress %
+â€¢ transparent gap = rest
+Then punch a hole with a mask so only the ring shows.
+*/
+background: conic-gradient(
+var(--progress-color-arc) calc(var(--progress-6fb4d3f) * 1%),
+var(--progress-color-track) 0%
+);
+/* rotate so arc starts at 12 o'clock */
+transform: rotate(-90deg);
+/* donut mask â€“ inner radius = size âˆ’ stroke */
+--inner: calc(var(--progress-size) / 2 - var(--progress-stroke));
+-webkit-mask: radial-gradient(
+circle at center,
+transparent calc(var(--inner) - 1px),
+black       var(--inner)
+);
+mask: radial-gradient(
+circle at center,
+transparent calc(var(--inner) - 1px),
+black       var(--inner)
+);
+/* subtle appear animation */
+animation: progress-appear 0.5s ease both;
+}
+/* â”€â”€ ::after  â†’  animated glowing sweep dot â”€â”€ */
+.progress-circle::after {
+content: '';
+position: absolute;
+/* position the dot at the tip of the arc */
+top: calc(var(--progress-stroke) / 2 - 5px);
+left: 50%;
+width: 10px;
+height: 10px;
+margin-left: -5px;
+border-radius: 50%;
+background: var(--progress-color-arc);
+box-shadow:
+0 0 8px  4px var(--progress-color-glow),
+0 0 20px 8px var(--progress-color-glow);
+/* rotate around the circle center */
+transform-origin: 50% calc(var(--progress-size) / 2 - var(--progress-stroke) / 2 + 5px);
+transform: rotate(calc(var(--progress-6fb4d3f) * 3.6deg - 90deg));
+/* pulse glow */
+animation:
+progress-pulse-dot 2s ease-in-out infinite,
+appear 0.5s ease both;
+}
+/* â”€â”€ animations â”€â”€ */
+@keyframes progress-appear {
+from { opacity: 0; transform: scale(0.85); }
+to   { opacity: 1; }
+}
+/* fix: ::after needs its own appear that keeps the rotation */
+.progress-circle::after {
+animation:
+pulse-dot 2s ease-in-out infinite,
+progress-fade-in 0.6s ease both;
+}
+@keyframes progress-fade-in {
+from { opacity: 0; }
+to   { opacity: 1; }
+}
+@keyframes progress-pulse-dot {
+0%, 100% { box-shadow: 0 0 8px  4px var(--progress-color-glow), 0 0 20px  8px var(--progress-color-glow); }
+50%       { box-shadow: 0 0 14px 8px var(--progress-color-glow), 0 0 36px 16px var(--progress-color-glow); }
+}
+/* â”€â”€ interactive counter on hover â”€â”€ */
+.progress-circle[data-value]::before {
+transition: background 0.6s ease;
+}
+
+.progress-circle{
+color: var(--text-dim);
+}
+
+.p0{--progress-6fb4d3f: 0;}.p1 {
+  --progress-6fb4d3f: 1;
+}
+.p2 {
+  --progress-6fb4d3f: 2;
+}
+.p3 {
+  --progress-6fb4d3f: 3;
+}
+.p4 {
+  --progress-6fb4d3f: 4;
+}
+.p5 {
+  --progress-6fb4d3f: 5;
+}
+.p6 {
+  --progress-6fb4d3f: 6;
+}
+.p7 {
+  --progress-6fb4d3f: 7;
+}
+.p8 {
+  --progress-6fb4d3f: 8;
+}
+.p9 {
+  --progress-6fb4d3f: 9;
+}
+.p10 {
+  --progress-6fb4d3f: 10;
+}
+.p11 {
+  --progress-6fb4d3f: 11;
+}
+.p12 {
+  --progress-6fb4d3f: 12;
+}
+.p13 {
+  --progress-6fb4d3f: 13;
+}
+.p14 {
+  --progress-6fb4d3f: 14;
+}
+.p15 {
+  --progress-6fb4d3f: 15;
+}
+.p16 {
+  --progress-6fb4d3f: 16;
+}
+.p17 {
+  --progress-6fb4d3f: 17;
+}
+.p18 {
+  --progress-6fb4d3f: 18;
+}
+.p19 {
+  --progress-6fb4d3f: 19;
+}
+.p20 {
+  --progress-6fb4d3f: 20;
+}
+.p21 {
+  --progress-6fb4d3f: 21;
+}
+.p22 {
+  --progress-6fb4d3f: 22;
+}
+.p23 {
+  --progress-6fb4d3f: 23;
+}
+.p24 {
+  --progress-6fb4d3f: 24;
+}
+.p25 {
+  --progress-6fb4d3f: 25;
+}
+.p26 {
+  --progress-6fb4d3f: 26;
+}
+.p27 {
+  --progress-6fb4d3f: 27;
+}
+.p28 {
+  --progress-6fb4d3f: 28;
+}
+.p29 {
+  --progress-6fb4d3f: 29;
+}
+.p30 {
+  --progress-6fb4d3f: 30;
+}
+.p31 {
+  --progress-6fb4d3f: 31;
+}
+.p32 {
+  --progress-6fb4d3f: 32;
+}
+.p33 {
+  --progress-6fb4d3f: 33;
+}
+.p34 {
+  --progress-6fb4d3f: 34;
+}
+.p35 {
+  --progress-6fb4d3f: 35;
+}
+.p36 {
+  --progress-6fb4d3f: 36;
+}
+.p37 {
+  --progress-6fb4d3f: 37;
+}
+.p38 {
+  --progress-6fb4d3f: 38;
+}
+.p39 {
+  --progress-6fb4d3f: 39;
+}
+.p40 {
+  --progress-6fb4d3f: 40;
+}
+.p41 {
+  --progress-6fb4d3f: 41;
+}
+.p42 {
+  --progress-6fb4d3f: 42;
+}
+.p43 {
+  --progress-6fb4d3f: 43;
+}
+.p44 {
+  --progress-6fb4d3f: 44;
+}
+.p45 {
+  --progress-6fb4d3f: 45;
+}
+.p46 {
+  --progress-6fb4d3f: 46;
+}
+.p47 {
+  --progress-6fb4d3f: 47;
+}
+.p48 {
+  --progress-6fb4d3f: 48;
+}
+.p49 {
+  --progress-6fb4d3f: 49;
+}
+.p50 {
+  --progress-6fb4d3f: 50;
+}
+.p51 {
+  --progress-6fb4d3f: 51;
+}
+.p52 {
+  --progress-6fb4d3f: 52;
+}
+.p53 {
+  --progress-6fb4d3f: 53;
+}
+.p54 {
+  --progress-6fb4d3f: 54;
+}
+.p55 {
+  --progress-6fb4d3f: 55;
+}
+.p56 {
+  --progress-6fb4d3f: 56;
+}
+.p57 {
+  --progress-6fb4d3f: 57;
+}
+.p58 {
+  --progress-6fb4d3f: 58;
+}
+.p59 {
+  --progress-6fb4d3f: 59;
+}
+.p60 {
+  --progress-6fb4d3f: 60;
+}
+.p61 {
+  --progress-6fb4d3f: 61;
+}
+.p62 {
+  --progress-6fb4d3f: 62;
+}
+.p63 {
+  --progress-6fb4d3f: 63;
+}
+.p64 {
+  --progress-6fb4d3f: 64;
+}
+.p65 {
+  --progress-6fb4d3f: 65;
+}
+.p66 {
+  --progress-6fb4d3f: 66;
+}
+.p67 {
+  --progress-6fb4d3f: 67;
+}
+.p68 {
+  --progress-6fb4d3f: 68;
+}
+.p69 {
+  --progress-6fb4d3f: 69;
+}
+.p70 {
+  --progress-6fb4d3f: 70;
+}
+.p71 {
+  --progress-6fb4d3f: 71;
+}
+.p72 {
+  --progress-6fb4d3f: 72;
+}
+.p73 {
+  --progress-6fb4d3f: 73;
+}
+.p74 {
+  --progress-6fb4d3f: 74;
+}
+.p75 {
+  --progress-6fb4d3f: 75;
+}
+.p76 {
+  --progress-6fb4d3f: 76;
+}
+.p77 {
+  --progress-6fb4d3f: 77;
+}
+.p78 {
+  --progress-6fb4d3f: 78;
+}
+.p79 {
+  --progress-6fb4d3f: 79;
+}
+.p80 {
+  --progress-6fb4d3f: 80;
+}
+.p81 {
+  --progress-6fb4d3f: 81;
+}
+.p82 {
+  --progress-6fb4d3f: 82;
+}
+.p83 {
+  --progress-6fb4d3f: 83;
+}
+.p84 {
+  --progress-6fb4d3f: 84;
+}
+.p85 {
+  --progress-6fb4d3f: 85;
+}
+.p86 {
+  --progress-6fb4d3f: 86;
+}
+.p87 {
+  --progress-6fb4d3f: 87;
+}
+.p88 {
+  --progress-6fb4d3f: 88;
+}
+.p89 {
+  --progress-6fb4d3f: 89;
+}
+.p90 {
+  --progress-6fb4d3f: 90;
+}
+.p91 {
+  --progress-6fb4d3f: 91;
+}
+.p92 {
+  --progress-6fb4d3f: 92;
+}
+.p93 {
+  --progress-6fb4d3f: 93;
+}
+.p94 {
+  --progress-6fb4d3f: 94;
+}
+.p95 {
+  --progress-6fb4d3f: 95;
+}
+.p96 {
+  --progress-6fb4d3f: 96;
+}
+.p97 {
+  --progress-6fb4d3f: 97;
+}
+.p98 {
+  --progress-6fb4d3f: 98;
+}
+.p99 {
+  --progress-6fb4d3f: 99;
+}
+.p100 {
+  --progress-6fb4d3f: 100;
+}
+.progress-circle.blue   {
+--progress-color-arc: #4d9fff;
+--progress-color-glow: rgba(77,159,255,0.45);
+}
+.progress-circle.amber  {
+--progress-color-arc: #ffb830;
+--progress-color-glow: rgba(255,184,48,0.4);
+}
