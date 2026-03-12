@@ -1,20 +1,15 @@
 const skeletonPage='<section class="loader-container">\n    <div class="loading-text">\n      Loading<i>.</i><i>.</i><i>.</i>\n    </div>\n    <div class="subtitle">Preparing your experience</div>\n    <div class="skeleton-preview">\n      <div class="skeleton-card">\n        <div class="skeleton-img"></div>\n        <div class="skeleton-line"></div>\n        <b class="skeleton-line"></b>\n        <div class="skeleton-line"></div>\n      </div>\n      <div class="skeleton-card">\n        <div class="skeleton-img"></div>\n        <div class="skeleton-line"></div>\n        <b class="skeleton-line"></b>\n        <div class="skeleton-line"></div>\n      </div>\n      <div class="skeleton-card">\n        <div class="skeleton-img"></div>\n        <div class="skeleton-line"></div>\n        <b class="skeleton-line"></b>\n        <div class="skeleton-line"></div>\n      </div>\n      <div class="skeleton-card">\n        <div class="skeleton-img"></div>\n        <div class="skeleton-line"></div>\n        <b class="skeleton-line"></b>\n        <div class="skeleton-line"></div>\n      </div>\n      <div class="skeleton-card">\n        <div class="skeleton-img"></div>\n        <div class="skeleton-line"></div>\n        <b class="skeleton-line"></b>\n        <div class="skeleton-line"></div>\n      </div>\n      <div class="skeleton-card">\n        <div class="skeleton-img"></div>\n        <div class="skeleton-line"></div>\n        <b class="skeleton-line"></b><div class="skeleton-line"></div>\n      </div>\n    </div>\n  </section>';import{createClient}from"https://esm.sh/@supabase/supabase-js@2";const btnDr=document.getElementById("btttn");btnDr&&(window.addEventListener("scroll",(function(){window.pageYOffset>=300?btnDr.style.display="block":btnDr.style.display="none"})),btnDr.addEventListener("click",(function(){window.scrollTo({top:0,behavior:"smooth"})})));const res=await fetch("/.netlify/functions/fcnfig");const{url,key}=await res.json();
 export const supabase=createClient(url,key);  
 function getRef(){
-  if(document.referrer.includes("/home")||document.referrer.includes("/dashboard")){
-    return true;
+  const stPage = new URLSearchParams(window.location.search).get("next");
+  let backWin = null;
+  if(stPage){
+    backWin=decodeURIComponent(stPage||"");
   }
-  else{
-    return false;
-  }
+  return backWin||"/home";
 }
  function backTo(){
-if(window.history.length>1&&getRef()){
-    window.history.back();
-  }
-  else{
-    window.location.href="/home";
-  }
+    window.location.href=getRef();
  }
 async function verifyRecaptcha() {
   const token = grecaptcha.getResponse();
