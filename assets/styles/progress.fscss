@@ -1,28 +1,45 @@
 @import(exec(_init circle-progress))
 @progress-root()
-
 @circle-progress(.progress-circle)
-.progress-circle{
-color: var(--text-dim);
+
+@event range-color(range){
+
+if range<=10{
+    return: #ff6b6b; /* soft red */
 }
-@arr p1-100[count(100)]
-.p0{@progress-range(0)} 
-.p@arr.p1-100[]{ @progress-range(@arr.p1-100[])}
 
-.progress-circle.blue   { 
+el-if range<=30{
+    return: #f7b267; /* warm orange */
+}
 
-    --progress-color-arc: #4d9fff;
+el-if range<=60{
+    return: #74c0fc; /* light blue */
+}
 
-    --progress-color-glow: rgba(77,159,255,0.45); 
+el-if range<=99{
+    return: #63e6be; /* soft teal */
+}
 
-  }
+el{
+    return: #38d9a9; /* fresh green */
+}
 
- .progress-circle.amber  { 
+}
 
-    --progress-color-arc: #ffb830; 
+@arr p-ranges[count(100)]
 
-    --progress-color-glow: rgba(255,184,48,0.4);  
+.p0 {
+    @progress-range(0) 
+    --progress-color-glow: @event.range-color(0);
+    --progress-color-arc: @event.range-color(0); 
+}
 
+.p@arr.p-ranges[]{
+    $range: @arr.p-ranges[];
+    @progress-range($range) 
+    --progress-color-glow: @event.range-color($range);
+    --progress-color-arc: @event.range-color($range); 
     
+}
 
-  }
+
