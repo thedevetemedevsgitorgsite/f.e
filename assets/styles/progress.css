@@ -1,7 +1,7 @@
 :root {
 --progress-size: 180px;
 --progress-stroke: 14px;
---progress-6fb4d3f: 72; /* 0â€“100 */
+--progress-6fb4d3f: 72; /* 0–100 */
 --progress-color-bg: #0b0d12;
 --progress-color-track: rgba(255,255,255,0.06);
 --progress-color-arc: #00e5a0;
@@ -25,7 +25,7 @@ font-weight: 800;
 color: var(--progress-color-value);
 letter-spacing: -0.03em;
 }
-/* â”€â”€ ::before  â†’  conic-gradient arc track + progress â”€â”€ */
+/* ── ::before  →  conic-gradient arc track + progress ── */
 .progress-circle::before {
 content: '';
 position: absolute;
@@ -33,8 +33,8 @@ inset: 0;
 border-radius: 50%;
 /*
 We build the arc with a conic-gradient:
-â€¢ coloured slice  = progress %
-â€¢ transparent gap = rest
+• coloured slice  = progress %
+• transparent gap = rest
 Then punch a hole with a mask so only the ring shows.
 */
 background: conic-gradient(
@@ -43,7 +43,7 @@ var(--progress-color-track) 0%
 );
 /* rotate so arc starts at 12 o'clock */
 transform: rotate(-90deg);
-/* donut mask â€“ inner radius = size âˆ’ stroke */
+/* donut mask – inner radius = size − stroke */
 --inner: calc(var(--progress-size) / 2 - var(--progress-stroke));
 -webkit-mask: radial-gradient(
 circle at center,
@@ -58,7 +58,7 @@ black       var(--inner)
 /* subtle appear animation */
 animation: progress-appear 0.5s ease both;
 }
-/* â”€â”€ ::after  â†’  animated glowing sweep dot â”€â”€ */
+/* ── ::after  →  animated glowing sweep dot ── */
 .progress-circle::after {
 content: '';
 position: absolute;
@@ -81,7 +81,7 @@ animation:
 progress-pulse-dot 2s ease-in-out infinite,
 appear 0.5s ease both;
 }
-/* â”€â”€ animations â”€â”€ */
+/* ── animations ── */
 @keyframes progress-appear {
 from { opacity: 0; transform: scale(0.85); }
 to   { opacity: 1; }
@@ -100,320 +100,514 @@ to   { opacity: 1; }
 0%, 100% { box-shadow: 0 0 8px  4px var(--progress-color-glow), 0 0 20px  8px var(--progress-color-glow); }
 50%       { box-shadow: 0 0 14px 8px var(--progress-color-glow), 0 0 36px 16px var(--progress-color-glow); }
 }
-/* â”€â”€ interactive counter on hover â”€â”€ */
+/* ── interactive counter on hover ── */
 .progress-circle[data-value]::before {
 transition: background 0.6s ease;
 }
 
-.progress-circle{
-color: var(--text-dim);
-}
 
-.p0{--progress-6fb4d3f: 0;}.p1 {
+
+.p0 {
+--progress-6fb4d3f: 0;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
+}.p1 {
   --progress-6fb4d3f: 1;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p2 {
   --progress-6fb4d3f: 2;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p3 {
   --progress-6fb4d3f: 3;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p4 {
   --progress-6fb4d3f: 4;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p5 {
   --progress-6fb4d3f: 5;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p6 {
   --progress-6fb4d3f: 6;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p7 {
   --progress-6fb4d3f: 7;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p8 {
   --progress-6fb4d3f: 8;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p9 {
   --progress-6fb4d3f: 9;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p10 {
   --progress-6fb4d3f: 10;
+--progress-color-glow: #ff6b6b;
+--progress-color-arc: #ff6b6b;
 }
 .p11 {
   --progress-6fb4d3f: 11;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p12 {
   --progress-6fb4d3f: 12;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p13 {
   --progress-6fb4d3f: 13;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p14 {
   --progress-6fb4d3f: 14;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p15 {
   --progress-6fb4d3f: 15;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p16 {
   --progress-6fb4d3f: 16;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p17 {
   --progress-6fb4d3f: 17;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p18 {
   --progress-6fb4d3f: 18;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p19 {
   --progress-6fb4d3f: 19;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p20 {
   --progress-6fb4d3f: 20;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p21 {
   --progress-6fb4d3f: 21;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p22 {
   --progress-6fb4d3f: 22;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p23 {
   --progress-6fb4d3f: 23;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p24 {
   --progress-6fb4d3f: 24;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p25 {
   --progress-6fb4d3f: 25;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p26 {
   --progress-6fb4d3f: 26;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p27 {
   --progress-6fb4d3f: 27;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p28 {
   --progress-6fb4d3f: 28;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p29 {
   --progress-6fb4d3f: 29;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p30 {
   --progress-6fb4d3f: 30;
+--progress-color-glow: #f7b267;
+--progress-color-arc: #f7b267;
 }
 .p31 {
   --progress-6fb4d3f: 31;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p32 {
   --progress-6fb4d3f: 32;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p33 {
   --progress-6fb4d3f: 33;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p34 {
   --progress-6fb4d3f: 34;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p35 {
   --progress-6fb4d3f: 35;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p36 {
   --progress-6fb4d3f: 36;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p37 {
   --progress-6fb4d3f: 37;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p38 {
   --progress-6fb4d3f: 38;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p39 {
   --progress-6fb4d3f: 39;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p40 {
   --progress-6fb4d3f: 40;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p41 {
   --progress-6fb4d3f: 41;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p42 {
   --progress-6fb4d3f: 42;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p43 {
   --progress-6fb4d3f: 43;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p44 {
   --progress-6fb4d3f: 44;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p45 {
   --progress-6fb4d3f: 45;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p46 {
   --progress-6fb4d3f: 46;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p47 {
   --progress-6fb4d3f: 47;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p48 {
   --progress-6fb4d3f: 48;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p49 {
   --progress-6fb4d3f: 49;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p50 {
   --progress-6fb4d3f: 50;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p51 {
   --progress-6fb4d3f: 51;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p52 {
   --progress-6fb4d3f: 52;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p53 {
   --progress-6fb4d3f: 53;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p54 {
   --progress-6fb4d3f: 54;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p55 {
   --progress-6fb4d3f: 55;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p56 {
   --progress-6fb4d3f: 56;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p57 {
   --progress-6fb4d3f: 57;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p58 {
   --progress-6fb4d3f: 58;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p59 {
   --progress-6fb4d3f: 59;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p60 {
   --progress-6fb4d3f: 60;
+--progress-color-glow: #74c0fc;
+--progress-color-arc: #74c0fc;
 }
 .p61 {
   --progress-6fb4d3f: 61;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p62 {
   --progress-6fb4d3f: 62;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p63 {
   --progress-6fb4d3f: 63;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p64 {
   --progress-6fb4d3f: 64;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p65 {
   --progress-6fb4d3f: 65;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p66 {
   --progress-6fb4d3f: 66;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p67 {
   --progress-6fb4d3f: 67;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p68 {
   --progress-6fb4d3f: 68;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p69 {
   --progress-6fb4d3f: 69;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p70 {
   --progress-6fb4d3f: 70;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p71 {
   --progress-6fb4d3f: 71;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p72 {
   --progress-6fb4d3f: 72;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p73 {
   --progress-6fb4d3f: 73;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p74 {
   --progress-6fb4d3f: 74;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p75 {
   --progress-6fb4d3f: 75;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p76 {
   --progress-6fb4d3f: 76;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p77 {
   --progress-6fb4d3f: 77;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p78 {
   --progress-6fb4d3f: 78;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p79 {
   --progress-6fb4d3f: 79;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p80 {
   --progress-6fb4d3f: 80;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p81 {
   --progress-6fb4d3f: 81;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p82 {
   --progress-6fb4d3f: 82;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p83 {
   --progress-6fb4d3f: 83;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p84 {
   --progress-6fb4d3f: 84;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p85 {
   --progress-6fb4d3f: 85;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p86 {
   --progress-6fb4d3f: 86;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p87 {
   --progress-6fb4d3f: 87;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p88 {
   --progress-6fb4d3f: 88;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p89 {
   --progress-6fb4d3f: 89;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p90 {
   --progress-6fb4d3f: 90;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p91 {
   --progress-6fb4d3f: 91;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p92 {
   --progress-6fb4d3f: 92;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p93 {
   --progress-6fb4d3f: 93;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p94 {
   --progress-6fb4d3f: 94;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p95 {
   --progress-6fb4d3f: 95;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p96 {
   --progress-6fb4d3f: 96;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p97 {
   --progress-6fb4d3f: 97;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p98 {
   --progress-6fb4d3f: 98;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p99 {
   --progress-6fb4d3f: 99;
+--progress-color-glow: #63e6be;
+--progress-color-arc: #63e6be;
 }
 .p100 {
   --progress-6fb4d3f: 100;
-}
-.progress-circle.blue   {
---progress-color-arc: #4d9fff;
---progress-color-glow: rgba(77,159,255,0.45);
-}
-.progress-circle.amber  {
---progress-color-arc: #ffb830;
---progress-color-glow: rgba(255,184,48,0.4);
+--progress-color-glow: #38d9a9;
+--progress-color-arc: #38d9a9;
 }
