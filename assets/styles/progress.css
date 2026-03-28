@@ -611,3 +611,9 @@ transition: background 0.6s ease;
 --progress-color-glow: #38d9a9;
 --progress-color-arc: #38d9a9;
 }
+.progress-circle{
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: 0 0 0.5px var(--text-dim), 0 0 1.3px var(--text-light);
+  color: var(--text-dim);
+}
