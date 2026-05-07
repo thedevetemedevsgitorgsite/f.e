@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -192,6 +191,21 @@
       font-weight: 600;
       margin-top: 8px;
     }
+    .learn-more-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #0b4b9b;
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 0.95rem;
+    }
+    .learn-more-link i {
+      margin-left: 4px;
+      font-size: 0.8rem;
+    }
+    .learn-more-link:hover {
+      text-decoration: underline;
+    }
     @media (max-width: 600px) {
       .container {
         margin: 16px;
@@ -245,7 +259,7 @@
     <header>
       <h1 id="faq-title">DevTemple — Frequently Asked Questions</h1>
       <p class="muted">Find answers to common questions about our marketplace, policies, and services.</p>
-      <div class="highlight" aria-hidden="true">Last Updated: 01 Dec 2025</div>
+      <div class="highlight" aria-hidden="true">Last Updated: 07 May 2026</div>
     </header>
 
     <nav aria-label="FAQ navigation">
@@ -269,17 +283,18 @@
     <section id="general" class="faq-category" aria-labelledby="general-heading">
       <h2 id="general-heading">General Questions</h2>
       
-      <div class="faq-item">
+      <div class="faq-item" id="what-is-devtemple">
         <div class="faq-question">
           <span>What is DevTemple?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
         </div>
         <div class="faq-answer">
           <p>DevTemple is a digital marketplace and ecosystem designed for developers, creators, and businesses to buy and sell high-performance digital assets. It functions as a "dual-sided platform" that serves as both a launchpad for creators to monetize their skills and a resource for professionals looking to scale their projects using production-ready tools. </p>
+          <a href="/about" class="learn-more-link">Learn more about our platform <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="how-to-get-started">
         <div class="faq-question">
           <span>How do I get started with DevTemple?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -295,7 +310,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="community-guidelines">
         <div class="faq-question">
           <span>What are the Community Guidelines?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -319,7 +334,7 @@
     <section id="accounts" class="faq-category" aria-labelledby="accounts-heading">
       <h2 id="accounts-heading">Accounts & Profiles</h2>
       
-      <div class="faq-item">
+      <div class="faq-item" id="how-to-create-account">
         <div class="faq-question">
           <span>How do I create an account?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -336,7 +351,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="account-responsibilities">
         <div class="faq-question">
           <span>What are my account responsibilities?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -353,7 +368,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="multiple-accounts">
         <div class="faq-question">
           <span>Can I have multiple accounts?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -363,7 +378,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="update-profile">
         <div class="faq-question">
           <span>How do I update my profile information?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -377,7 +392,7 @@
     <section id="buyers" class="faq-category" aria-labelledby="buyers-heading">
       <h2 id="buyers-heading">For Buyers</h2>
       
-      <div class="faq-item">
+      <div class="faq-item" id="how-to-purchase">
         <div class="faq-question">
           <span>How do I purchase items on DevTemple?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -395,7 +410,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="before-purchase-check">
         <div class="faq-question">
           <span>What should I check before making a purchase?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -412,7 +427,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="purchase-issues">
         <div class="faq-question">
           <span>What if I encounter issues with a purchased item?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -432,7 +447,7 @@
     <section id="sellers" class="faq-category" aria-labelledby="sellers-heading">
       <h2 id="sellers-heading">For Sellers</h2>
       
-      <div class="faq-item">
+      <div class="faq-item" id="become-seller">
         <div class="faq-question">
           <span>How do I become a seller on DevTemple?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -447,7 +462,7 @@
           </ul>
         </div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" id="earnings-withdrawals">
   <div class="faq-question">
     <span>Earnings & Withdrawals</span>
     <i class="fas fa-chevron-down faq-icon"></i>
@@ -470,7 +485,7 @@
   </div>
 </div>
 
-      <div class="faq-item">
+      <div class="faq-item" id="service-charge">
         <div class="faq-question">
           <span>What is the 30% service charge for sellers?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -488,7 +503,7 @@
         </div>
       </div>
       
-     <div class="faq-item">
+     <div class="faq-item" id="how-get-paid">
   <div class="faq-question">
     <span>How and when do I get paid?</span>
     <i class="fas fa-chevron-down faq-icon"></i>
@@ -505,7 +520,7 @@
   </div>
 </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="content-requirements">
         <div class="faq-question">
           <span>What are the content requirements for sellers?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -523,7 +538,7 @@
           </ul>
         </div>
       </div>
-      <div class="faq-item">
+      <div class="faq-item" id="how-to-get-verified">
   <div class="faq-question">
     <span>What should I do to get verified?</span>
     <i class="fas fa-chevron-down faq-icon"></i>
@@ -539,7 +554,7 @@
     </p>
   </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" id="why-get-verified">
   <div class="faq-question">
     <span>Why should I get verified?</span>
     <i class="fas fa-chevron-down faq-icon"></i>
@@ -553,7 +568,7 @@
     </p>
   </div>
 </div>
-<div class="faq-item">
+<div class="faq-item" id="what-is-verification">
   <div class="faq-question">
     <span>What is verification?</span>
     <i class="fas fa-chevron-down faq-icon"></i>
@@ -568,12 +583,56 @@
     </p>
   </div>
   </div>
+<div class="faq-item" id="hide-from-home">
+  <div class="faq-question">
+    <span>What does "Hide from home page" mean?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>
+      This option controls your product's visibility. When enabled, your product <strong>won't appear in home page listings</strong>, but will remain accessible via search, your profile, or a direct link.
+    </p>
+    <p><strong>Note:</strong> This setting must be chosen during the upload process. Once your product is published, it cannot be changed.</p>
+  </div>
+</div>
+
+<div class="faq-item" id="ai-generated-content">
+  <div class="faq-question">
+    <span>When should I use the "AI-generated content" tag?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>
+      You should enable this if your product (code, images, or text) was significantly created or enhanced using AI tools like ChatGPT or Midjourney. 
+    </p>
+    <p>
+      Transparency builds trust with your buyers. Please ensure this is set correctly before publishing, as <strong>product settings cannot be edited after posting.</strong>
+    </p>
+  </div>
+</div>
+
+<div class="faq-item" id="non-editable-posts">
+  <div class="faq-question">
+    <span>Can I edit my product after it is published?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>
+      Currently, <strong>product details and settings cannot be edited once they are live.</strong> 
+    </p>
+    <p>
+      This policy ensures that the product buyers see is exactly what they receive and prevents post-purchase confusion. Please double-check your title, description, price, and "Product Settings" before hitting <strong>Publish Project</strong>.
+    </p>
+    <p>If you made a serious error, you will need to delete the post and re-upload it.</p>
+  </div>
+</div>
+
     </section>
 
     <section id="privacy" class="faq-category" aria-labelledby="privacy-heading">
       <h2 id="privacy-heading">Privacy & Security</h2>
       
-      <div class="faq-item">
+      <div class="faq-item" id="info-collected">
         <div class="faq-question">
           <span>What information does DevTemple collect?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -589,7 +648,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="data-protection">
         <div class="faq-question">
           <span>How is my data protected?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -606,7 +665,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="privacy-rights">
         <div class="faq-question">
           <span>What are my privacy rights?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -626,7 +685,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="cookies-usage">
         <div class="faq-question">
           <span>How are cookies used on DevTemple?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -646,7 +705,7 @@
     <section id="payments" class="faq-category" aria-labelledby="payments-heading">
       <h2 id="payments-heading">Payments & Refunds</h2>
       
-      <div class="faq-item">
+      <div class="faq-item" id="payment-methods">
         <div class="faq-question">
           <span>What payment methods are accepted?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -662,7 +721,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="refund-policy">
         <div class="faq-question">
           <span>What is your refund policy?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -680,7 +739,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="close-payment-window">
         <div class="faq-question">
           <span>What happens if I close the payment window too early?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -696,7 +755,7 @@
         </div>
       </div>
       
-      <div class="faq-item">
+      <div class="faq-item" id="payment-issues-contact">
         <div class="faq-question">
           <span>Who should I contact for payment issues?</span>
           <i class="fas fa-chevron-down faq-icon"></i>
@@ -728,7 +787,7 @@
     </section>
 
     <footer aria-label="FAQ footer">
-      <p class="muted">This FAQ was last updated on <time datetime="2026-02-09">9th of February 2026</time>. For the most current information, please refer to our <a href="/terms/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms and Conditions</a>.</p>
+      <p class="muted">This FAQ was last updated on <time datetime="2026-05-07">7th of May 2026</time>. For the most current information, please refer to our <a href="/terms/privacy.html">Privacy Policy</a> and <a href="/terms.html">Terms and Conditions</a>.</p>
     </footer>
   </main>
 
@@ -847,7 +906,11 @@
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
         
-        question.addEventListener('click', () => {
+        question.addEventListener('click', (e) => {
+          if(e.target.classList.contains("faq-question")){
+          window.location.href = '#'+e.target.parentElement.id;
+          console.log(e.target.parentElement.id)
+          } 
           const isActive = item.classList.contains('active');
           
           // Close all items
