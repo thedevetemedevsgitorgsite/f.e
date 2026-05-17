@@ -1,0 +1,51 @@
+<input type="file" id="imageInput" accept="image/*" />
+<button id="uploadBtn">Upload Asset</button>
+<div id="status"></div>
+<script>
+  document.getElementById('uploadBtn').addEventListener('click', async () => {
+  const fileInput = document.getElementById('imageInput');
+  const statusDiv = document.getElementById('status');
+  
+  if (!fileInput.files.length) {
+    statusDiv.innerText = "Please select an image first.";
+    return;
+  }
+
+  const file = fileInput.files[0];
+  statusDiv.innerText = "Processing image...";
+
+  // 1. Convert file to Base64
+  const reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onload = async () => {
+    // The reader result looks like: "data:image/png;base64,iVBORw..."
+    // We pass the full dataURL string to the backend function
+    const base64Data = reader.result;
+
+    try {
+      statusDiv.innerText = "Uploading to serverless pipeline...";
+      
+      // 2. Call the Netlify Serverless Function
+      const response = await fetch('/.netlify/functions/upload-asset', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fileName: file.name,
+          fileData: base64Data
+        })
+      });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        statusDiv.innerHTML = `Success! Asset URL: <a href="${result.url}" target="_blank">${result.url}</a>`;
+      } else {
+        statusDiv.innerText = `Upload failed: ${result.error}`;
+      }
+    } catch (err) {
+      statusDiv.innerText = `Error: ${err.message}`;
+    }
+  };
+});
+
+</script>
