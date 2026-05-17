@@ -25,8 +25,9 @@ export default async (request) => {
     const safeFileName = fileName.replace(/\s+/g, '-');
     
     // Target location inside your repo structure: u/assets/images/id...
-    const filePath = `u/assets/images/${Date.now()}-${safeFileName}`;
-
+    // Better: use crypto for unique names
+const uid = crypto.randomUUID().slice(0, 8);
+const filePath = `u/assets/images/${uid}-${safeFileName}`;
     // GitHub API requires token authentication via environment variables
     const token = process.env.GITHUB_PAT; 
 
