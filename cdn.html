@@ -13,7 +13,11 @@
 
   const file = fileInput.files[0];
   statusDiv.innerText = "Processing image...";
-
+    // Frontend: add size guard before upload
+if (file.size > 50 * 1024 * 1024) {
+  statusDiv.innerText = "File too large (max 50MB).";
+  return;
+}
   // 1. Convert file to Base64
   const reader = new FileReader();
   reader.readAsDataURL(file);
@@ -21,10 +25,9 @@
     // The reader result looks like: "data:image/png;base64,iVBORw..."
     // We pass the full dataURL string to the backend function
     const base64Data = reader.result;
-
     try {
-      statusDiv.innerText = "Uploading to serverless pipeline...";
-      
+      // Better UX: warn user the URL needs ~2min to go live
+statusDiv.innerHTML = `uploading to cdn server...`;      
       // 2. Call the Netlify Serverless Function
       const response = await fetch('/.netlify/functions/upload-asset', {
         method: 'POST',
@@ -38,7 +41,8 @@
       const result = await response.json();
 
       if (response.ok) {
-        statusDiv.innerHTML = `Success! Asset URL: <a href="${result.url}" target="_blank">${result.url}</a>`;
+        // Better UX: warn user the URL needs ~2min to go live
+statusDiv.innerHTML = `Committed! URL will be live in ~2 min: <a href="${result.url}">${result.url}</a>`;      
       } else {
         statusDiv.innerText = `Upload failed: ${result.error}`;
       }
