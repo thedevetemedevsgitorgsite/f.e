@@ -59,7 +59,7 @@ const filePath = `u/assets/images/${uid}-${safeFileName}`;
     }
 
     // Construct your clean, predictable target deployment URL string
-    const finalPublicUrl = `https://${OWNER}.github.io/${filePath}`;
+    const finalPublicUrl = `https://cdn.devtem.org/${filePath}`;
 
     return new Response(JSON.stringify({ 
       success: true, 
