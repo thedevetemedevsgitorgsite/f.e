@@ -26,9 +26,9 @@ export default async (request) => {
     
     // Target location inside your repo structure: u/assets/images/id...
     // Better: use crypto for unique names
-const userDir = (userDir?userDir:'unknown');
+const dir = (userDir?userDir:'unknown');
 const uid = crypto.randomUUID().slice(0, 8);
-const filePath = `u/${userDir}/assets/images/${uid}-${safeFileName}`;
+const filePath = `u/${dir}/assets/images/${uid}-${safeFileName}`;
     // GitHub API requires token authentication via environment variables
     const token = process.env.GITHUB_PAT; 
 
