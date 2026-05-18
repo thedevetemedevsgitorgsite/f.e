@@ -25,6 +25,7 @@ if (file.size > 50 * 1024 * 1024) {
     // The reader result looks like: "data:image/png;base64,iVBORw..."
     // We pass the full dataURL string to the backend function
     const base64Data = reader.result;
+    const userDir = 'figsh'; 
     try {
       // Better UX: warn user the URL needs ~2min to go live
 statusDiv.innerHTML = `uploading to cdn server...`;      
@@ -34,7 +35,8 @@ statusDiv.innerHTML = `uploading to cdn server...`;
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           fileName: file.name,
-          fileData: base64Data
+          fileData: base64Data,
+          userDir: userDir
         })
       });
 
