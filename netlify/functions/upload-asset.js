@@ -7,7 +7,7 @@ export default async (request) => {
   }
 
   try {
-    const { fileName, fileData } = await request.json();
+    const { fileName, fileData, userDir } = await request.json();
     
     if (!fileName || !fileData) {
       return new Response(JSON.stringify({ error: "Missing required file data." }), { status: 400 });
@@ -26,8 +26,9 @@ export default async (request) => {
     
     // Target location inside your repo structure: u/assets/images/id...
     // Better: use crypto for unique names
+const userDir = (userDir?userDir:'unknown');
 const uid = crypto.randomUUID().slice(0, 8);
-const filePath = `u/assets/images/${uid}-${safeFileName}`;
+const filePath = `u/${userDir}/assets/images/${uid}-${safeFileName}`;
     // GitHub API requires token authentication via environment variables
     const token = process.env.GITHUB_PAT; 
 
