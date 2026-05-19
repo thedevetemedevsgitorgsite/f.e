@@ -2,3 +2,37 @@ const supportDrop=document.getElementById("supportDrop"),legalDrop=document.getE
 document.querySelector(".cart[onclick]")?.addEventListener("click", e=>{
   window.location.href='/home?toggle=cart';
 })
+
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("wa-popup-overlay");
+
+  // Guard: exit early if the popup doesn't exist on this page
+  if (!overlay) return;
+
+  const closeBtn = document.getElementById("wa-popup-close");
+  const followBtn = document.getElementById("wa-follow-btn");
+
+  const POPUP_STORAGE_KEY = "wa_channel_popup_dismissed";
+  const DAYS_TO_HIDE = 7;
+
+  const dismissedTime = localStorage.getItem(POPUP_STORAGE_KEY);
+  const now = new Date().getTime();
+
+  if (!dismissedTime || (now - dismissedTime) > (DAYS_TO_HIDE * 24 * 60 * 60 * 1000)) {
+    setTimeout(() => {
+      overlay.classList.add("is-active");
+    }, 5000);
+  }
+
+  const closePopup = () => {
+    overlay.classList.remove("is-active");
+    localStorage.setItem(POPUP_STORAGE_KEY, new Date().getTime());
+  };
+
+  closeBtn?.addEventListener("click", closePopup);
+  followBtn?.addEventListener("click", closePopup);
+
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay) closePopup();
+  });
+});
