@@ -1,57 +1,65 @@
-<input type="file" id="imageInput" accept="image/*" />
-<button id="uploadBtn">Upload Asset</button>
-<div id="status"></div>
+<input type="file" id="imageFileInput" accept="image/*" />
+<div id="imageStatus"></div>
+
 <script>
-  document.getElementById('uploadBtn').addEventListener('click', async () => {
-  const fileInput = document.getElementById('imageInput');
-  const statusDiv = document.getElementById('status');
-  
-  if (!fileInput.files.length) {
-    statusDiv.innerText = "Please select an image first.";
-    return;
-  }
-
-  const file = fileInput.files[0];
-  statusDiv.innerText = "Processing image...";
-    // Frontend: add size guard before upload
-if (file.size > 50 * 1024 * 1024) {
-  statusDiv.innerText = "File too large (max 50MB).";
-  return;
-}
-  // 1. Convert file to Base64
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onload = async () => {
-    // The reader result looks like: "data:image/png;base64,iVBORw..."
-    // We pass the full dataURL string to the backend function
-    const base64Data = reader.result;
-    const userId = 'testing'; 
-    try {
-      // Better UX: warn user the URL needs ~2min to go live
-statusDiv.innerHTML = `uploading to cdn server...`;      
-      // 2. Call the Netlify Serverless Function
-      const response = await fetch('/.netlify/functions/upload-asset', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          fileName: file.name,
-          fileData: base64Data,
-          userDir: userId
-        })
-      });
-
-      const result = await response.json();
-
-      if (response.ok) {
-        // Better UX: warn user the URL needs ~2min to go live
-statusDiv.innerHTML = `Committed! URL will be live in ~2 min: <a href="${result.url}">${result.url}</a>`;      
-      } else {
-        statusDiv.innerText = `Upload failed: ${result.error}`;
-      }
-    } catch (err) {
-      statusDiv.innerText = `Error: ${err.message}`;
+  document.getElementById('imageFileInput').addEventListener('change', async () => {
+    const imageFileInput = document.getElementById('imageFileInput');
+    const imageStatusDiv = document.getElementById('imageStatus');
+    
+    if (!imageFileInput.files.length) {
+      imageStatusDiv.innerText = "Please select an image first.";
+      return;
     }
-  };
+
+    const file = imageFileInput.files[0];
+    imageStatusDiv.innerText = "Processing image...";
+
+    // Frontend: add size guard before upload
+    if (file.size > 50 * 1024 * 1024) {
+      imageStatusDiv.innerText = "File too large (max 50MB).";
+      return;
+    }
+
+    // 1. Convert file to Base64
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = async () => {
+      const base64Data = reader.result;
+      const dirUserId = 'testing'; 
+      
+      // Paste the exact token value you set in your Netlify Environment Variables
+      const APP_SECRET_TOKEN = 'dtv_2ee10c1e-c547-4841-b69e-7bd31f09d562'; 
+
+      try {
+        imageStatusDiv.innerHTML = `uploading to cdn server...`;      
+        
+        // 2. Call the Netlify Serverless Function (Use absolute domain path if running cross-origin)
+        
+const response = await fetch('/.netlify/functions/upload-asset', {
+  method: 'POST',
+  headers: { 
+    'Content-Type': 'application/json',
+    'X-App-Upload-Token': APP_SECRET_TOKEN
+  },
+  body: JSON.stringify({
+    fileName: file.name,
+    fileData: base64Data,
+    userDir: dirUserId
+  })
 });
 
+        const result = await response.json();
+
+        if (response.ok) {
+          // Better UX: warn user the URL needs ~2min to go live
+          imageStatusDiv.innerHTML = `Committed! URL will be live in ~2 min: <a href="${result.url}" target="_blank">${result.url}</a>`;      
+        } else {
+          imageStatusDiv.innerText = `Upload failed: ${result.error}`;
+        }
+      } catch (err) {
+        imageStatusDiv.innerText = `Error: ${err.message}`;
+      }
+    };
+  });
 </script>
+
