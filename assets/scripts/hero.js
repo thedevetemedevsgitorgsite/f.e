@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (!dismissedTime || (now - dismissedTime) > (DAYS_TO_HIDE * 24 * 60 * 60 * 1000)) {
     setTimeout(() => {
       overlay.classList.add("is-active");
-    }, 6000);
+    }, 15000);
   }
 
   const closePopup = () => {
