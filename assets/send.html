@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DevTemple | Send Mail</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 480px;
+      overflow: hidden;
+    }
+
+    .card-header {
+      background: #000;
+      color: #fff;
+      padding: 1.5rem 2rem;
+    }
+
+    .card-header h2 {
+      margin: 0 0 0.25rem;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+
+    .card-header p {
+      margin: 0;
+      font-size: 0.8rem;
+      color: #999;
+    }
+
+    .card-body { padding: 2rem; }
+
+    /* Token gate screen */
+    #token-gate { display: block; }
+    #mail-form-section { display: none; }
+
+    .token-hint {
+      font-size: 0.8rem;
+      color: #888;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+
+    .form-group { margin-bottom: 1.25rem; }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #333;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.7rem 0.9rem;
+      border: 1.5px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      color: #111;
+      transition: border-color 0.2s;
+      background: #fafafa;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #000;
+      background: #fff;
+    }
+
+    input[type="password"] { letter-spacing: 0.15em; }
+
+    textarea { height: 140px; resize: vertical; }
+
+    .btn {
+      width: 100%;
+      padding: 0.8rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+
+    .btn:hover:not(:disabled) { background: #222; }
+    .btn:disabled { background: #aaa; cursor: not-allowed; }
+
+    #status-msg {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      min-height: 1.4rem;
+    }
+
+    .success { color: #2e7d32; }
+    .error { color: #c62828; }
+
+    .token-error {
+      color: #c62828;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      min-height: 1.2rem;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #111;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      margin-left: 0.4rem;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <h2>DevTemple <span class="badge">MAIL</span></h2>
+      <p>devtem.org · Authorized use only</p>
+    </div>
+
+    <div class="card-body">
+
+      <!-- Step 1: Token Gate -->
+      <div id="token-gate">
+        <p class="token-hint">Enter your <strong>MAIL_SEND_TOKEN</strong> to unlock the mail sender.</p>
+        <div class="form-group">
+          <label for="token-input">Access Token</label>
+          <input type="password" id="token-input" placeholder="ev...MAIL_SEND_TOKEN" autocomplete="off">
+        </div>
+        <div class="token-error" id="token-error"></div>
+        <button class="btn" id="unlock-btn" onclick="unlockForm()">Unlock</button>
+      </div>
+
+      <!-- Step 2: Mail Form (revealed after valid token) -->
+      <div id="mail-form-section">
+        <div class="form-group">
+          <label for="recipientEmail">Recipient Email</label>
+          <input type="email" id="recipientEmail" required placeholder="user@example.com">
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" required placeholder="Message subject">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" required placeholder="Write your message here..."></textarea>
+        </div>
+        <button class="btn" id="sendBtn" onclick="sendMail()">Send Email</button>
+        <div id="status-msg"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    let sessionToken = '';
+
+    async function unlockForm() {
+      const input = document.getElementById('token-input').value.trim();
+      const errEl = document.getElementById('token-error');
+      const btn = document.getElementById('unlock-btn');
+
+      if (!input) {
+        errEl.innerText = 'Token cannot be empty.';
+        return;
+      }
+
+      // Validate token against the function with a dry-run probe
+      btn.disabled = true;
+      btn.innerText = 'Verifying...';
+      errEl.innerText = '';
+
+      try {
+        const res = await fetch('/.netlify/functions/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ token: input, _probe: true })
+        });
+
+        // 401 = wrong token, 400 = token ok but missing fields (expected for probe)
+        if (res.status === 401) {
+          errEl.innerText = '❌ Invalid token. Access denied.';
+        } else {
+          sessionToken = input;
+          document.getElementById('token-gate').style.display = 'none';
+          document.getElementById('mail-form-section').style.display = 'block';
+        }
+      } catch {
+        errEl.innerText = '❌ Could not reach server.';
+      } finally {
+        btn.disabled = false;
+        btn.innerText = 'Unlock';
+      }
+    }
+
+    async function sendMail() {
+      const sendBtn = document.getElementById('sendBtn');
+      const statusMsg = document.getElementById('status-msg');
+
+      const recipientEmail = document.getElementById('recipientEmail').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!recipientEmail || !subject || !message) {
+        statusMsg.className = 'error';
+        statusMsg.innerText = '❌ All fields are required.';
+        return;
+      }
+
+      sendBtn.disabled = true;
+      sendBtn.innerText = 'Sending...';
+      statusMsg.className = '';
+      statusMsg.innerText = '';
+
+      try {
+        const res = await fetch('/.netlify/functions/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ recipientEmail, subject, message, token: sessionToken })
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          statusMsg.className = 'success';
+          statusMsg.innerText = '✅ Email sent successfully!';
+          document.getElementById('recipientEmail').value = '';
+          document.getElementById('subject').value = '';
+          document.getElementById('message').value = '';
+        } else {
+          statusMsg.className = 'error';
+          statusMsg.innerText = `❌ ${result.error || 'Something went wrong.'}`;
+        }
+      } catch {
+        statusMsg.className = 'error';
+        statusMsg.innerText = '❌ Failed to connect to server.';
+      } finally {
+        sendBtn.disabled = false;
+        sendBtn.innerText = 'Send Email';
+      }
+    }
+
+    // Allow Enter key on token input
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('token-input').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') unlockForm();
+      });
+    });
+  </script>
+
+</body>
+</html>
