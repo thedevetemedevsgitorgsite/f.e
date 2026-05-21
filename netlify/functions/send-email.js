@@ -35,20 +35,23 @@ exports.handler = async (event, context) => {
 
     // 1. Set up the SMTP Transporter for Brevo
     const transporter = nodemailer.createTransport({
-      host: 'smtp-relay.brevo.com',
-      port: 587,
-      secure: false, 
-      auth: {
-        user: process.env.BREVO_USER, 
-        pass: process.env.BREVO_SMTP_KEY, 
-      },
-    });
+  host: 'smtp-relay.brevo.com',
+  port: 587,
+  secure: false,
+  auth: {
+    user: process.env.BREVO_USER,
+    pass: process.env.BREVO_SMTP_KEY,
+  },
+});
+
+// verify connection
+await transporter.verify();
 
     // 2. Setup email details
     const mailOptions = {
       // Must be sent from your verified domain
       from: `"DevTemple Contact Form" <info@devtem.org>`, 
-      to: 'info@devtem.org', // Sending the contact notification to yourself
+      to: 'safetyunion5550@gmail.com', // Sending the contact notification to yourself
       replyTo: email, // If you click 'Reply', it goes to the person who filled the form
       subject: `New Lead from ${name} via DevTemple`,
       text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
