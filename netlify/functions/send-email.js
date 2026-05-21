@@ -1,80 +1,81 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
-  // CORS Headers to allow your frontend to communicate with the function
   const headers = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'POST, OPTIONS',
   };
 
-  // Handle preflight CORS requests
   if (event.httpMethod === 'OPTIONS') {
     return { statusCode: 200, headers, body: '' };
   }
 
   if (event.httpMethod !== 'POST') {
-    return {
-      statusCode: 405,
-      headers,
-      body: JSON.stringify({ error: 'Method Not Allowed' }),
-    };
+    return { statusCode: 405, headers, body: JSON.stringify({ error: 'Method Not Allowed' }) };
   }
 
   try {
-    const { name, email, message } = JSON.parse(event.body);
+    const { recipientEmail, subject, message, token } = JSON.parse(event.body);
 
-    // Validate input fields basic check
-    if (!name || !email || !message) {
+    // Token gate — must match MAIL_SEND_TOKEN env var
+    if (!token || token !== process.env.MAIL_SEND_TOKEN) {
       return {
-        statusCode: 400,
+        statusCode: 401,
         headers,
-        body: JSON.stringify({ error: 'All fields are required.' }),
+        body: JSON.stringify({ error: 'Unauthorized: Invalid token.' }),
       };
     }
 
-    // 1. Set up the SMTP Transporter for Brevo
+    if (!recipientEmail || !subject || !message) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: 'recipientEmail, subject, and message are required.' }),
+      };
+    }
+
     const transporter = nodemailer.createTransport({
-  host: 'smtp-relay.brevo.com',
-  port: 587,
-  secure: false,
-  auth: {
-    user: process.env.BREVO_USER,
-    pass: process.env.BREVO_SMTP_KEY,
-  },
-});
+      host: 'smtp-relay.brevo.com',
+      port: 587,
+      secure: false,
+      auth: {
+        user: process.env.BREVO_USER,
+        pass: process.env.BREVO_SMTP_KEY,
+      },
+    });
 
-// verify connection
-await transporter.verify();
+    await transporter.verify();
 
-    // 2. Setup email details
     const mailOptions = {
-      // Must be sent from your verified domain
-      from: `"DevTemple Contact Form" <office@devtem.org>`, 
-      to: 'davidhux22@gmail.com', // Sending the contact notification to yourself
-      replyTo: email, // If you click 'Reply', it goes to the person who filled the form
-      subject: `New Lead from ${name} via DevTemple`,
-      text: `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      from: `"DevTemple" <office@devtem.org>`,
+      to: recipientEmail,
+      subject: subject,
+      text: message,
       html: `
-        <h3>New Contact Form Submission</h3>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:0 auto;padding:2rem;">
+          <div style="border-bottom:2px solid #000;padding-bottom:1rem;margin-bottom:1.5rem;">
+            <strong style="font-size:1.2rem;">DevTemple</strong>
+            <span style="color:#666;font-size:0.85rem;margin-left:0.5rem;">devtem.org</span>
+          </div>
+          <p style="white-space:pre-wrap;line-height:1.6;color:#222;">${message.replace(/\n/g, '<br>')}</p>
+          <div style="border-top:1px solid #eee;margin-top:2rem;padding-top:1rem;color:#999;font-size:0.8rem;">
+            Sent via DevTemple Mail · <a href="https://devtem.org" style="color:#999;">devtem.org</a>
+          </div>
+        </div>
       `,
     };
 
-    // 3. Send it
     await transporter.sendMail(mailOptions);
 
     return {
       statusCode: 200,
       headers,
-      body: JSON.stringify({ message: 'Message sent successfully!' }),
+      body: JSON.stringify({ message: 'Email sent successfully!' }),
     };
 
   } catch (error) {
-    console.error('Error sending email:', error);
+    console.error('Send error:', error);
     return {
       statusCode: 500,
       headers,
