@@ -50,7 +50,7 @@ await transporter.verify();
     // 2. Setup email details
     const mailOptions = {
       // Must be sent from your verified domain
-      from: `"DevTemple Contact Form" <safetyunion5550@gmail.com>`, 
+      from: `"DevTemple Contact Form" <office@devtem.org>`, 
       to: 'davidhux22@gmail.com', // Sending the contact notification to yourself
       replyTo: email, // If you click 'Reply', it goes to the person who filled the form
       subject: `New Lead from ${name} via DevTemple`,
