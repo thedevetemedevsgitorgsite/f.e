@@ -165,6 +165,31 @@
       <!-- Step 2: Mail Form (revealed after valid token) -->
       <div id="mail-form-section">
         <div class="form-group">
+  <label>Select Audience</label>
+
+  <select id="audienceType">
+    <option value="">Select</option>
+    <option value="verified">Verified Users</option>
+    <option value="single_email">Single Email</option>
+    <option value="status">By Status</option>
+    <option value="full_name">By Full Name</option>
+  </select>
+        </div>
+        <div class="form-group">
+  <label>Status</label>
+  <input type="text" id="status" placeholder="verified">
+</div>
+
+<div class="form-group">
+  <label>Email</label>
+  <input type="email" id="email" placeholder="user@gmail.com">
+</div>
+
+<div class="form-group">
+  <label>Full Name</label>
+  <input type="text" id="full_name" placeholder="David">
+</div>
+        <div class="form-group">
           <label for="recipientEmail">Recipient Email</label>
           <input type="email" id="recipientEmail" required placeholder="user@example.com">
         </div>
@@ -247,7 +272,15 @@
         const res = await fetch('/.netlify/functions/send-email', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ recipientEmail, subject, message, token: sessionToken })
+          body: JSON.stringify({
+  token: sessionToken,
+  subject,
+  message,
+  audienceType: document.getElementById("audienceType").value,
+  status: document.getElementById("status").value,
+  email: document.getElementById("email").value,
+  full_name: document.getElementById("full_name").value,
+})
         });
 
         const result = await res.json();
