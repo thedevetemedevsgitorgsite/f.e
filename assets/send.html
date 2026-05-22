@@ -190,10 +190,6 @@
   <input type="text" id="full_name" placeholder="David">
 </div>
         <div class="form-group">
-          <label for="recipientEmail">Recipient Email</label>
-          <input type="email" id="recipientEmail" required placeholder="user@example.com">
-        </div>
-        <div class="form-group">
           <label for="subject">Subject</label>
           <input type="text" id="subject" required placeholder="Message subject">
         </div>
@@ -211,105 +207,129 @@
   <script>
     let sessionToken = '';
 
-    async function unlockForm() {
-      const input = document.getElementById('token-input').value.trim();
-      const errEl = document.getElementById('token-error');
-      const btn = document.getElementById('unlock-btn');
+async function unlockForm() {
+  const input = document.getElementById('token-input').value.trim();
+  const errEl = document.getElementById('token-error');
+  const btn = document.getElementById('unlock-btn');
 
-      if (!input) {
-        errEl.innerText = 'Token cannot be empty.';
-        return;
-      }
+  if (!input) {
+    errEl.innerText = 'Token cannot be empty.';
+    return;
+  }
 
-      // Validate token against the function with a dry-run probe
-      btn.disabled = true;
-      btn.innerText = 'Verifying...';
-      errEl.innerText = '';
+  btn.disabled = true;
+  btn.innerText = 'Verifying...';
+  errEl.innerText = '';
 
-      try {
-        const res = await fetch('/.netlify/functions/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ token: input, _probe: true })
-        });
-
-        // 401 = wrong token, 400 = token ok but missing fields (expected for probe)
-        if (res.status === 401) {
-          errEl.innerText = '❌ Invalid token. Access denied.';
-        } else {
-          sessionToken = input;
-          document.getElementById('token-gate').style.display = 'none';
-          document.getElementById('mail-form-section').style.display = 'block';
-        }
-      } catch {
-        errEl.innerText = '❌ Could not reach server.';
-      } finally {
-        btn.disabled = false;
-        btn.innerText = 'Unlock';
-      }
-    }
-
-    async function sendMail() {
-      const sendBtn = document.getElementById('sendBtn');
-      const statusMsg = document.getElementById('status-msg');
-
-      const recipientEmail = document.getElementById('recipientEmail').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!recipientEmail || !subject || !message) {
-        statusMsg.className = 'error';
-        statusMsg.innerText = '❌ All fields are required.';
-        return;
-      }
-
-      sendBtn.disabled = true;
-      sendBtn.innerText = 'Sending...';
-      statusMsg.className = '';
-      statusMsg.innerText = '';
-
-      try {
-        const res = await fetch('/.netlify/functions/send-email', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-  token: sessionToken,
-  subject,
-  message,
-  audienceType: document.getElementById("audienceType").value,
-  status: document.getElementById("status").value,
-  email: document.getElementById("email").value,
-  full_name: document.getElementById("full_name").value,
-})
-        });
-
-        const result = await res.json();
-
-        if (res.ok) {
-          statusMsg.className = 'success';
-          statusMsg.innerText = '✅ Email sent successfully!';
-          document.getElementById('recipientEmail').value = '';
-          document.getElementById('subject').value = '';
-          document.getElementById('message').value = '';
-        } else {
-          statusMsg.className = 'error';
-          statusMsg.innerText = `❌ ${result.error || 'Something went wrong.'}`;
-        }
-      } catch {
-        statusMsg.className = 'error';
-        statusMsg.innerText = '❌ Failed to connect to server.';
-      } finally {
-        sendBtn.disabled = false;
-        sendBtn.innerText = 'Send Email';
-      }
-    }
-
-    // Allow Enter key on token input
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('token-input').addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') unlockForm();
-      });
+  try {
+    const res = await fetch('/.netlify/functions/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ token: input, _probe: true }),
     });
+
+    if (res.status === 401) {
+      errEl.innerText = '❌ Invalid token. Access denied.';
+    } else {
+      sessionToken = input;
+      document.getElementById('token-gate').style.display = 'none';
+      document.getElementById('mail-form-section').style.display = 'block';
+    }
+  } catch {
+    errEl.innerText = '❌ Could not reach server.';
+  } finally {
+    btn.disabled = false;
+    btn.innerText = 'Unlock';
+  }
+}
+
+async function sendMail() {
+  const sendBtn = document.getElementById('sendBtn');
+  const statusMsg = document.getElementById('status-msg');
+
+  const audienceType = document.getElementById('audienceType').value;
+  const status = document.getElementById('status').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const full_name = document.getElementById('full_name').value.trim();
+  const subject = document.getElementById('subject').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  // Client-side validation
+  if (!audienceType) {
+    statusMsg.className = 'error';
+    statusMsg.innerText = '❌ Please select an audience.';
+    return;
+  }
+
+  if (audienceType === 'single_email' && !email) {
+    statusMsg.className = 'error';
+    statusMsg.innerText = '❌ Email is required for single email audience.';
+    return;
+  }
+
+  if (audienceType === 'status' && !status) {
+    statusMsg.className = 'error';
+    statusMsg.innerText = '❌ Status value is required.';
+    return;
+  }
+
+  if (audienceType === 'full_name' && !full_name) {
+    statusMsg.className = 'error';
+    statusMsg.innerText = '❌ Full name is required.';
+    return;
+  }
+
+  if (!subject || !message) {
+    statusMsg.className = 'error';
+    statusMsg.innerText = '❌ Subject and message are required.';
+    return;
+  }
+
+  sendBtn.disabled = true;
+  sendBtn.innerText = 'Sending...';
+  statusMsg.className = '';
+  statusMsg.innerText = '';
+
+  try {
+    const res = await fetch('/.netlify/functions/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        token: sessionToken,
+        subject,
+        message,
+        audienceType,
+        status,
+        email,
+        full_name,
+      }),
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      statusMsg.className = 'success';
+      statusMsg.innerText = `✅ Sent to ${result.sent} of ${result.total} user(s).${result.failed ? ` (${result.failed} failed)` : ''}`;
+      document.getElementById('subject').value = '';
+      document.getElementById('message').value = '';
+    } else {
+      statusMsg.className = 'error';
+      statusMsg.innerText = `❌ ${result.error || 'Something went wrong.'}`;
+    }
+  } catch {
+    statusMsg.className = 'error';
+    statusMsg.innerText = '❌ Failed to connect to server.';
+  } finally {
+    sendBtn.disabled = false;
+    sendBtn.innerText = 'Send Email';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('token-input').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') unlockForm();
+  });
+});
   </script>
 
 </body>
