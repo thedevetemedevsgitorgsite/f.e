@@ -22,3 +22,11 @@ window.OneSignalDeferred.push(async function(OneSignal) {
   console.log("Push ID:", id);
 
 });
+window.OneSignalDeferred.push(async function(OneSignal) {
+
+  const subscribed =
+    OneSignal.User.PushSubscription.optedIn;
+
+  console.log("Subscribed:", subscribed);
+
+});
