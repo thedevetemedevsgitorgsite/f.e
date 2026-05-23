@@ -13,3 +13,12 @@ document.getElementById("enablePush").onclick = async () => {
   console.log(permission);
 
 };
+
+window.OneSignalDeferred.push(async function(OneSignal) {
+
+  const id =
+    OneSignal.User.PushSubscription.id;
+
+  console.log("Push ID:", id);
+
+});
