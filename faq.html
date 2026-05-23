@@ -253,6 +253,20 @@
       display: none;
     }
   </style>
+  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+  window.OneSignalDeferred = window.OneSignalDeferred || [];
+  OneSignalDeferred.push(async function(OneSignal) {
+    await OneSignal.init({
+      appId: "3ab4afbc-c595-4965-a288-e3566a5ad560",
+    });
+
+    
+    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+        await OneSignal.Notifications.requestPermission();
+    }
+  });
+</script>
 </head>
 <body>
   <main class="container" role="main" aria-labelledby="faq-title">
