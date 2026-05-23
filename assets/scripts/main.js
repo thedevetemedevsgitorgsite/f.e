@@ -5,3 +5,11 @@ if(clickParam && clickParam?.trim() !=''){
   document.querySelector("."+clickParam)?.click();
   
 }
+document.getElementById("enablePush").onclick = async () => {
+
+  const permission =
+    await Notification.requestPermission();
+
+  console.log(permission);
+
+};
