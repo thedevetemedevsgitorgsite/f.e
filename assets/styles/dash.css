@@ -112,3 +112,112 @@
 .wa-follow-btn:active {
   transform: scale(0.98);
 }
+/* +...... Likes list*/
+
+ .likes-container{
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   background: rgba(0,0,0,0.4);
+   backdrop-filter: blur(3px);
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   z-index: 2500;
+ }
+   .likes-card{
+     background: var(--card-bg);
+     border: var(--main-border);
+     padding: 10px 20px; 
+     border-radius: 20px;
+     height: 450px;
+     width: 300px;
+     overflow-y: auto;
+   }
+  .likes-card ul{
+    list-style: none;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow: auto;
+  }
+ .likes-card ul img{
+   max-width: 40px;
+   max-height: 40px;
+   width: 40px;
+   height: 40px;
+   min-width: 40px;
+   min-height: 40px;
+   border: var(--main-border);
+   border-radius: 50%;
+   flex: 1;
+ }
+.likes-card ul li{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  justify-content: flex-start;
+  margin-left: -25px;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+.likes-card ul li .name{
+  font-weight: 460;
+  word-break: keep-all;
+  color: var(--text-light);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.likes-card ul li .name small{
+  font-size: 0.7em;
+  color: var(--text-muted, #999999);
+  white-space: nowrap;
+  font-weight: 400;
+}
+.likes-card ul li .name .f-name{
+  word-break: keep-all;
+  white-space: nowrap;
+  color: var(--text-light);
+  font-weight: 410;
+}
+.likes-head{
+  position: relative;
+  color: var(--text-dim);
+}
+.likes-cancel{
+  background: var(--muted-bg);
+  color: var(--text-light);
+  border-radius: 50%;
+  border: 0;
+  font-size: 1.5em;
+  position: absolute;
+  right: 0;
+  top: -7px;
+  cursor: pointer;
+}
+.likes-end{
+  display: block;
+  text-align: center;
+  color: var(--text-muted, #999999);
+  font-size: 0.67em;
+}
+/* just here */
+
+.likes-card button.star {
+  padding: 0;
+  background: transparent;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+.likes-card button.star svg {
+  transform: translateY(5px);
+  fill: red;
+} 
+#subscribers{
+  cursor: pointer;
+  }
