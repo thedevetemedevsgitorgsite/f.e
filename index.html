@@ -95,12 +95,12 @@
   OneSignalDeferred.push(async function(OneSignal) {
     await OneSignal.init({
       appId: "3ab4afbc-c595-4965-a288-e3566a5ad560",
-      safari_web_id: "web.onesignal.auto.15df0189-2d21-4404-bd16-e27bc91473d8",
-      notifyButton: {
-        enable: true,
-      },
-    allowLocalhostAsSecureOrigin: true
     });
+
+    
+    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+        await OneSignal.Notifications.requestPermission();
+    }
   });
 </script>
 </head>
