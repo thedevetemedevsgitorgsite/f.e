@@ -5,28 +5,3 @@ if(clickParam && clickParam?.trim() !=''){
   document.querySelector("."+clickParam)?.click();
   
 }
-document.getElementById("enablePush").onclick = async () => {
-
-  const permission =
-    await Notification.requestPermission();
-
-  console.log(permission);
-
-};
-
-window.OneSignalDeferred.push(async function(OneSignal) {
-
-  const id =
-    OneSignal.User.PushSubscription.id;
-
-  console.log("Push ID:", id);
-
-});
-window.OneSignalDeferred.push(async function(OneSignal) {
-
-  const subscribed =
-    OneSignal.User.PushSubscription.optedIn;
-
-  console.log("Subscribed:", subscribed);
-
-});
