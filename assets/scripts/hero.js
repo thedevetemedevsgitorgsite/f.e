@@ -36,3 +36,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.target === overlay) closePopup();
   });
 });
+document.querySelector(".app-name")?.addEventListener("click", e =>{
+  location.href="/";
+})
