@@ -164,17 +164,4 @@ const scrollBack=document.querySelector(".scroll-btn");
       
     })
 </script></body></html>
-<button id="enablePush" class="hidden">
-  Enable Notifications
-</button>
-<script>
-document.getElementById("enablePush").onclick = async () => {
 
-  const permission =
-    await Notification.requestPermission();
-
-  console.log(permission);
-
-};
-document.getElementById("enablePush").click();
-</script> 
