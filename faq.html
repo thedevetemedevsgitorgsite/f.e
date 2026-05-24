@@ -256,16 +256,15 @@
   <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
   window.OneSignalDeferred = window.OneSignalDeferred || [];
-  OneSignalDeferred.push(async function(OneSignal) {
-    await OneSignal.init({
-      appId: "3ab4afbc-c595-4965-a288-e3566a5ad560",
-    });
-
-    
-    if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
-        await OneSignal.Notifications.requestPermission();
-    }
+OneSignalDeferred.push(async function(OneSignal) {
+  await OneSignal.init({
+    appId: "3ab4afbc-c595-4965-a288-e3566a5ad560",
+    safari_web_id: "web.onesignal.auto.15df0189-2d21-4404-bd16-e27bc91473d8",
+    notifyButton: {
+      enable: true,
+    },
   });
+});
 </script>
 </head>
 <body>
@@ -832,6 +831,52 @@
     <p>
       By clicking on your <strong>"Subscribers"</strong> count link, a secure overlay modal will open showing your active fanbase. You can view their profile pictures, display names, and handles (e.g., <code>@RealFigsh</code>, <code>@Huxpower</code>) so you know exactly who is engaging with your resources.
     </p>
+  </div>
+</div>
+
+<div class="faq-item" id="notify-basics">
+  <div class="faq-question">
+    <span>How does the "Notify your subscribers" feature work?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>
+      When publishing or drafting a digital resource, you can slide the <strong>"Notify your subscribers"</strong> toggle switch in your advanced product settings.
+    </p>
+    <p>
+      Once you click <strong>"Publish Project"</strong>, DevTemple handles the delivery automatically, instantly dispatching an email notification directly to your community codebase with access details to your new post.
+    </p>
+  </div>
+</div>
+
+<div class="faq-item" id="subscriber-minimum-limit">
+  <div class="faq-question">
+    <span>Why is the notification toggle disabled or locked for me?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>
+      To optimize server payload resources and maintain platform health, the email broadcast toggle is strictly available to creators who have <strong>at least 1 active subscriber</strong> on their profile.
+    </p>
+    <p>
+      If your account currently sits at 0 subscribers, this option will remain locked. As soon as a peer or client hits the <strong>"Subscribe"</strong> button on your profile card, the system dynamically unlocks the mailing feature for your subsequent uploads.
+    </p>
+  </div>
+</div>
+
+<div class="faq-item" id="notification-guidelines">
+  <div class="faq-question">
+    <span>Are there any restrictions on sending subscriber notifications?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>
+      While notifying followers is an incredible way to scale conversion funnels on private packages or new scripts, please keep these structural guidelines in mind:
+    </p>
+    <ul>
+      <li><strong>Permanent States:</strong> Once a project is officially published with the notification toggle active, the emails are queued instantly. Because post details cannot be changed post-launch, verify your download files and pricing structures thoroughly beforehand.</li>
+      <li><strong>Anti-Spam Thresholds:</strong> Utilizing rapid duplicate uploads (spamming the same digital file to re-trigger notifications) triggers system flags, leading to automated listing suspension or account investigation.</li>
+    </ul>
   </div>
 </div>
 
