@@ -28,6 +28,7 @@ jobs:
             assets
             scripts
             node_modules
+            admin
 
       - name: Commit sitemap
         run: |
