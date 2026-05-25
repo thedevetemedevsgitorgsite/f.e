@@ -121,12 +121,12 @@ exports.handler = async (event) => {
           ${product_description ? `<p>${product_description.replace(/\n/g, "<br>")}</p>` : ""}
 
           <ul>
-            <li><a href="https://devtem.org/home#search?=@${seller_username}">Browse @${seller_username}'s full product list</a> to find this product and everything else they've listed</li>
+            <li><a href="https://devtem.org/home#search?q=@${seller_username}">Browse @${seller_username}'s full product list</a> to find this product and everything else they've listed</li>
           </ul>
 
           <b>Show your support:</b>
           <ul>
-            <li>Like, comment, or share their post — <b>engagement helps their work reach more people</b></li>
+            <li>Like and share their post — <b>engagement helps their work reach more people</b></li>
             <li>If this product adds value to your work, <b>a purchase goes a long way</b> in keeping creators like @${seller_username} active on the platform</li>
           </ul>
 
