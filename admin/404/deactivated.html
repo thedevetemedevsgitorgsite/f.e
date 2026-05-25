@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Deactivated - DevTemple</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 30, 49, 0.7);
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --border-color: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            max-width: 580px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            text-align: center;
+        }
+
+        .icon-wrapper {
+            width: 64px;
+            height: 64px;
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--accent-red);
+        }
+
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .uid-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-color);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-family: monospace;
+            color: var(--text-muted);
+            margin-bottom: 32px;
+        }
+
+        .uid-badge span {
+            color: var(--text-main);
+            font-weight: bold;
+        }
+
+        /* Content Sections */
+        .section {
+            text-align: left;
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+            margin-bottom: 12px;
+        }
+
+        h2 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        li {
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text-main);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        li::before {
+            content: "•";
+            color: var(--accent-red);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+            padding-left: 15px;
+        }
+
+        .action-list li::before {
+            color: var(--accent-blue);
+        }
+
+        /* Buttons & Actions */
+        .cta-group {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 32px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: #ffffff;
+            border: none;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        /* Footer Links */
+        .footer-links {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 13px;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-main);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Status Icon -->
+        <div class="icon-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+        </div>
+
+        <h1>Your account was deactivated</h1>
+        <div class="uid-badge">Account ID: <span id="user-id">Loading...</span></div>
+
+        <!-- What you can't access -->
+        <div class="section">
+            <h2>What you can't access at this time</h2>
+            <ul>
+                <li>Your DevTemple creator/user dashboard</li>
+                <li>Payout configurations and balance history</li>
+                <li>Submitting new assets or updating existing listings</li>
+                <li>Reviews, and buyer interaction<rt></rt></li>
+                <li>Affiliate links and referral program benefits</li>
+            </ul>
+        </div>
+
+        <!-- Frequent Causes -->
+        <div class="section">
+            <h2>Frequent causes of this</h2>
+            <ul>
+                <li>Invalid, misleading, or trademarked/copyrighted username or display name</li>
+                <li>Excessive violations reported by users or flagged by our moderation system</li>
+                <li>Content that violates our guidelines (offensive, misleading, or prohibited material)</li>
+                <li>Manipulation of pricing, rates, or platform benefits</li>
+                <li>Unrelated or spam link detected in the <code style="font-size:13px;background:rgba(255,255,255,0.07);padding:1px 6px;border-radius:4px;">portfolio_url</code> field</li>
+                <li>AI-generated content submitted without the required AI label disclosure</li>
+                <li>Multiple violations of our asset submission guidelines</li>
+                <li>Unresolved licensing or copyright disputes regarding hosted tools</li>
+                <li>Irregular or suspicious activity detected during payout processing</li>
+            </ul>
+        </div>
+
+        <!-- Upcoming Actions -->
+        <div class="section">
+            <h2>Upcoming actions if unresolved</h2>
+            <ul>
+                <li>Pending payouts will be frozen until the account status is resolved</li>
+                <li>Listed assets will be unpublished and removed from public discovery</li>
+                <li>Repeated or unaddressed violations may result in a permanent ban</li>
+                <li>Accounts inactive in appeal for 30+ days may be permanently closed</li>
+            </ul>
+        </div>
+
+        <!-- Actions to take -->
+        <div class="section">
+            <h2>What you should do</h2>
+            <ul class="action-list">
+                <li>Review our terms of service to pinpoint potential violations</li>
+                <li>Gather your developer profile details, including your dynamic Account ID shown above</li>
+                <li>Submit a formal review request to the DevTemple administration team</li>
+            </ul>
+        </div>
+
+        <!-- CTA Options -->
+        <div class="cta-group">
+            <a href="mailto:support@devtem.org?subject=Deactivated%20Account%20Appeal" id="appeal-link" class="btn btn-primary">Contact DevTemple Support</a>
+        </div>
+
+        <!-- Footer Policy Links -->
+        <div class="footer-links">
+            <a href="/terms">Terms of Service</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/faq">Help & FAQ</a>
+        </div>
+    </div>
+
+    <script>
+        // Extract UID from URL parameters safely
+        const urlParams = new URLSearchParams(window.location.search);
+        const uid = urlParams.get("uid");
+        
+        const userIdElement = document.getElementById("user-id");
+        const appealLink = document.getElementById("appeal-link");
+
+        if (uid) {
+            // Sanitize the text output to prevent basic XSS injections
+            userIdElement.textContent = uid.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+            
+            // Append UID to support email link dynamically for seamless routing
+            appealLink.href = `mailto:support@devtem.org?subject=Deactivated%20Account%20Appeal%20(UID:%20${encodeURIComponent(uid)})&body=Hello%20DevTemple%20Support,%0A%0AMy%20account%20(ID:%20${encodeURIComponent(uid)})%20has%20been%20deactivated.%20[Provide%20details%20here]`;
+        } else {
+            userIdElement.textContent = "Not Detected";
+            document.body.innerHTML=`What happened? <input type="checkbox">`;
+        }
+    </script>
+
+</body>
+</html>
