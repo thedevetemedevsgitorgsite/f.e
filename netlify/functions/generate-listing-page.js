@@ -1,32 +1,52 @@
-export default async (request) => {
-  const ALLOWED_ORIGINS = [
-    "https://thedevetemedevsgitorgsite.github.io",
-    "https://devtem.org",
-    "http://localhost:7700",
-    "https://localhost:7700"
-  ];
 
-  const incomingOrigin = request.headers.get("origin");
-  const isAllowed = ALLOWED_ORIGINS.includes(incomingOrigin);
+const ALLOWED_ORIGINS = [
+  "https://thedevetemedevsgitorgsite.github.io",
+  "https://devtem.org",
+  "http://localhost:7700",
+  "https://localhost:7700",
+];
+
+const OWNER = "devlisting";
+const REPO  = "devlisting.github.io";
+
+exports.handler = async (event) => {
+
+  // ── CORS ───────────────────────────────────────────────────
+  const incomingOrigin = event.headers["origin"] || event.headers["Origin"] || "";
+  const isAllowed      = ALLOWED_ORIGINS.includes(incomingOrigin);
 
   const corsHeaders = {
-    "Access-Control-Allow-Origin": isAllowed ? incomingOrigin : ALLOWED_ORIGINS[0],
+    "Access-Control-Allow-Origin":  isAllowed ? incomingOrigin : ALLOWED_ORIGINS[0],
     "Access-Control-Allow-Headers": "Content-Type, X-App-Upload-Token",
     "Access-Control-Allow-Methods": "POST, OPTIONS",
+    "Content-Type": "application/json",
   };
 
-  if (request.method === "OPTIONS") {
-    return new Response(null, { status: 204, headers: corsHeaders });
+  // Handle pre-flight
+  if (event.httpMethod === "OPTIONS") {
+    return { statusCode: 204, headers: corsHeaders, body: "" };
   }
 
+  // Block unlisted origins
   if (!isAllowed) {
-    return new Response(JSON.stringify({ error: "Unauthorized Origin" }), {
-      status: 403,
-      headers: { "Content-Type": "application/json" }
-    });
+    return {
+      statusCode: 403,
+      headers: corsHeaders,
+      body: JSON.stringify({ error: "Unauthorized Origin" }),
+    };
+  }
+
+  // Only accept POST
+  if (event.httpMethod !== "POST") {
+    return {
+      statusCode: 405,
+      headers: corsHeaders,
+      body: JSON.stringify({ error: "Method not allowed" }),
+    };
   }
 
   try {
+    // ── Parse body ─────────────────────────────────────────
     const {
       product_id,
       title,
@@ -37,34 +57,51 @@ export default async (request) => {
       seller_username,
       seller_name,
       category,
-    } = await request.json();
+    } = JSON.parse(event.body || "{}");
 
+    // ── Validate required fields ───────────────────────────
     if (!product_id || !title) {
-      return new Response(JSON.stringify({ error: "product_id and title are required" }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" }
-      });
+      return {
+        statusCode: 400,
+        headers: corsHeaders,
+        body: JSON.stringify({ error: "product_id and title are required" }),
+      };
     }
 
-    // Build slug: "my-cool-product-id-abc123.html"
-    const slug = `${title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')}-id-${product_id}.html`;
+    // ── Check GITHUB_PAT early ─────────────────────────────
+    const token = process.env.GITHUB_PAT;
+    if (!token) {
+      return {
+        statusCode: 500,
+        headers: corsHeaders,
+        body: JSON.stringify({ error: "Missing GITHUB_PAT environment variable" }),
+      };
+    }
 
-    // Updated paths matching your routing instructions
-    const productUrl = `https://devtem.org/p?id=${product_id}`;
-    const authorUrl = `https://devtem.org/home?q=${seller_username || ""}`;
-    const listingUrl = `https://i.devtem.org/${slug}`;
-    
-    const safeImage = image_url || "https://devtem.org/assets/images/p.jpg";
-    const safeDesc = (description || "").slice(0, 160);
-    const safeTags = Array.isArray(tags) ? tags.join(", ") : (tags || "");
-    const safePrice = price ? `₦${Number(price).toLocaleString()}` : "Free";
+    // ── Build slug and URLs ────────────────────────────────
+    const slug = `${title
+      .toLowerCase()
+      .replace(/[^a-z0-9]+/g, "-")
+      .replace(/^-|-$/g, "")}-id-${product_id}.html`;
+
+    const productUrl  = `https://devtem.org/p?id=${product_id}`;
+    const authorUrl   = `https://devtem.org/home?q=${seller_username || ""}`;
+    const listingUrl  = `https://i.devtem.org/${slug}`;
+
+    // ── Sanitise fields ────────────────────────────────────
+    const safeImage    = image_url || "https://devtem.org/assets/images/p.jpg";
+    const safeDesc     = (description || "").slice(0, 160);
+    const safeTags     = Array.isArray(tags) ? tags.join(", ") : (tags || "");
+    const safePrice    = price ? `₦${Number(price).toLocaleString()}` : "Free";
     const safeCategory = category || "Digital Product";
 
+    // ── Generate HTML ──────────────────────────────────────
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>${title} | DevTemple</title>
   <meta name="title" content="${title} | DevTemple">
   <meta name="description" content="${safeDesc}">
@@ -76,7 +113,6 @@ export default async (request) => {
   <meta name="theme-color" content="#0066ff">
 
   <link rel="canonical" href="${listingUrl}">
-
   <link rel="icon" type="image/png" href="https://devtem.org/assets/images/logo.png">
   <link rel="apple-touch-icon" href="https://devtem.org/assets/images/logo.png">
 
@@ -118,10 +154,7 @@ export default async (request) => {
       "availability": "https://schema.org/InStock",
       "url": "${productUrl}"
     },
-    "brand": {
-      "@type": "Brand",
-      "name": "DevTemple"
-    },
+    "brand": { "@type": "Brand", "name": "DevTemple" },
     "seller": {
       "@type": "Person",
       "name": "${seller_name || "DevTemple"}",
@@ -167,81 +200,74 @@ export default async (request) => {
   </main>
 
   <footer>
-    <p>&copy; <span id="copyright-year">2026</span> DevTemple · <a href="https://devtem.org/terms">Terms</a> · <a href="https://devtem.org/terms/privacy">Privacy</a> · <a href="https://devtem.org">devtem.org</a></p>
+    <p>&copy; <span id="copyright-year">2026</span> DevTemple &middot; <a href="https://devtem.org/terms">Terms</a> &middot; <a href="https://devtem.org/terms/privacy">Privacy</a> &middot; <a href="https://devtem.org">devtem.org</a></p>
   </footer>
 
-  <script>
-    document.getElementById("copyright-year").textContent = new Date().getFullYear();
-  </script>
+  <script>document.getElementById("copyright-year").textContent = new Date().getFullYear();</script>
   <script src="/assets/scripts/listings-global.js" async></script>
 </body>
 </html>`;
 
-    // Push to devlisting.github.io via GitHub API
-    const OWNER = "devlisting";
-    const REPO = "devlisting.github.io";
-    const token = process.env.GITHUB_PAT;
-
-    if (!token) {
-      return new Response(JSON.stringify({ error: "Missing GITHUB_PAT" }), {
-        status: 500,
-        headers: { ...corsHeaders, "Content-Type": "application/json" }
-      });
-    }
-
-    const encoded = btoa(unescape(encodeURIComponent(html)));
+    // ── Encode HTML for GitHub API ─────────────────────────
+    // Buffer.from is the Node.js equivalent of btoa()
+    const encoded   = Buffer.from(html, "utf-8").toString("base64");
     const githubUrl = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${slug}`;
 
-    let sha = undefined;
+    // ── Check if file already exists (get SHA for update) ──
+    let sha;
     const checkRes = await fetch(githubUrl, {
       headers: {
         "Authorization": `Bearer ${token}`,
-        "Accept": "application/vnd.github+json",
-        "User-Agent": "Netlify-Listing-Pipeline"
-      }
+        "Accept":        "application/vnd.github+json",
+        "User-Agent":    "Netlify-Listing-Pipeline",
+      },
     });
+
     if (checkRes.ok) {
       const existing = await checkRes.json();
-      sha = existing.sha;
+      sha = existing.sha; // required by GitHub API to update an existing file
     }
 
+    // ── Push to GitHub ─────────────────────────────────────
     const pushRes = await fetch(githubUrl, {
       method: "PUT",
       headers: {
         "Authorization": `Bearer ${token}`,
-        "Accept": "application/vnd.github+json",
-        "Content-Type": "application/json",
-        "User-Agent": "Netlify-Listing-Pipeline"
+        "Accept":        "application/vnd.github+json",
+        "Content-Type":  "application/json",
+        "User-Agent":    "Netlify-Listing-Pipeline",
       },
       body: JSON.stringify({
         message: `listing: ${title} (${product_id})`,
         content: encoded,
-        ...(sha ? { sha } : {})
-      })
+        ...(sha ? { sha } : {}), // include sha only when updating
+      }),
     });
 
     const pushResult = await pushRes.json();
 
     if (!pushRes.ok) {
-      return new Response(JSON.stringify({ error: pushResult.message || "GitHub push failed" }), {
-        status: pushRes.status,
-        headers: { ...corsHeaders, "Content-Type": "application/json" }
-      });
+      return {
+        statusCode: pushRes.status,
+        headers: corsHeaders,
+        body: JSON.stringify({ error: pushResult.message || "GitHub push failed" }),
+      };
     }
 
-    return new Response(JSON.stringify({
-      success: true,
-      slug,
-      url: listingUrl
-    }), {
-      status: 200,
-      headers: { ...corsHeaders, "Content-Type": "application/json" }
-    });
+    // ── Success ────────────────────────────────────────────
+    return {
+      statusCode: 200,
+      headers: corsHeaders,
+      body: JSON.stringify({ success: true, slug, url: listingUrl }),
+    };
 
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
-      status: 500,
-      headers: { "Content-Type": "application/json" }
-    });
+    console.error(err);
+    return {
+      statusCode: 500,
+      headers: corsHeaders,
+      body: JSON.stringify({ error: err.message }),
+    };
   }
 };
+
