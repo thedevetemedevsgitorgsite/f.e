@@ -142,7 +142,7 @@ export default async (request) => {
   </script>
 
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/listings-global.css">
+  <link rel="stylesheet" href="/assets/styles/listings-global.css">
 </head>
 <body>
 
@@ -174,7 +174,7 @@ export default async (request) => {
   <script>
     document.getElementById("copyright-year").textContent = new Date().getFullYear();
   </script>
-  <script src="/assets/js/listings-global.js" async></script>
+  <script src="/assets/scripts/listings-global.js" async></script>
 </body>
 </html>`;
 
