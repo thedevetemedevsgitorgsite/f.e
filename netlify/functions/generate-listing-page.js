@@ -65,7 +65,6 @@ export default async (request) => {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>${title} | DevTemple</title>
   <meta name="title" content="${title} | DevTemple">
   <meta name="description" content="${safeDesc}">
