@@ -219,9 +219,13 @@ const seoDes = data.description.slice(0, 300);
 
     }
 
-  }
-
+  }, 
+  "mainEntityOfPage": {
+  "@type": "WebPage",
+  "@id": "${data.listingUrl}"
 }
+}
+
 </script>
 
 <link
@@ -270,7 +274,110 @@ const seoDes = data.description.slice(0, 300);
   </a>
 
 </main>
+<footer class="footer">
 
+  <div class="footer-grid">
+
+    <div>
+
+      <h3>
+        DevTemple
+      </h3>
+
+      <p>
+        Marketplace for premium digital products,
+        developer assets, tools, and creative resources.
+      </p>
+
+    </div>
+
+    <div>
+
+      <h3>
+        Marketplace
+      </h3>
+
+      <a href="https://devtem.org/home">
+        Browse Products
+      </a>
+
+      <a href="https://devtem.org/home?q=templates">
+        Templates
+      </a>
+
+      <a href="https://devtem.org/home?q=script">
+        Scripts
+      </a>
+
+      <a href="https://devtem.org/home?q=ui">
+        UI Kits
+      </a>
+
+    </div>
+
+    <div>
+
+      <h3>
+        Company
+      </h3>
+
+      <a href="https://devtem.org/about">
+        About
+      </a>
+
+      <a href="https://devtem.org/contact">
+        Contact
+      </a>
+
+      <a href="https://devtem.org/faq">
+        FAQ
+      </a>
+
+    </div>
+
+    <div>
+
+      <h3>
+        Legal
+      </h3>
+
+      <a href="https://devtem.org/terms">
+        Terms
+      </a>
+
+      <a href="https://devtem.org/privacy">
+        Privacy
+      </a>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+
+    ©
+    <span id="copyright-year">
+      2026
+    </span>
+
+    <a rel="me" href="https://devtem.org">DevTemple</a>.
+    All rights reserved.
+
+  </div>
+
+</footer>
+
+<script>
+
+document
+  .getElementById("copyright-year")
+  .textContent = new Date().getFullYear();
+
+</script>
+
+<script
+  src="/assets/scripts/listings-global.js"
+  type="module" defer></script>
 </body>
 </html>`;
 
