@@ -407,7 +407,7 @@ exports.handler = async (event) => {
       `${product_id}-${slugify(title)}.html`;
 
     const listingUrl =
-      `https://i.devtem.org/${slug}`;
+      `https://i.devtem.org/${product_id}-${slugify(title)}`;
 
     const productUrl =
       `https://devtem.org/p?id=${product_id}`;
