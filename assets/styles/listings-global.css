@@ -1,0 +1,131 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Poppins', system-ui, sans-serif;
+  background: #f4f6fb;
+  color: #111;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+header {
+  background: #0066ff;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+header a {
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+  text-decoration: none;
+  letter-spacing: -0.3px;
+}
+.header-action-link {
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  opacity: 0.85;
+}
+main {
+  flex: 1;
+  max-width: 760px;
+  margin: 40px auto;
+  padding: 0 20px 60px;
+  width: 100%;
+}
+.product-img {
+  width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 28px;
+  background: #dde3f0;
+}
+.badge {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #0066ff;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+h1 {
+  font-size: clamp(22px, 4vw, 32px);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 12px;
+  color: #0a0a1a;
+}
+.meta {
+  font-size: 13px;
+  color: #666;
+  margin-bottom: 20px;
+}
+.meta strong { color: #333; }
+.desc {
+  font-size: 15px;
+  line-height: 1.75;
+  color: #333;
+  margin-bottom: 28px;
+  white-space: pre-line;
+}
+.price {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0066ff;
+  margin-bottom: 24px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.tag {
+  background: #fff;
+  border: 1px solid #dde3f0;
+  color: #555;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.card-tag{
+   color: #0066ff;
+  font-weight: 490;
+}
+.cta {
+  display: inline-block;
+  background: #0066ff;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: background 0.2s;
+}
+.cta:hover { background: #0051cc; }
+.seller {
+  margin-top: 40px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e4e8f2;
+  font-size: 14px;
+  color: #555;
+}
+.seller strong { color: #111; font-size: 15px; }
+footer {
+  background: #0a0a1a;
+  color: #888;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
+footer a { color: #aaa; text-decoration: none; }
+footer a:hover { color: #fff; }
