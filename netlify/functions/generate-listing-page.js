@@ -43,7 +43,7 @@ function slugify(str = "") {
 
 function buildHtml(data) {
 const seoDes = data.description.slice(0, 300);
-  const bodyDes = data.description.replace(/\#([\w\-]+)/g, "<a href='/home?q=$1' class='card-tag'>#$1</a>");
+  const bodyDes = data.description.replace(/\#([\w\-]+)/g, "<a href='https://devtem.org/home?q=$1' class='card-tag'>#$1</a>");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -168,7 +168,7 @@ const seoDes = data.description.slice(0, 300);
 
   "image": ${JSON.stringify(data.image)},
 
-  "description": ${JSON.stringify(data.description)},
+  "description": ${JSON.stringify(seoDes)},
 
   "category": ${JSON.stringify(data.category)},
 
@@ -255,7 +255,7 @@ const seoDes = data.description.slice(0, 300);
   <h1>${data.title}</h1>
 
   <p class="meta">
-    By <b><a href="${authorLink||'https://devtem.org/home'}">${data.sellerName}</a></b>
+    By <b><a href="${data.authorLink||data.authorUrl}" title="Subscribe — ${data.sellerName}">${data.sellerName}</a></b>
   </p>
 
   <p class="price">
@@ -520,7 +520,6 @@ exports.handler = async (event) => {
 
     const productUrl =
       `https://devtem.org/p?id=${product_id}`;
-    const authorUrl = `https://devtem.org/s?s=${seller_id}`;
     const html = buildHtml({
 
   title: safeTitle,
@@ -546,7 +545,7 @@ exports.handler = async (event) => {
 
   rawPrice:
     Number(price) || 0,
-  authorLink: authorUrl, 
+  authorLink: `https://devtem.org/s?s=${seller_id}`, 
 });
 
     const githubUrl =
