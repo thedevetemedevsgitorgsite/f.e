@@ -285,7 +285,12 @@ const seoDes = data.description.slice(0, 300);
       </h3>
 
       <p>
-        Marketplace for premium digital products,
+        
+       <img
+  src="https://devtem.org/assets/images/logo.png"
+  alt="DevTemple Logo"
+  class="footer-logo"
+loading="lazy" decoding="async"> Marketplace for premium digital products,
         developer assets, tools, and creative resources.
       </p>
 
