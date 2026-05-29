@@ -42,6 +42,8 @@ function slugify(str = "") {
 }
 
 function buildHtml(data) {
+const seoDes = data.description.slice(0, 300);
+  const bodyDes = data.description.replace(/\#([\w\-]+)/g, "<a href='/home?q=$1' class='card-tag'>#$1</a>");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -53,7 +55,7 @@ function buildHtml(data) {
 <title>${data.title} | DevTemple</title>
 
 <meta name="title" content="${data.title} | DevTemple">
-<meta name="description" content="${data.description}">
+<meta name="description" content="${seoDes}">
 <meta name="keywords" content="DevTemple, ${data.tags}, ${data.category}, digital assets, developer marketplace">
 <meta name="author" content="${data.sellerName}">
 <meta name="robots" content="index, follow, max-image-preview:large">
@@ -85,7 +87,7 @@ function buildHtml(data) {
 
 <meta
   property="og:description"
-  content="${data.description}"
+  content="${seoDes}"
 >
 
 <meta
@@ -127,7 +129,7 @@ function buildHtml(data) {
 
 <meta
   name="twitter:description"
-  content="${data.description}"
+  content="${seoDes}"
 >
 
 <meta
@@ -257,7 +259,7 @@ function buildHtml(data) {
   </p>
 
   <p class="desc">
-    ${data.description}
+    ${bodyDes}
   </p>
 
   <a
@@ -382,7 +384,7 @@ exports.handler = async (event) => {
 
     const safeDescription =
       escapeHtml(description || "")
-        .slice(0, 300);
+        .slice(0, 700);
 
     const safeCategory =
       escapeHtml(category || "Digital Product");
