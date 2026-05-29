@@ -1,53 +1,202 @@
+const OWNER = "devlisting";
+const REPO  = "devlisting.github.io";
 
 const ALLOWED_ORIGINS = [
-  "https://thedevetemedevsgitorgsite.github.io",
   "https://devtem.org",
   "http://localhost:7700",
   "https://localhost:7700",
 ];
 
-const OWNER = "devlisting";
-const REPO  = "devlisting.github.io";
+function json(statusCode, body, headers = {}) {
+
+  return {
+    statusCode,
+    headers: {
+      "Content-Type": "application/json",
+      ...headers,
+    },
+    body: JSON.stringify(body),
+  };
+
+}
+
+function escapeHtml(str = "") {
+
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
+}
+
+function slugify(str = "") {
+
+  return str
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+}
+
+function buildHtml(data) {
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>${data.title} | DevTemple</title>
+
+<meta name="description" content="${data.description}">
+<meta name="keywords" content="${data.tags}">
+<meta name="author" content="${data.sellerName}">
+
+<link rel="canonical" href="${data.listingUrl}">
+
+<meta property="og:title" content="${data.title}">
+<meta property="og:description" content="${data.description}">
+<meta property="og:image" content="${data.image}">
+<meta property="og:url" content="${data.listingUrl}">
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="${data.title}">
+<meta name="twitter:description" content="${data.description}">
+<meta name="twitter:image" content="${data.image}">
+
+<link rel="stylesheet" href="/assets/styles/listings-global.css">
+
+</head>
+
+<body>
+
+<header>
+  <a href="https://devtem.org">DevTemple</a>
+</header>
+
+<main>
+
+  <img
+    src="${data.image}"
+    alt="${data.title}"
+    class="product-img"
+  >
+
+  <span class="badge">
+    ${data.category}
+  </span>
+
+  <h1>${data.title}</h1>
+
+  <p class="meta">
+    By ${data.sellerName}
+  </p>
+
+  <p class="price">
+    ${data.price}
+  </p>
+
+  <p class="desc">
+    ${data.description}
+  </p>
+
+  <a
+    href="${data.productUrl}"
+    class="cta"
+  >
+    View Product
+  </a>
+
+</main>
+
+</body>
+</html>`;
+
+}
 
 exports.handler = async (event) => {
 
-  // ── CORS ───────────────────────────────────────────────────
-  const incomingOrigin = event.headers["origin"] || event.headers["Origin"] || "";
-  const isAllowed      = ALLOWED_ORIGINS.includes(incomingOrigin);
+  const origin =
+    event.headers.origin ||
+    event.headers.Origin ||
+    "";
 
   const corsHeaders = {
-    "Access-Control-Allow-Origin":  isAllowed ? incomingOrigin : ALLOWED_ORIGINS[0],
-    "Access-Control-Allow-Headers": "Content-Type, X-App-Upload-Token",
-    "Access-Control-Allow-Methods": "POST, OPTIONS",
-    "Content-Type": "application/json",
+
+    "Access-Control-Allow-Origin":
+      ALLOWED_ORIGINS.includes(origin)
+        ? origin
+        : ALLOWED_ORIGINS[0],
+
+    "Access-Control-Allow-Headers":
+      "Content-Type, X-App-Upload-Token",
+
+    "Access-Control-Allow-Methods":
+      "POST, OPTIONS",
+
   };
 
-  // Handle pre-flight
   if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 204, headers: corsHeaders, body: "" };
-  }
-
-  // Block unlisted origins
-  if (!isAllowed) {
     return {
-      statusCode: 403,
+      statusCode: 204,
       headers: corsHeaders,
-      body: JSON.stringify({ error: "Unauthorized Origin" }),
+      body: "",
     };
   }
 
-  // Only accept POST
+  if (!ALLOWED_ORIGINS.includes(origin)) {
+
+    return json(
+      403,
+      {
+        error: "Unauthorized origin",
+      },
+      corsHeaders
+    );
+
+  }
+
   if (event.httpMethod !== "POST") {
-    return {
-      statusCode: 405,
-      headers: corsHeaders,
-      body: JSON.stringify({ error: "Method not allowed" }),
-    };
+
+    return json(
+      405,
+      {
+        error: "Method not allowed",
+      },
+      corsHeaders
+    );
+
   }
 
   try {
-    // ── Parse body ─────────────────────────────────────────
+
+    const appToken =
+      event.headers["x-app-upload-token"];
+
+    if (
+      appToken !== process.env.APP_UPLOAD_TOKEN
+    ) {
+
+      return json(
+        401,
+        {
+          error: "Unauthorized",
+        },
+        corsHeaders
+      );
+
+    }
+
+    const body =
+      JSON.parse(event.body || "{}");
+
     const {
+
       product_id,
       title,
       description,
@@ -57,217 +206,162 @@ exports.handler = async (event) => {
       seller_username,
       seller_name,
       category,
-    } = JSON.parse(event.body || "{}");
 
-    // ── Validate required fields ───────────────────────────
+    } = body;
+
     if (!product_id || !title) {
-      return {
-        statusCode: 400,
-        headers: corsHeaders,
-        body: JSON.stringify({ error: "product_id and title are required" }),
-      };
+
+      return json(
+        400,
+        {
+          error:
+            "product_id and title are required",
+        },
+        corsHeaders
+      );
+
     }
 
-    // ── Check GITHUB_PAT early ─────────────────────────────
-    const token = process.env.GITHUB_PAT;
-    if (!token) {
-      return {
-        statusCode: 500,
-        headers: corsHeaders,
-        body: JSON.stringify({ error: "Missing GITHUB_PAT environment variable" }),
-      };
-    }
+    const safeTitle =
+      escapeHtml(title).slice(0, 120);
 
-    // ── Build slug and URLs ────────────────────────────────
-    const slug = `${title
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "")}-id-${product_id}.html`;
+    const safeDescription =
+      escapeHtml(description || "")
+        .slice(0, 300);
 
-    const productUrl  = `https://devtem.org/p?id=${product_id}`;
-    const authorUrl   = `https://devtem.org/home?q=${seller_username || ""}`;
-    const listingUrl  = `https://i.devtem.org/${slug}`;
+    const safeCategory =
+      escapeHtml(category || "Digital Product");
 
-    // ── Sanitise fields ────────────────────────────────────
-    const safeImage    = image_url || "https://devtem.org/assets/images/p.jpg";
-    const safeDesc     = (description || "").slice(0, 160);
-    const safeTags     = Array.isArray(tags) ? tags.join(", ") : (tags || "");
-    const safePrice    = price ? `₦${Number(price).toLocaleString()}` : "Free";
-    const safeCategory = category || "Digital Product";
+    const safeSeller =
+      escapeHtml(seller_name || "DevTemple");
 
-    // ── Generate HTML ──────────────────────────────────────
-    const html = `<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    const safeImage =
+      image_url ||
+      "https://devtem.org/assets/images/p.jpg";
 
-  <title>${title} | DevTemple</title>
-  <meta name="title" content="${title} | DevTemple">
-  <meta name="description" content="${safeDesc}">
-  <meta name="keywords" content="DevTemple, ${safeTags}, digital assets, ${safeCategory}, developer marketplace, devtem.org">
-  <meta name="author" content="${seller_name || "DevTemple"}">
-  <meta name="application-name" content="DevTemple">
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-  <meta name="language" content="English">
-  <meta name="theme-color" content="#0066ff">
+    const safeTags = Array.isArray(tags)
+      ? tags.map(escapeHtml).join(", ")
+      : "";
 
-  <link rel="canonical" href="${listingUrl}">
-  <link rel="icon" type="image/png" href="https://devtem.org/assets/images/logo.png">
-  <link rel="apple-touch-icon" href="https://devtem.org/assets/images/logo.png">
+    const formattedPrice =
+      Number(price) > 0
+        ? `₦${Number(price).toLocaleString()}`
+        : "Free";
 
-  <meta property="og:type" content="product">
-  <meta property="og:site_name" content="DevTemple">
-  <meta property="og:title" content="${title} | DevTemple">
-  <meta property="og:description" content="${safeDesc}">
-  <meta property="og:url" content="${listingUrl}">
-  <meta property="og:image" content="${safeImage}">
-  <meta property="og:image:secure_url" content="${safeImage}">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:image:alt" content="${title}">
-  <meta property="og:locale" content="en_US">
-  <meta property="product:price:amount" content="${price || 0}">
-  <meta property="product:price:currency" content="NGN">
+    const slug =
+      `${product_id}-${slugify(title)}.html`;
 
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${title} | DevTemple">
-  <meta name="twitter:description" content="${safeDesc}">
-  <meta name="twitter:image" content="${safeImage}">
-  <meta name="twitter:image:alt" content="${title}">
-  <meta name="twitter:site" content="@fscss_ttr">
-  <meta name="twitter:creator" content="@fscss_ttr">
+    const listingUrl =
+      `https://i.devtem.org/${slug}`;
 
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "${title}",
-    "image": "${safeImage}",
-    "description": "${safeDesc}",
-    "url": "${listingUrl}",
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "NGN",
-      "price": "${price || 0}",
-      "availability": "https://schema.org/InStock",
-      "url": "${productUrl}"
-    },
-    "brand": { "@type": "Brand", "name": "DevTemple" },
-    "seller": {
-      "@type": "Person",
-      "name": "${seller_name || "DevTemple"}",
-      "url": "${authorUrl}"
-    },
-    "category": "${safeCategory}",
-    "publisher": {
-      "@type": "Organization",
-      "name": "DevTemple",
-      "url": "https://devtem.org",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://devtem.org/assets/images/logo.png"
+    const productUrl =
+      `https://devtem.org/p?id=${product_id}`;
+
+    const html = buildHtml({
+
+      title: safeTitle,
+      description: safeDescription,
+
+      image: safeImage,
+
+      sellerName: safeSeller,
+
+      category: safeCategory,
+
+      tags: safeTags,
+
+      listingUrl,
+      productUrl,
+
+      price: formattedPrice,
+
+    });
+
+    const githubUrl =
+      `https://api.github.com/repos/${OWNER}/${REPO}/contents/${slug}`;
+
+    const token =
+      process.env.GITHUB_PAT;
+
+    const encoded =
+      Buffer.from(html)
+        .toString("base64");
+
+    const pushRes = await fetch(
+      githubUrl,
+      {
+
+        method: "PUT",
+
+        headers: {
+
+          Authorization:
+            `Bearer ${token}`,
+
+          Accept:
+            "application/vnd.github+json",
+
+          "Content-Type":
+            "application/json",
+
+          "User-Agent":
+            "DevTemple-Publisher",
+
+        },
+
+        body: JSON.stringify({
+
+          message:
+            `listing: ${safeTitle}`,
+
+          content: encoded,
+
+        }),
+
       }
-    }
-  }
-  </script>
+    );
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/styles/listings-global.css">
-</head>
-<body>
-
-  <header>
-    <a href="https://devtem.org">DevTemple</a>
-    <a href="${productUrl}" class="header-action-link">View on DevTemple →</a>
-  </header>
-
-  <main>
-    <img class="product-img" src="${safeImage}" alt="${title}" onerror="this.src='https://devtem.org/assets/images/p.jpg'">
-    <span class="badge">${safeCategory}</span>
-    <h1>${title}</h1>
-    <p class="meta">By <strong>${seller_name || "DevTemple"}</strong>${seller_username ? ` &middot; @${seller_username}` : ""}</p>
-    <p class="price">${safePrice}</p>
-    <p class="desc">${description || ""}</p>
-    ${safeTags ? `<div class="tags">${safeTags.split(",").map(t => `<span class="tag">${t.trim()}</span>`).join("")}</div>` : ""}
-    <a class="cta" href="${productUrl}">Get This Product →</a>
-    ${seller_username ? `
-    <div class="seller">
-      <strong>${seller_name || seller_username}</strong><br>
-      <a href="${authorUrl}">View all products by @${seller_username} on DevTemple</a>
-    </div>` : ""}
-  </main>
-
-  <footer>
-    <p>&copy; <span id="copyright-year">2026</span> DevTemple &middot; <a href="https://devtem.org/terms">Terms</a> &middot; <a href="https://devtem.org/terms/privacy">Privacy</a> &middot; <a href="https://devtem.org">devtem.org</a></p>
-  </footer>
-
-  <script>document.getElementById("copyright-year").textContent = new Date().getFullYear();</script>
-  <script src="/assets/scripts/listings-global.js" async></script>
-</body>
-</html>`;
-
-    // ── Encode HTML for GitHub API ─────────────────────────
-    // Buffer.from is the Node.js equivalent of btoa()
-    const encoded   = Buffer.from(html, "utf-8").toString("base64");
-    const githubUrl = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${slug}`;
-
-    // ── Check if file already exists (get SHA for update) ──
-    let sha;
-    const checkRes = await fetch(githubUrl, {
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Accept":        "application/vnd.github+json",
-        "User-Agent":    "Netlify-Listing-Pipeline",
-      },
-    });
-
-    if (checkRes.ok) {
-      const existing = await checkRes.json();
-      sha = existing.sha; // required by GitHub API to update an existing file
-    }
-
-    // ── Push to GitHub ─────────────────────────────────────
-    const pushRes = await fetch(githubUrl, {
-      method: "PUT",
-      headers: {
-        "Authorization": `Bearer ${token}`,
-        "Accept":        "application/vnd.github+json",
-        "Content-Type":  "application/json",
-        "User-Agent":    "Netlify-Listing-Pipeline",
-      },
-      body: JSON.stringify({
-        message: `listing: ${title} (${product_id})`,
-        content: encoded,
-        ...(sha ? { sha } : {}), // include sha only when updating
-      }),
-    });
-
-    const pushResult = await pushRes.json();
+    const pushData =
+      await pushRes.json();
 
     if (!pushRes.ok) {
-      return {
-        statusCode: pushRes.status,
-        headers: corsHeaders,
-        body: JSON.stringify({ error: pushResult.message || "GitHub push failed" }),
-      };
+
+      return json(
+        pushRes.status,
+        {
+          error:
+            pushData.message ||
+            "GitHub push failed",
+        },
+        corsHeaders
+      );
+
     }
 
-    // ── Success ────────────────────────────────────────────
-    return {
-      statusCode: 200,
-      headers: corsHeaders,
-      body: JSON.stringify({ success: true, slug, url: listingUrl }),
-    };
+    return json(
+      200,
+      {
+        success: true,
+        url: listingUrl,
+        slug,
+      },
+      corsHeaders
+    );
 
   } catch (err) {
-    console.error(err);
-    return {
-      statusCode: 500,
-      headers: corsHeaders,
-      body: JSON.stringify({ error: err.message }),
-    };
-  }
-};
 
+    console.error(err);
+
+    return json(
+      500,
+      {
+        error:
+          err.message ||
+          "Internal server error",
+      },
+      corsHeaders
+    );
+
+  }
+
+};
