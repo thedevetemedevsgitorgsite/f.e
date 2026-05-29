@@ -1,3 +1,7 @@
+:root{
+  --primary-color: #0066ff;
+  --transition: all 0.3s ease;
+} 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
   font-family: 'Poppins', system-ui, sans-serif;
@@ -7,6 +11,15 @@ body {
   display: flex;
   flex-direction: column;
 }
+a {
+  text-decoration: none;
+  color: var(--primary-color);
+  transition: var(--transition);
+}
+
+a:hover {
+  opacity: 0.85;
+}
 header {
   background: #0066ff;
   padding: 14px 24px;
@@ -14,6 +27,7 @@ header {
   align-items: center;
   justify-content: space-between;
 }
+
 header a {
   color: #fff;
   font-weight: 700;
