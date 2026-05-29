@@ -249,7 +249,7 @@ function buildHtml(data) {
   <h1>${data.title}</h1>
 
   <p class="meta">
-    By ${data.sellerName}
+    By <b><a href="${authorLink||'https://devtem.org/home'}">${data.sellerName}</a></b>
   </p>
 
   <p class="price">
@@ -361,7 +361,7 @@ exports.handler = async (event) => {
       seller_username,
       seller_name,
       category,
-
+      seller_id, 
     } = body;
 
     if (!product_id || !title) {
@@ -411,7 +411,7 @@ exports.handler = async (event) => {
 
     const productUrl =
       `https://devtem.org/p?id=${product_id}`;
-
+    const authorUrl = `https://devtem.org/s?s=${seller_id}`;
     const html = buildHtml({
 
   title: safeTitle,
@@ -437,7 +437,7 @@ exports.handler = async (event) => {
 
   rawPrice:
     Number(price) || 0,
-
+  authorLink: authorUrl, 
 });
 
     const githubUrl =
