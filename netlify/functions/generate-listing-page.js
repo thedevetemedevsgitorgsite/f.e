@@ -179,7 +179,7 @@ exports.handler = async (event) => {
       event.headers["x-app-upload-token"];
 
     if (
-      appToken !== process.env.APP_UPLOAD_TOKEN
+      appToken !== process.env.APP_UPLOAD_SECRET
     ) {
 
       return json(
