@@ -213,8 +213,9 @@ footer {
 
   }
 .footer-logo{
-  width:48px;
-  height:48px;
+  width:30px;
+  height:30px;
   object-fit:contain;
-  margin-bottom:12px;
+  margin-bottom: -10px;
+  display: inline-flex;
 }
