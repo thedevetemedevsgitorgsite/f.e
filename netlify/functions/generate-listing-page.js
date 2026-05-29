@@ -52,26 +52,180 @@ function buildHtml(data) {
 
 <title>${data.title} | DevTemple</title>
 
+<meta name="title" content="${data.title} | DevTemple">
 <meta name="description" content="${data.description}">
-<meta name="keywords" content="${data.tags}">
+<meta name="keywords" content="DevTemple, ${data.tags}, ${data.category}, digital assets, developer marketplace">
 <meta name="author" content="${data.sellerName}">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="language" content="English">
+<meta name="theme-color" content="#0066ff">
 
 <link rel="canonical" href="${data.listingUrl}">
 
-<meta property="og:title" content="${data.title}">
-<meta property="og:description" content="${data.description}">
-<meta property="og:image" content="${data.image}">
-<meta property="og:url" content="${data.listingUrl}">
+<link
+  rel="icon"
+  type="image/png"
+  href="https://devtem.org/assets/images/logo.png"
+>
+
+<link
+  rel="apple-touch-icon"
+  href="https://devtem.org/assets/images/logo.png"
+>
+
+<!-- Open Graph -->
+
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="DevTemple">
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${data.title}">
-<meta name="twitter:description" content="${data.description}">
-<meta name="twitter:image" content="${data.image}">
+<meta
+  property="og:title"
+  content="${data.title} | DevTemple"
+>
 
-<link rel="stylesheet" href="/assets/styles/listings-global.css">
+<meta
+  property="og:description"
+  content="${data.description}"
+>
 
-</head>
+<meta
+  property="og:url"
+  content="${data.listingUrl}"
+>
+
+<meta
+  property="og:image"
+  content="${data.image}"
+>
+
+<meta
+  property="og:image:secure_url"
+  content="${data.image}"
+>
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta
+  property="og:image:alt"
+  content="${data.title}"
+>
+
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter -->
+
+<meta
+  name="twitter:card"
+  content="summary_large_image"
+>
+
+<meta
+  name="twitter:title"
+  content="${data.title} | DevTemple"
+>
+
+<meta
+  name="twitter:description"
+  content="${data.description}"
+>
+
+<meta
+  name="twitter:image"
+  content="${data.image}"
+>
+
+<meta
+  name="twitter:image:alt"
+  content="${data.title}"
+>
+
+<meta
+  name="twitter:url"
+  content="${data.listingUrl}"
+>
+
+<meta
+  name="twitter:site"
+  content="@fscss_ttr"
+>
+
+<meta
+  name="twitter:creator"
+  content="@fscss_ttr"
+>
+
+<!-- Schema.org JSON-LD -->
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication"
+
+  "name": ${JSON.stringify(data.title)},
+
+  "image": ${JSON.stringify(data.image)},
+
+  "description": ${JSON.stringify(data.description)},
+
+  "category": ${JSON.stringify(data.category)},
+
+  "url": ${JSON.stringify(data.listingUrl)},
+
+  "brand": {
+    "@type": "Brand",
+    "name": "DevTemple"
+  },
+
+  "seller": {
+    "@type": "Person",
+    "name": ${JSON.stringify(data.sellerName)},
+    "url": ${JSON.stringify(data.authorUrl)}
+  },
+
+  "offers": {
+
+    "@type": "Offer",
+
+    "url": ${JSON.stringify(data.productUrl)},
+
+    "priceCurrency": "NGN",
+
+    "price": ${JSON.stringify(data.rawPrice)},
+
+    "availability": "https://schema.org/InStock",
+
+    "itemCondition":
+      "https://schema.org/NewCondition"
+
+  },
+
+  "publisher": {
+
+    "@type": "Organization",
+
+    "name": "DevTemple",
+
+    "url": "https://devtem.org",
+
+    "logo": {
+
+      "@type": "ImageObject",
+
+      "url":
+        "https://devtem.org/assets/images/logo.png"
+
+    }
+
+  }
+
+}
+</script>
+
+<link
+  rel="stylesheet"
+  href="/assets/styles/listings-global.css"
+>
 
 <body>
 
@@ -80,12 +234,13 @@ function buildHtml(data) {
 </header>
 
 <main>
-
-  <img
-    src="${data.image}"
-    alt="${data.title}"
-    class="product-img"
-  >
+<img
+  src="${data.image}"
+  alt="${data.title}"
+  loading="lazy"
+  decoding="async"
+  class="product-img"
+>
 
   <span class="badge">
     ${data.category}
@@ -259,23 +414,31 @@ exports.handler = async (event) => {
 
     const html = buildHtml({
 
-      title: safeTitle,
-      description: safeDescription,
+  title: safeTitle,
 
-      image: safeImage,
+  description: safeDescription,
 
-      sellerName: safeSeller,
+  image: safeImage,
 
-      category: safeCategory,
+  sellerName: safeSeller,
 
-      tags: safeTags,
+  category: safeCategory,
 
-      listingUrl,
-      productUrl,
+  tags: safeTags,
 
-      price: formattedPrice,
+  listingUrl,
 
-    });
+  productUrl,
+
+  authorUrl:
+    `https://devtem.org/home?q=${seller_username || ""}`,
+
+  price: formattedPrice,
+
+  rawPrice:
+    Number(price) || 0,
+
+});
 
     const githubUrl =
       `https://api.github.com/repos/${OWNER}/${REPO}/contents/${slug}`;
