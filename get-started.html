@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Get Started — DevTemple</title>
+  <meta name="description" content="Set up your DevTemple account and discover how to buy, sell, and grow on the ultimate digital marketplace.">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#06f">
+  <link rel="icon" href="/assets/images/logo.png">
+  <link rel="stylesheet" href="/assets/styles/index.css">
+  <link rel="stylesheet" href="/assets/styles/blog.css">
+  <style>
+    /* ── Onboarding-specific styles only ── */
+    /* Inherits all variables and base styles from index.css */
+
+    .ob-wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    /* Progress bar */
+    .ob-progress {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+    .ob-step {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+    .ob-step-dot {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 700;
+      color: #aaa;
+      flex-shrink: 0;
+      transition: all 0.3s;
+      font-family: 'Poppins', sans-serif;
+    }
+    .ob-step-dot.active {
+      border-color: #06f;
+      background: #06f;
+      color: #fff;
+    }
+    .ob-step-dot.done {
+      border-color: #22c55e;
+      background: #22c55e;
+      color: #fff;
+    }
+    .ob-step-line {
+      flex: 1;
+      height: 2px;
+      background: #e5e7eb;
+      margin: 0 4px;
+      transition: background 0.3s;
+    }
+    .ob-step-line.done { background: #22c55e; }
+
+    /* Panel */
+    .ob-panel {
+      display: none;
+      animation: obFadeUp 0.35s ease both;
+    }
+    .ob-panel.active { display: block; }
+
+    @keyframes obFadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Panel header */
+    .ob-panel-header {
+      margin-bottom: 28px;
+    }
+    .ob-panel-label {
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #06f;
+      margin-bottom: 8px;
+    }
+    .ob-panel-header h2 {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(20px, 4vw, 28px);
+      font-weight: 400;
+      color: var(--text-primary, #111);
+      margin: 0 0 10px;
+      line-height: 1.3;
+    }
+    .ob-panel-header p {
+      font-size: 15px;
+      color: var(--text-muted, #555);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* About card */
+    .ob-about-card {
+      background: var(--card-bg, #f8f9ff);
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+    }
+    .ob-about-card h3 {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 15px;
+      color: #06f;
+      margin: 0 0 12px;
+    }
+    .ob-about-card p {
+      font-size: 14px;
+      color: var(--text-muted, #555);
+      line-height: 1.75;
+      margin: 0 0 12px;
+    }
+    .ob-about-card p:last-child { margin-bottom: 0; }
+
+    .ob-stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .ob-stat-card {
+      background: var(--card-bg, #f8f9ff);
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 10px;
+      padding: 16px;
+      text-align: center;
+    }
+    .ob-stat-card .ob-stat-val {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 22px;
+      color: #06f;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .ob-stat-card .ob-stat-lbl {
+      font-size: 12px;
+      color: var(--text-muted, #777);
+    }
+
+    .ob-faq-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: #06f;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 0;
+    }
+    .ob-faq-link:hover { text-decoration: underline; }
+
+    /* ── Step 2: Goals checkboxes ── */
+    .ob-goal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+    @media (max-width: 480px) { .ob-goal-grid { grid-template-columns: 1fr; } }
+
+    .ob-goal-card {
+      position: relative;
+      cursor: pointer;
+    }
+    .ob-goal-card input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+    .ob-goal-label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 16px;
+      border: 2px solid var(--border-color, #e5e7eb);
+      border-radius: 12px;
+      background: var(--card-bg, #f8f9ff);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+      min-height: 90px;
+    }
+    .ob-goal-card input:checked + .ob-goal-label {
+      border-color: #06f;
+      background: rgba(0,102,255,0.04);
+      box-shadow: 0 0 0 3px rgba(0,102,255,0.08);
+    }
+    .ob-goal-icon {
+      font-size: 22px;
+      line-height: 1;
+    }
+    .ob-goal-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary, #111);
+    }
+    .ob-goal-desc {
+      font-size: 12px;
+      color: var(--text-muted, #777);
+      line-height: 1.5;
+    }
+    .ob-goal-check {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .ob-goal-card input:checked ~ .ob-goal-label .ob-goal-check,
+    .ob-goal-card input:checked + .ob-goal-label .ob-goal-check {
+      border-color: #06f;
+      background: #06f;
+    }
+    .ob-goal-check svg { display: none; }
+    .ob-goal-card input:checked + .ob-goal-label .ob-goal-check svg { display: block; }
+
+    /* Dynamic info panels */
+    .ob-info-panels {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .ob-info-panel {
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 12px;
+      overflow: hidden;
+      display: none;
+    }
+    .ob-info-panel.visible { display: block; animation: obFadeUp 0.3s ease both; }
+    .ob-info-panel-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      background: var(--card-bg, #f8f9ff);
+      border-bottom: 1px solid var(--border-color, #e5e7eb);
+    }
+    .ob-info-panel-head span {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary, #111);
+    }
+    .ob-info-panel-body {
+      padding: 16px;
+    }
+    .ob-info-panel-body ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .ob-info-panel-body ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+      color: var(--text-muted, #555);
+      line-height: 1.6;
+    }
+    .ob-info-panel-body ul li::before {
+      content: '→';
+      color: #06f;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    /* ── Step 3: Top creators ── */
+    .ob-creators-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .ob-creator-card {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 14px 16px;
+      border: 1px solid var(--border-color, #e5e7eb);
+      border-radius: 12px;
+      background: var(--card-bg, #f8f9ff);
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .ob-creator-card:hover {
+      border-color: #06f;
+      box-shadow: 0 2px 12px rgba(0,102,255,0.08);
+    }
+    .ob-creator-avatar {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      background: #e5e7eb;
+      flex-shrink: 0;
+      border: 2px solid #e5e7eb;
+    }
+    .ob-creator-info { flex: 1; min-width: 0; }
+    .ob-creator-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-primary, #111);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-bottom: 2px;
+    }
+    .ob-creator-name .verified {
+      width: 14px; height: 14px;
+      border-radius: 50%;
+      background: #06f;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .ob-creator-skill {
+      font-size: 12px;
+      color: var(--text-muted, #777);
+      margin-bottom: 3px;
+    }
+    .ob-creator-meta {
+      font-size: 11px;
+      color: #aaa;
+    }
+    .ob-sub-btn {
+      flex-shrink: 0;
+      padding: 7px 14px;
+      border-radius: 8px;
+      border: 1.5px solid #06f;
+      background: transparent;
+      color: #06f;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.2s, color 0.2s;
+      white-space: nowrap;
+    }
+    .ob-sub-btn:hover, .ob-sub-btn.subbed {
+      background: #06f;
+      color: #fff;
+    }
+    .ob-sub-btn.subbed { cursor: default; }
+    .ob-sub-btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .ob-skeleton {
+      background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+      background-size: 200% 100%;
+      animation: shimmer 1.4s infinite;
+      border-radius: 6px;
+    }
+    @keyframes shimmer {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .ob-sk-avatar { width: 46px; height: 46px; border-radius: 50%; flex-shrink: 0; }
+    .ob-sk-line { height: 13px; margin-bottom: 6px; }
+    .ob-sk-line.short { width: 60%; }
+    .ob-sk-line.long { width: 85%; }
+
+    /* ── Step 4: done ── */
+    .ob-done-wrap {
+      text-align: center;
+      padding: 20px 0;
+    }
+    .ob-done-icon {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: rgba(34,197,94,0.1);
+      border: 2px solid rgba(34,197,94,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn {
+      from { transform: scale(0); opacity: 0; }
+      to   { transform: scale(1); opacity: 1; }
+    }
+    .ob-done-wrap h2 {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 22px;
+      color: var(--text-primary, #111);
+      margin-bottom: 10px;
+    }
+    .ob-done-wrap p {
+      font-size: 15px;
+      color: var(--text-muted, #555);
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .ob-done-actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .ob-done-actions a {
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      transition: opacity 0.2s;
+    }
+    .ob-done-actions a:hover { opacity: 0.85; }
+    .ob-btn-primary {
+      background: #06f;
+      color: #fff;
+    }
+    .ob-btn-secondary {
+      border: 1.5px solid var(--border-color, #e5e7eb);
+      color: var(--text-primary, #111);
+    }
+
+    /* ── Nav buttons ── */
+    .ob-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 32px;
+      gap: 12px;
+    }
+    .ob-btn-next {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: #06f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .ob-btn-next:hover { background: #0051cc; transform: translateY(-1px); }
+    .ob-btn-next:disabled { background: #aaa; cursor: not-allowed; transform: none; }
+    .ob-btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 12px 20px;
+      background: transparent;
+      color: var(--text-muted, #555);
+      border: 1.5px solid var(--border-color, #e5e7eb);
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      transition: border-color 0.2s;
+    }
+    .ob-btn-back:hover { border-color: #aaa; }
+    .ob-skip {
+      font-size: 13px;
+      color: #aaa;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      background: none;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .ob-skip:hover { color: #777; }
+
+    /* Auth gate banner */
+    .ob-auth-note {
+      background: rgba(0,102,255,0.06);
+      border: 1px solid rgba(0,102,255,0.2);
+      border-radius: 10px;
+      padding: 14px 16px;
+      font-size: 13px;
+      color: #06f;
+      margin-bottom: 24px;
+      display: none;
+    }
+    .ob-auth-note.visible { display: block; }
+    .ob-auth-note a { color: #06f; font-weight: 600; }
+
+    /* Loading overlay for subscribe */
+    .ob-loading-msg {
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+      padding: 8px 0;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<section class="top-ad">
+<div class="text-container"><a href="//devtem.org/dashboard#/reward/">🎁 Start earning today — view rewards</a></div>
+</section>
+<section class="top-menu">
+  <div class="top-btns">
+  <div class="top-left">
+    <button class="top-btn toggle-menu">
+     <svg xmlns="http://www.w3.org/2000/svg" 
+     width="26" height="26" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <line x1="3" y1="6" x2="21" y2="6" />
+  <line x1="3" y1="12" x2="21" y2="12" />
+  <line x1="3" y1="18" x2="21" y2="18" />
+</svg>
+    </button>
+    
+    <h3 class="app-name">DevTemple</h3>
+    </button>
+  </div>
+<button class="top-btn add-post" onclick="window.location.href='/dashboard#/pen/'">
+  <svg xmlns="http://www.w3.org/2000/svg" 
+       width="23" height="23" 
+       viewBox="0 0 24 24" 
+       fill="none" stroke="currentColor" 
+       stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Arrow pointing up into a tray -->
+    <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2"/>
+    <polyline points="7 9 12 4 17 9"/>
+    <line x1="12" y1="4" x2="12" y2="16"/>
+  </svg>
+</button>
+  
+  <button class="top-btn cart" onclick="window.location.href='/home';">
+<svg width="28" height="25" viewBox="0 0 24 24" fill="currentColor">
+  <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
+</svg>
+  </button>
+  
+      <button class="top-btn gift" onclick="window.location.href='/dashboard#/reward/'">
+    <svg xmlns="http://www.w3.org/2000/svg" 
+     width="25" height="25" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <rect x="3" y="8" width="18" height="13" rx="2" ry="2" />
+  <path d="M12 8v13" />
+  <path d="M3 12h18" />
+  <path d="M12 8c-1.5-2-4-4-6-2s1.5 4 6 2z" />
+  <path d="M12 8c1.5-2 4-4 6-2s-1.5 4-6 2z" />
+</svg>
+  </button>
+  
+  
+  <button class="top-btn user" onclick="window.location.href='/dashboard#/user/'">
+<svg class="svg-icon" viewBox="0 0 448 512" width="20" height="20">
+  <path fill="currentColor" d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z" />
+</svg>
+  </button>
+  </div>
+ <div class="top-list keys">
+
+
+</div>
+
+</section>
+
+<section class="hero">
+  
+   <div class="hero-content hidden">
+     <div class="hero-head">
+        <h3 class="hero-title">
+  <span class="title-word title-word-1">Build</span>&nbsp;<span class="title-word title-word-2">Amazing</span>&nbsp;<span class="title-word title-word-3">Projects</span>&nbsp;<span class="title-word title-word-4">Faster</span>
+</h3>
+<p>Discover premium digital assets, creative resources, and marketing tools.</p>
+     </div>
+   </div>
+</section>
+<section class="top-search-bar">
+    <div class="hero-content">
+        <div class="hero-search">
+          <form class="hero-form" action="/home">
+          <input type="search" placeholder="Search DevTemple...">
+          <button type="button" onclick="window.location.href='/home'"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="19" height="19" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+</svg></button>
+          </form>
+        </div>
+   </div>
+  
+</section>
+
+
+<section class="side-menu hidden">
+  <div class="menu-list">
+    
+        <p>
+            <button class="theme-btn">
+            <span class="moon">
+                🌙
+            </span><span class="sun">
+                🔆
+            </span></button>
+    </p>
+    
+  <a href="/index.html#" class="menu-list-item"><h3>Home</h3></a>
+  
+  <a href="/home.html#" class="menu-list-item"><h3>Templates</h3></a>
+  
+  <a href="/dashboard.html#" class="menu-list-item"><h3>Account & Dashboard</h3></a>
+  
+  <div class="line"></div>
+  <a class="menu-list-item" id="supportToggle"><h3>Support <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9" />
+</svg></h3></a>
+  
+  <div class="side-drop hidden" id="supportDrop">
+    <a href="/about#" class="menu-list-item"><h3>About</h3></a>
+      <a href="/contact#" class="menu-list-item"><h3>Contact</h3></a>
+        <a href="/faq#" class="menu-list-item"><h3>Faq</h3></a>
+  </div>
+  
+    <div class="line"></div>
+    
+  <a class="menu-list-item" id="legalToggle"><h3>Legal <svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <polyline points="6 9 12 15 18 9" />
+</svg></h3></a>
+  
+  <div class="side-drop hidden" id="legalDrop">
+    <a href="/terms#" class="menu-list-item"><h3>Terms and Conditions</h3></a>
+      <a href="/terms/privacy#" class="menu-list-item"><h3>Privacy Policy</h3></a>
+        <a href="/terms#payment-refunds-heading" class="menu-list-item"><h3>Refunds</h3></a>
+  </div>
+  
+
+  </div>
+  
+</section>
+
+
+
+<!-- ── Main ── -->
+<main>
+  <section class="section-contain">
+    <div class="ob-wrap">
+
+      <!-- Progress -->
+      <div class="ob-progress">
+        <div class="ob-step">
+          <div class="ob-step-dot active" id="dot-1">1</div>
+        </div>
+        <div class="ob-step-line" id="line-1"></div>
+        <div class="ob-step">
+          <div class="ob-step-dot" id="dot-2">2</div>
+        </div>
+        <div class="ob-step-line" id="line-2"></div>
+        <div class="ob-step">
+          <div class="ob-step-dot" id="dot-3">3</div>
+        </div>
+        <div class="ob-step-line" id="line-3"></div>
+        <div class="ob-step">
+          <div class="ob-step-dot" id="dot-4">4</div>
+        </div>
+      </div>
+
+      <!-- ══ STEP 1: About DevTemple ══ -->
+      <div class="ob-panel active" id="panel-1">
+        <div class="ob-panel-header">
+          <div class="ob-panel-label">Welcome</div>
+          <h2>What is DevTemple?</h2>
+          <p>A marketplace where creators sell and buyers discover premium digital assets — templates, tools, services, and more.</p>
+        </div>
+
+        <div class="ob-stats-row">
+          <div class="ob-stat-card">
+            <span class="ob-stat-val">2k+</span>
+            <span class="ob-stat-lbl">Products</span>
+          </div>
+          <div class="ob-stat-card">
+            <span class="ob-stat-val">500+</span>
+            <span class="ob-stat-lbl">Creators</span>
+          </div>
+          <div class="ob-stat-card">
+            <span class="ob-stat-val">₦</span>
+            <span class="ob-stat-lbl">Earn & Buy</span>
+          </div>
+        </div>
+
+        <div class="ob-about-card">
+          <h3>Built for creators and buyers</h3>
+          <p>DevTemple is a dual-sided platform. <b>Sellers</b> list digital products — UI kits, code, templates, guides, services — and earn directly. <b>Buyers</b> get instant downloads and access to a growing library of vetted resources.</p>
+          <p>Verification badges (Blue  → Gold), a referral rewards system, and subscriber notifications give active creators real momentum.</p>
+        </div>
+
+        <a href="https://devtem.org/faq" target="_blank" class="ob-faq-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Read full FAQ at devtem.org/faq
+        </a>
+
+        <div class="ob-nav">
+          <span></span>
+          <button class="ob-btn-next" onclick="goStep(2)">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══ STEP 2: Goals ══ -->
+      <div class="ob-panel" id="panel-2">
+        <div class="ob-panel-header">
+          <div class="ob-panel-label">Step 2 of 4</div>
+          <h2>What brings you here?</h2>
+          <p>Select everything that applies — we'll show you what's most useful for your goals.</p>
+        </div>
+
+        <div class="ob-goal-grid">
+
+          <label class="ob-goal-card">
+            <input type="checkbox" value="buy" onchange="updateInfoPanels()">
+            <div class="ob-goal-label">
+              <span class="ob-goal-icon"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Basket base -->
+  <path d="M3 9h18l-2 10H5L3 9z" />
+  
+  <!-- Basket handles -->
+  <line x1="9" y1="9" x2="4" y2="2" />
+  <line x1="15" y1="9" x2="20" y2="2" />
+</svg></span>
+              <span class="ob-goal-title">Buy digital products</span>
+              <span class="ob-goal-desc">Find templates, tools, and assets for your projects</span>
+              <div class="ob-goal-check">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+          </label>
+
+          <label class="ob-goal-card">
+            <input type="checkbox" value="sell" onchange="updateInfoPanels()">
+            <div class="ob-goal-label">
+              <span class="ob-goal-icon"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 64 64" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bag shape -->
+  <path d="M20 12c0-4 8-8 12-8s12 4 12 8l-4 8h-16l-4-8z" fill="#8B5E3C"/>
+  <path d="M16 20h32l-4 32H20l-4-32z" fill="#D4AF37" stroke="#000"/>
+  
+  <!-- Dollar sign -->
+  <text x="32" y="40" font-size="16" text-anchor="middle" fill="green" font-weight="bold">$</text>
+</svg></span>
+              <span class="ob-goal-title">Sell my work</span>
+              <span class="ob-goal-desc">List products, services, or templates and earn</span>
+              <div class="ob-goal-check">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+          </label>
+
+          <label class="ob-goal-card">
+            <input type="checkbox" value="explore" onchange="updateInfoPanels()">
+            <div class="ob-goal-label">
+              <span class="ob-goal-icon"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+</svg></span>
+              <span class="ob-goal-title">Explore & discover</span>
+              <span class="ob-goal-desc">Browse what creators are building and selling</span>
+              <div class="ob-goal-check">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+          </label>
+
+          <label class="ob-goal-card">
+            <input type="checkbox" value="earn" onchange="updateInfoPanels()">
+            <div class="ob-goal-label">
+              <span class="ob-goal-icon"><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Coin circle -->
+  <circle cx="12" cy="12" r="9" />
+  
+  <!-- Dollar sign -->
+  <path d="M12 7v10M9 10h6M9 14h6" />
+</svg></span>
+              <span class="ob-goal-title">Earn & grow</span>
+              <span class="ob-goal-desc">Referrals, rewards, badges, and subscriptions</span>
+              <div class="ob-goal-check">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+          </label>
+
+        </div>
+
+        <!-- Dynamic info panels -->
+        <div class="ob-info-panels">
+
+          <div class="ob-info-panel" id="info-buy">
+            <div class="ob-info-panel-head">
+              <span><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Basket base -->
+  <path d="M3 9h18l-2 10H5L3 9z" />
+  
+  <!-- Basket handles -->
+  <line x1="9" y1="9" x2="4" y2="2" />
+  <line x1="15" y1="9" x2="20" y2="2" />
+</svg></span>
+              <span>How buying works on DevTemple</span>
+            </div>
+            <div class="ob-info-panel-body">
+              <ul>
+                <li>Browse or search products at <b>devtem.org/home</b></li>
+                <li>Add to cart and checkout securely — instant digital download</li>
+                <li>Subscribe to your favourite creators to get notified when they upload new products</li>
+                <li>All products are reviewed before listing — quality is guaranteed</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ob-info-panel" id="info-sell">
+            <div class="ob-info-panel-head">
+              <span><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 64 64" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Bag shape -->
+  <path d="M20 12c0-4 8-8 12-8s12 4 12 8l-4 8h-16l-4-8z" fill="#8B5E3C"/>
+  <path d="M16 20h32l-4 32H20l-4-32z" fill="#D4AF37" stroke="#000"/>
+  
+  <!-- Dollar sign -->
+  <text x="32" y="40" font-size="16" text-anchor="middle" fill="green" font-weight="bold">$</text>
+</svg></span>
+              <span>How selling works on DevTemple</span>
+            </div>
+            <div class="ob-info-panel-body">
+              <ul>
+                <li>Go to <b>Dashboard → Upload</b> to list your first product</li>
+                <li>Set your price, add a cover image, description, and tags</li>
+                <li>Your product goes live and buyers can find it immediately</li>
+                <li>Earn badges as you grow: Blue is your first milestone, Gold is the top tier</li>
+                <li>Build subscribers — they get an email every time you upload something new</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ob-info-panel" id="info-explore">
+            <div class="ob-info-panel-head">
+              <span><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <circle cx="11" cy="11" r="8" />
+  <line x1="21" y1="21" x2="16.65" y2="16.65" />
+</svg></span>
+              <span>Discovering creators and products</span>
+            </div>
+            <div class="ob-info-panel-body">
+              <ul>
+                <li>Search by keyword, category, or creator username at <b>/home</b></li>
+                <li>Subscribe to creators you like — never miss a new upload</li>
+                <li>Like and share products to help creators get discovered</li>
+                <li>New products are posted daily across all skill categories</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="ob-info-panel" id="info-earn">
+            <div class="ob-info-panel-head">
+              <span><svg xmlns="http://www.w3.org/2000/svg" 
+     width="24" height="24" 
+     viewBox="0 0 24 24" 
+     fill="none" stroke="currentColor" 
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Coin circle -->
+  <circle cx="12" cy="12" r="9" />
+  
+  <!-- Dollar sign -->
+  <path d="M12 7v10M9 10h6M9 14h6" />
+</svg></span>
+              <span>The DevTemple Rewards Program</span>
+            </div>
+            <div class="ob-info-panel-body">
+              <ul>
+                <li>Share your referral link — earn <b>7% on every order</b> placed through it</li>
+                <li>Complete your profile and get your first <b>Blue Verified Badge</b></li>
+                <li>Stay active — sell, post, engage — to unlock the <b>Gold Verified Badge</b></li>
+                <li>Badges signal credibility to buyers and increase your search visibility</li>
+                <li>No limits on referral earnings — the more you share, the more you earn</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="ob-nav">
+          <button class="ob-btn-back" onclick="goStep(1)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+            Back
+          </button>
+          <button class="ob-btn-next" onclick="goStep(3)">
+            Next
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ══ STEP 3: Top creators ══ -->
+      <div class="ob-panel" id="panel-3">
+        <div class="ob-panel-header">
+          <div class="ob-panel-label">Step 3 of 4</div>
+          <h2>Follow top creators</h2>
+          <p>Subscribe to get notified when they upload new products. You can manage subscriptions anytime in your account.</p>
+        </div>
+
+        <div class="ob-auth-note" id="auth-note">
+          You're not signed in. <a href="/dashboard#/user/">Sign in or create an account</a> to subscribe to creators and save your preferences.
+        </div>
+
+        <div class="ob-creators-grid" id="creators-grid">
+          <!-- Skeletons while loading -->
+          <div class="ob-creator-card" id="sk1">
+            <div class="ob-skeleton ob-sk-avatar"></div>
+            <div style="flex:1">
+              <div class="ob-skeleton ob-sk-line long"></div>
+              <div class="ob-skeleton ob-sk-line short"></div>
+            </div>
+          </div>
+          <div class="ob-creator-card" id="sk2">
+            <div class="ob-skeleton ob-sk-avatar"></div>
+            <div style="flex:1">
+              <div class="ob-skeleton ob-sk-line long"></div>
+              <div class="ob-skeleton ob-sk-line short"></div>
+            </div>
+          </div>
+          <div class="ob-creator-card" id="sk3">
+            <div class="ob-skeleton ob-sk-avatar"></div>
+            <div style="flex:1">
+              <div class="ob-skeleton ob-sk-line long"></div>
+              <div class="ob-skeleton ob-sk-line short"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="ob-loading-msg" id="loading-msg">Subscribing...</p>
+
+        <div class="ob-nav">
+          <button class="ob-btn-back" onclick="goStep(2)">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+            Back
+          </button>
+          <div style="display:flex;align-items:center;gap:16px;">
+            <button class="ob-skip" onclick="goStep(4)">Skip</button>
+            <button class="ob-btn-next" onclick="goStep(4)">
+              Continue
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ STEP 4: Done ══ -->
+      <div class="ob-panel" id="panel-4">
+        <div class="ob-done-wrap">
+          <div class="ob-done-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>You're all set!</h2>
+          <p>Your DevTemple account is ready. Start exploring products, upload your first listing, or check your dashboard to complete your profile and earn your verified badge.</p>
+          <div class="ob-done-actions">
+            <a href="/home" class="ob-btn-primary">Explore Products</a>
+            <a href="/dashboard#/pen/" class="ob-btn-secondary">Upload a Product</a>
+            <a href="/dashboard#/user/" class="ob-btn-secondary">Go to Dashboard</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    
+          <button class="scroll-btn"><svg class="svg-icon" viewBox="0 0 448 512" width="16" height="16">
+  <path fill="currentColor" d="M240.971 130.524l194.343 194.343c9.373 9.373 9.373 24.569 0 33.941l-22.667 22.667c-9.357 9.357-24.522 9.375-33.901.04L224 227.495 69.255 381.516c-9.379 9.335-24.544 9.317-33.901-.04l-22.667-22.667c-9.373-9.373-9.373-24.569 0-33.941L207.03 130.525c9.372-9.373 24.568-9.373 33.941-.001z" />
+</svg></button>
+
+  </section>
+ 
+  
+</main>
+
+<!-- ── Footer (matches site) ── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>&copy; 2025 DevTemple. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/terms">Terms</a>
+        <span>•</span>
+        <a href="/terms/privacy">Privacy</a>
+        <span>•</span>
+        <a href="/faq">FAQ</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="/assets/scripts/hero.js"></script>
+<script src="/assets/scripts/main.js"></script>
+<script type="module" src="/assets/scripts/g-s.js" defer>
+</script>
+</body>
+</html>
