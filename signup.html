@@ -50,12 +50,11 @@ window.OneSignalDeferred = window.OneSignalDeferred || [];
           if (currentStep === 2) {
             document.getElementById("previewUser").innerText = document.querySelector('[name="user-name"]').value;
             document.getElementById("previewBio").innerText = document.querySelector('[name="bio"]').value;
-            document.getElementById("previewSkills").innerText = document.querySelector('[name="skills"]').value;
+            document.getElementById("previewSkills").innerText = document.querySelector('[name="skills"]').value.replace(/_/g, ' ');
             document.getElementById("previewWebsite").innerText = "";
             document.getElementById("previewFullName").innerText = document.querySelector('[name="full-name"]').value;
             document.getElementById("previewEmail").innerText = document.querySelector('[type="email"]').value;
-            document.getElementById("previewImg").src =
-              document.querySelector('[name="photo"]').value || "https://via.placeholder.com/100";
+            document.getElementById("previewImg").src = "https://placehold.co/600x600?text="+document.querySelector('[name="full-name"]').value.slice(0,1) || "https://via.placeholder.com/100";
           }
           
           showStep(currentStep);
