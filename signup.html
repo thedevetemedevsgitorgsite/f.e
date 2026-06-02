@@ -48,7 +48,7 @@ window.OneSignalDeferred = window.OneSignalDeferred || [];
           
           // Populate preview step
           if (currentStep === 2) {
-            document.getElementById("previewUser").innerText = document.querySelector('[name="user-name"]').value;
+            document.getElementById("previewUser").innerText = document.querySelector('[name="full-name"]').value.trim().replace(/\W+/g, "_").toLowerCase()+crypto.randomUUID().slice(0,5);
             document.getElementById("previewBio").innerText = document.querySelector('[name="bio"]').value;
             document.getElementById("previewSkills").innerText = document.querySelector('[name="skills"]').value.replace(/_/g, ' ');
             document.getElementById("previewWebsite").innerText = "";
