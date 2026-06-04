@@ -73,7 +73,7 @@ exports.handler = async (event) => {
     const { data: profiles, error: profileError } = await supabase
       .from("profiles")
       .select("email, full_name")
-      .in("id", subscriberIds);
+      .in("id", subscriberIds).eq("subscription_notify", true);
 
     if (profileError) {
       return {
