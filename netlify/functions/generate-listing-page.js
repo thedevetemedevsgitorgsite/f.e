@@ -43,7 +43,7 @@ function slugify(str = "") {
 
 function buildHtml(data) {
 const seoDes = data.description.slice(0, 300);
-  const bodyDes = data.description.replace(/\#([\w\-]+)/g, "<a href='https://devtem.org/home?q=$1' class='card-tag'>#$1</a>");
+  const bodyDes = data.description.replace(/\#([\w\-]+)/g, "<a href='https://devtem.org/home?q=$1' class='card-tag'>#$1</a>").replace(/\@([^\s\@]{3,})/g, "<span class='user-mention'>@$1</span>");
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -156,7 +156,7 @@ const seoDes = data.description.slice(0, 300);
   name="twitter:creator"
   content="@fscss_ttr"
 >
-
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ADLaM Display">
 <!-- Schema.org JSON-LD -->
 
 <script type="application/ld+json">
