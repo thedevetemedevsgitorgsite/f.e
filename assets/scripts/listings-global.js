@@ -26,7 +26,7 @@ becomeCard.inneeHTML = `
       </div>
       <div>
         <span class="badge" style="background: #0066ff10; font-size: 0.9rem; margin-right: 8px;">10% referral commission</span>
-        <span class="badge" style="background: #0066ff10; font-size: 0.9rem;">Th+ Digital products</span>
+        <span class="badge" style="background: #0066ff10; font-size: 0.9rem;">2000+ Digital products</span>
       </div>
     </div>
 `;
