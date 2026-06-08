@@ -219,3 +219,40 @@ footer {
   margin-bottom: -10px;
   display: inline-flex;
 }
+
+ .promo-card {
+   background: linear-gradient(105deg, #ffffff 0%, #f3f9ff 100%);
+   border-radius: 1.8rem;
+   padding: 2rem;
+   margin: 2rem 0;
+   border: 1px solid #e2edff;
+ }
+ 
+    .btn-primary {
+      background: #0066ff;
+      color: white;
+      padding: 0.85rem 2rem;
+      border-radius: 60px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.95rem;
+      transition: 0.2s;
+      box-shadow: 0 4px 8px rgba(0,102,255,0.2);
+    }
+    .btn-primary:hover {
+      background: #0052cc;
+      transform: translateY(-2px);
+    } 
+        .badge {
+      background: #eef2ff;
+      color: #0066ff;
+      padding: 0.2rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      display: inline-block;
+      margin-top: 1rem;
+        }
