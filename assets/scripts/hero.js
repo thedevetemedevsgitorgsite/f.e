@@ -39,3 +39,4 @@ document.addEventListener("DOMContentLoaded", () => {
 document.querySelector(".app-name")?.addEventListener("click", e =>{
   location.href="/";
 })
+const heroForm=document.querySelector(".hero-form[action]"),formButton=heroForm?.querySelector("button");heroForm?.addEventListener("submit",e=>{e.preventDefault(),window.location.href="/home?q="+encodeURIComponent(heroForm?.querySelector("input").value.trim()||"")}),formButton?.addEventListener("click",e=>{window.location.href="/home?q="+encodeURIComponent(heroForm?.querySelector("input").value.trim()||"")});
