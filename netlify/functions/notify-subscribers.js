@@ -90,6 +90,15 @@ exports.handler = async (event) => {
         body: JSON.stringify({ success: true, sent: 0, message: "No subscriber profiles found" }),
       };
     }
+          function escapeHtml(string) {
+  if (!string) return '';
+  return String(string)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
 
     // MAILER
     const transporter = nodemailer.createTransport({
@@ -108,45 +117,39 @@ exports.handler = async (event) => {
     let sent = 0;
     const failed = [];
 
+    
     for (const profile of profiles) {
       if (!profile.email) continue;
 
-      const html = `
-        <div style="font-family:system-ui,sans-serif;max-width:600px;margin:auto;padding:2rem;">
-          <h2>Hello ${profile.full_name || "there"},</h2>
+    // Pre-escape the variables safely
+const safeFullName = escapeHtml(profile.full_name) || "there";
+const safeSellerUsername = escapeHtml(seller_username);
+const safeProductName = escapeHtml(product_name);
 
-          <p>You're receiving this because you subscribed to <b>@${seller_username}</b> on DevTemple — and they just uploaded something new. 🔔</p>
+// Escape description text first, then convert newlines to safe <br> tags
+const safeProductDescription = product_description 
+  ? `<p>${escapeHtml(product_description).replace(/\n/g, "<br>")}</p>` 
+  : "";
 
-          <b>${product_name}</b><br>
-          ${product_description ? `<p>${product_description.replace(/\n/g, "<br>")}</p>` : ""}
+const html = `
+  <p>Hi ${safeFullName},</p>
 
-          <ul>
-            <li><a href="https://devtem.org/home#search?q=@${seller_username}">Browse @${seller_username}'s full product list</a> to find this product and everything else they've listed</li>
-          </ul>
+  <p>@${safeSellerUsername} just uploaded a new product: <b>${safeProductName}</b>.</p>
+  
+  ${safeProductDescription}
 
-          <b>Show your support:</b>
-          <ul>
-            <li>Like and share their post — <b>engagement helps their work reach more people</b></li>
-            <li>If this product adds value to your work, <b>a purchase goes a long way</b> in keeping creators like @${seller_username} active on the platform</li>
-          </ul>
+  <p>You can check it out here: <a href="https://devtem.org/home#search?q=@${safeSellerUsername}">devtem.org/@${safeSellerUsername}</a></p>
 
-          <b>Manage your subscriptions:</b>
-          <ul>
-            <li><a href="https://devtem.org/faq#how-to-subscribe">How subscriptions work on DevTemple</a></li>
-            <li><a href="https://devtem.org/faq#creator-subscriber-list">View your full creator subscription list</a></li>
-            <li><a href="https://devtem.org/faq#unsubscribe-manage">Unsubscribe or manage your preferences</a></li>
-          </ul>
+  <br>
+  <p style="color:#888;font-size:11px;">You received this because you follow @${safeSellerUsername} on DevTemple. <a href="https://devtem.org/faq#unsubscribe-manage" style="color:#888;">Manage preferences</a>.</p>
+`;
 
-          <hr style="margin:2rem 0;border:none;border-top:1px solid #eee">
-          <p style="color:#888;font-size:13px">DevTemple · devtem.org</p>
-        </div>
-      `;
 
       try {
         await transporter.sendMail({
           from: `"DevTemple" <office@devtem.org>`,
           to: profile.email,
-          subject: `@${seller_username} just uploaded a new product on DevTemple 🔔`,
+          subject: `New from @${safeSellerUsername}`,
           html,
         });
         sent++;
