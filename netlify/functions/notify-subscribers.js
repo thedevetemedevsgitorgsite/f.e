@@ -131,17 +131,18 @@ const safeProductDescription = product_description
   ? `<p>${escapeHtml(product_description).replace(/\n/g, "<br>")}</p>` 
   : "";
 
+const listingUrl = `https://devtem.org/home#search?q=@${safeSellerUsername}`;
+
 const html = `
   <p>Hi ${safeFullName},</p>
 
-  <p>@${safeSellerUsername} just uploaded a new product: <b>${safeProductName}</b>.</p>
-  
+  <p>${safeSellerUsername} just published a new listing on DevTemple — <b>${safeProductName}</b>.</p>
+
   ${safeProductDescription}
 
-  <p>You can check it out here: <a href="https://devtem.org/home#search?q=@${safeSellerUsername}">devtem.org/@${safeSellerUsername}</a></p>
+  <p>Check it out here:<br>${listingUrl}</p>
 
-  <br>
-  <p style="color:#888;font-size:11px;">You received this because you follow @${safeSellerUsername} on DevTemple. <a href="https://devtem.org/faq#unsubscribe-manage" style="color:#888;">Manage preferences</a>.</p>
+  <p style="color:#888;font-size:11px;">You received this because you follow ${safeSellerUsername} on DevTemple. <a href="https://devtem.org/faq#unsubscribe-manage" style="color:#888;">Manage preferences</a>.</p>
 `;
 
 
@@ -149,7 +150,7 @@ const html = `
         await transporter.sendMail({
           from: `"DevTemple" <office@devtem.org>`,
           to: profile.email,
-          subject: `New from @${safeSellerUsername}`,
+          subject: `New listing from ${safeSellerUsername}`,
           html,
         });
         sent++;
