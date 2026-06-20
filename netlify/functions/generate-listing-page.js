@@ -496,7 +496,7 @@ exports.handler = async (event) => {
 
     const safeDescription =
       escapeHtml(description || "")
-        .slice(0, 700);
+        .slice(0, 1000);
 
     const safeCategory =
       escapeHtml(category || "Digital Product");
