@@ -162,7 +162,7 @@ const seoDes = data.description.slice(0, 300);
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "SoftwareApplication"
+  "@type": "SoftwareApplication", 
 
   "name": ${JSON.stringify(data.title)},
 
