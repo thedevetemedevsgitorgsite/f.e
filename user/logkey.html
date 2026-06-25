@@ -182,7 +182,7 @@ const res=await fetch("/.netlify/functions/fcnfig");const{url,key}=await res.jso
   const email = document.querySelector('#resetEmail').value;
 
   const { error } = await supabase.auth.resetPasswordForEmail(email, {
-    redirectTo: "https://devtem.org/user/reset.html"
+    redirectTo: "https://devtem.org/user/reset"
   });
 
   if (error) {
