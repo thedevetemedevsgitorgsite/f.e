@@ -1,385 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Free Image Compressor – Reduce PNG, JPEG & WebP Size Online | DevTemple</title>
-  <meta name="description" content="Compress images online instantly with DevTemple’s free image compressor. Reduce PNG, JPEG, and WebP file sizes up to 80% without losing quality. Fast, secure, and 100% browser-based.">
-
-  <meta name="keywords" content="image compressor, compress images online, reduce image size, jpeg compressor, png compressor, webp compressor, online image optimizer, image size reducer, web performance, web optimization, SEO tools, dev tools, DevTemple, web developer tools, optimize website speed, reduce file size, free image compression, offline image compressor">
+  <meta name="description" content="Compress images online instantly with DevTemple's free image compressor. Reduce PNG, JPEG, and WebP file sizes without losing quality. Fast, secure, and 100% browser-based.">
+  <meta name="keywords" content="image compressor, compress images online, reduce image size, jpeg compressor, png compressor, webp compressor, online image optimizer, image size reducer, free image compression, offline image compressor, devtemple">
   <meta name="author" content="DevTemple">
   <meta name="robots" content="index, follow">
   <meta name="language" content="English">
-
-  <!-- Open Graph Meta Tags (for social sharing) -->
+  <link rel="icon" href="/assets/images/logo.png">
+  <link rel="stylesheet" href="assets/styles/tools.css">
   <meta property="og:title" content="Free Image Compressor – Optimize PNG, JPEG & WebP | DevTemple">
-  <meta property="og:description" content="Reduce your image file sizes instantly with DevTemple’s free online image compressor. 100% secure, offline, and lightning fast. Perfect for web developers and designers.">
+  <meta property="og:description" content="Reduce your image file sizes instantly with DevTemple's free online image compressor. 100% secure, offline, and lightning fast.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://devtem.org/image-compressor">
   <meta property="og:site_name" content="DevTemple Image Compressor">
-  <meta property="og:image" content="https://devtem.org/assets/images/image-compressor.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="DevTemple Free Image Compressor Preview">
-
-  <!-- Twitter Card Meta Tags -->
+  <meta property="og:image" content="https://devtem.org/assets/images/logo.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Free Image Compressor – Reduce File Size Instantly | DevTemple">
   <meta name="twitter:description" content="Compress and optimize images for web or app use. No uploads, no loss of quality. 100% free and browser-based.">
-  <meta name="twitter:image" content="https://devtem.org/assets/images/image-compressor.png">
+  <meta name="twitter:image" content="https://devtem.org/assets/images/logo.png">
   <meta name="twitter:site" content="@fscss_ttr">
-
-  <!-- Canonical URL -->
+  <meta name="theme-color" content="#3b82f6">
   <link rel="canonical" href="https://devtem.org/image-compressor">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="https://devtem.org/assets/images/logo.png">
-
-  <!-- Mobile/App -->
-  <meta name="theme-color" content="#06f">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-
-  <!-- Google AdSense -->
   <meta name="google-adsense-account" content="ca-pub-8466647951093215">
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "DevTemple Image Compressor",
-      "operatingSystem": "All",
-      "applicationCategory": "UtilityApplication",
-      "description": "Free online image compressor tool by DevTemple. Reduce PNG, JPEG, and WebP file sizes instantly without losing quality. No uploads required.",
-      "url": "https://devtem.org/image-compressor",
-      "publisher": {
-        "@type": "Organization",
-        "name": "DevTemple",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://devtem.org/assets/images/logo.png"
-        }
-      },
-      "image": "https://devtem.org/assets/images/image-compressor.png",
-      "sameAs": [
-        "https://twitter.com/fscss_ttr",
-        "https://www.facebook.com/profile.php?id=61582984827911"
-      ]
-    }
-  </script>
-
-  <!-- Stylesheet -->
-  <link rel="stylesheet" href="/convert-images/style.css">
-    </head>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DevTemple Image Compressor","operatingSystem":"All","applicationCategory":"UtilityApplication","description":"Free online image compressor tool by DevTemple. Reduce PNG, JPEG, and WebP file sizes instantly without losing quality. No uploads required.","url":"https://devtem.org/image-compressor","publisher":{"@type":"Organization","name":"DevTemple","logo":{"@type":"ImageObject","url":"https://devtem.org/assets/images/logo.png"}}}</script>
+</head>
 <body>
-  <section class="top-menu main">
-  <h3 class="name">DevTe<svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-   <path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z" />
- </svg>ple</h3>
-  <button class="top-btn" onclick="document.getElementById('upload').click()"><svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/>
-            </svg></button>
+
+<section class="top-menu main">
+  <h3 class="name">DevTe<svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>ple</h3>
+  <button class="top-btn" onclick="document.getElementById('file-input').click()" disabled>
+    <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+    Upload
+  </button>
 </section>
+
 <aside class="sidebar" id="sidebar">
-  <div class="sidebar-header">
-    <h2>
-      <svg class="svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
-      DevTemple
-    </h2>
+  <div class="sidebar-header" onclick="location.href='/'">
+    <img src="//devtem.org/assets/images/logo.png" alt="DevTemple logo" class="sidebar-logo">
+    <h2>DevTemple</h2>
   </div>
   <nav>
     <ul>
       <p><strong>Navigation</strong></p>
-      <li>
-        <a href="/">
-          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
-          </svg>
-          Home
-        </a>
-      </li>
-      <li>
-        <a href="/home.html">
-          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
-            <path d="M7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/>
-          </svg>
-          Templates
-        </a>
-      </li>
+      <li><a href="/"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</a></li>
+      <li><a href="/home.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/></svg>Templates</a></li>
       <p><strong>Tools</strong></p>
-      <li>
-        <a href="/convert-images" class="">
-          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
-          </svg>
-          image converter
-        </a>
-      </li>
-      <li>
-  <a href="/image-compressor" class="active">
-    <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z" />
-    </svg>
-    image compressor 
-  </a>
-</li>
-      <li>
-  <a href="/color-picker" class="">
-    <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm-7 10c0-3.86 3.14-7 7-7 1.29 0 2.51.35 3.57.96l-7.61 7.61C5.35 13.51 5 12.29 5 11zm7 7c-1.29 0-2.51-.35-3.57-.96l7.61-7.61c.61 1.06.96 2.28.96 3.57 0 3.86-3.14 7-7 7z" />
-      <path d="M8.5 11c-.83 0-1.5-.67-1.5-1.5S7.67 8 8.5 8s1.5.67 1.5 1.5S9.33 11 8.5 11z" />
-    </svg> Color picker
-  </a>
-</li>
+      <li><a href="/convert-images"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M8.5 15H10V9H7v1.5h1.5zm4.5 0h3c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1h-3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm.5-4.5h2v3h-2v-3z"/></svg>Image Converter</a></li>
+      <li><a href="/image-compressor" class="active"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>Image Compressor</a></li>
+      <li><a href="/color-picker"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm-7 10c0-3.86 3.14-7 7-7 1.29 0 2.51.35 3.57.96l-7.61 7.61C5.35 13.51 5 12.29 5 12zm7 7c-1.29 0-2.51-.35-3.57-.96l7.61-7.61c.61 1.06.96 2.28.96 3.57 0 3.86-3.14 7-7 7z"/></svg>Color Picker</a></li>
       <p><strong>Support</strong></p>
-      <li>
-        <a href="/faq.html">
-          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
-            <path d="M7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/>
-          </svg>
-          FAQs 
-        </a>
-      </li>
-      <li>
-        <a href="/about.html">
-          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/>
-          </svg>
-          About
-        </a>
-      </li>
-      <li>
-        <a href="/contact.html">
-          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
-          </svg>
-          Contact
-        </a>
-      </li>
+      <li><a href="/faq.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>FAQs</a></li>
+      <li><a href="/about.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>About</a></li>
+      <li><a href="/contact.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>Contact</a></li>
     </ul>
   </nav>
   <div class="sidebar-footer">
     <p><strong>DevTemple</strong></p>
-    <p>Your trusted marketplace for high-quality templates, UI components, and code snippets. Empowering creators and developers worldwide.</p>
+    <p>Your trusted marketplace for high-quality templates, UI components, and code snippets.</p>
   </div>
 </aside>
 
-<!-- Overlay -->
 <div class="overlay" id="overlay"></div>
-
-<!-- Toggle Button -->
 <button class="sidebar-toggle" id="sidebarToggle">☰</button>
 
-  
-  <main>
-    <div class="main-content">
+<div class="main-content">
   <header>
     <h1>
-      <svg class="svg-icon" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-        <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/>
-        <path d="M8.5 15H10V9H7v1.5h1.5zm4.5 0h3c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1h-3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm.5-4.5h2v3h-2v-3z"/>
-      </svg>
-      Free Image Compressor</h1>
-    <p>Optimize your images for faster websites or apps and better performance.
-      </p>
-    
+      <svg class="svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>
+      Free Image Compressor
+    </h1>
+    <p>Reduce image file sizes for faster websites and better performance — all in your browser</p>
   </header>
-<div id="upload-section" class="card">
-  <div id="upload-area">
-    <input type="file" id="file-input" accept="image/*" hidden>
-    <div class="upload-placeholder" onclick="document.getElementById('upload').click()">
-      <p>
-        <svg class="svg-icon" width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z" />
-        </svg>
-        Click to upload or drag & drop your image here
-      </p>
+
+  <main>
+    <!-- Upload Section -->
+    <div id="upload-section" class="card">
+      <div id="upload-area">
+        <input type="file" id="file-input" accept="image/*" hidden>
+        <div class="upload-placeholder" onclick="document.getElementById('file-input').click()">
+          <svg class="svg-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" style="color:#3b82f6;margin-bottom:8px"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+          <p>Click to upload or drag &amp; drop your image here</p>
+          <small>Supports PNG, JPEG, WebP, GIF, BMP, and more</small>
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-    <!-- Conversion Section -->
+
+    <!-- Compressor Section -->
     <div id="converter-section" class="card hidden">
       <div class="file-info">
         <span id="file-name"></span>
+        <button id="reset-btn">
+          <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          Reset
+        </button>
       </div>
-  <button onclick="compressImage()" class="convert-btn">Compress</button>
-  
+
+      <!-- Quality slider -->
+      <div id="quality-box">
+        <label for="quality-range">
+          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="color:#3b82f6"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg>
+          Quality: <span id="quality-value">85</span>%
+        </label>
+        <input type="range" id="quality-range" min="1" max="100" value="85">
+        <small style="display:block;margin-top:.5rem;color:#64748b;">Lower quality = smaller file size. PNG uses lossless compression (quality ignored).</small>
+      </div>
+
+      <button id="convert-btn" class="convert-btn" onclick="compressImage()">
+        <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 12H5"/><path d="M12 5v14"/><path stroke="currentColor" stroke-width="2" fill="none" d="M4 15l8 8 8-8M12 3v16"/></svg>
+        <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M5 20h14v-2H5v2zm7-18l-7 7h4v6h6v-6h4l-7-7z" transform="rotate(180 12 12)"/></svg>
+        Compress Image
+      </button>
+
       <div id="download-section" class="hidden">
-  <p class="success">
-    <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-    </svg>
-    compression complete!
-  </p>
-  <a id="download-btn" style="display: inline-block;" >
-    <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-      <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z" />
-    </svg>
-    Download
-  </a>
-</div>
+        <p class="success">
+          <svg class="svg-icon" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Compression complete!
+        </p>
+        <div class="size-comparison" id="size-comparison"></div>
+        <a id="download-btn">
+          <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+          Download Compressed Image
+        </a>
+      </div>
     </div>
-    <input type="file" id="upload" accept="image/*" hidden />
-    <canvas id="canvas" style="display:none;"></canvas>
-  
-<div class="content-section">
-  <h2>About This Image Compressor Tool</h2>
-  <p>Welcome to DevTemple's free online image compressor — a powerful browser-based tool designed to reduce image file sizes without noticeably affecting visual quality. It’s ideal for developers, designers, and content creators who want faster-loading websites and smaller storage usage.</p>
-  
-  <p>Our compressor runs entirely in your browser using the HTML5 Canvas API, ensuring complete privacy. Unlike online compressors that upload your files to remote servers, this tool processes everything locally on your device — no uploads, no tracking, no risks.</p>
-  
-  <h3>Why Use Our Image Compressor?</h3>
-  <div class="feature-grid">
-    <div class="feature-box">
-      <h4>🔒 100% Private & Secure</h4>
-      <p>All compression happens right in your browser. Your images never leave your device, ensuring total privacy and security at all times.</p>
-    </div>
-    <div class="feature-box">
-      <h4>⚡ Lightning Fast</h4>
-      <p>Compress images instantly with no waiting or uploading delays. Everything is processed locally for a seamless experience.</p>
-    </div>
-    <div class="feature-box">
-      <h4>💯 Completely Free</h4>
-      <p>No subscriptions, no limits, no watermarks. Compress unlimited images completely free, forever.</p>
-    </div>
-    <div class="feature-box">
-      <h4>🎯 Smart Compression</h4>
-      <p>Automatically reduces image size to 50% for optimal performance while maintaining sharpness and clarity.</p>
-    </div>
-  </div>
-  
-  <h3>Supported Image Formats</h3>
-  <p>Our image compressor supports the most common image types used across the web and design workflows:</p>
-  
-  <ul>
-    <li><strong>JPEG (Joint Photographic Experts Group):</strong> Ideal for photos and colorful images. Compression significantly reduces file size while maintaining visual quality, perfect for web and mobile optimization.</li>
-    
-    <li><strong>PNG (Portable Network Graphics):</strong> Excellent for images with transparency or text. While PNG is lossless by default, compressing it to JPEG format can drastically reduce file size when transparency isn’t needed.</li>
-    
-    <li><strong>WebP:</strong> Supported by most browsers, WebP provides great compression with minimal quality loss. Future versions of this tool will include direct WebP compression support.</li>
-  </ul>
-  
-  <h3>How to Use the Image Compressor</h3>
-  <p>Compressing your images is simple and quick:</p>
-  <ol style="margin-left: 1.5rem; color: #475569;">
-    <li><strong>Upload Your Image:</strong> Click the upload button or drag your image file into the upload area. Supported formats include PNG, JPEG, and WebP.</li>
-    <li><strong>Compress:</strong> Click the <em>Compress</em> button. The tool will instantly reduce the image file size by applying 50% JPEG quality compression.</li>
-    <li><strong>Download:</strong> Once processing is done, click the <em>Download Compressed Image</em> link to save your optimized file.</li>
-  </ol>
-  
-  <h3>When to Use Image Compression</h3>
-  <p><strong>Use this tool when:</strong> You want your images to load faster on websites, reduce hosting bandwidth usage, or prepare images for uploads to platforms with size limits.</p>
-  
-  <p>Optimizing images before publishing improves your website’s performance, SEO ranking, and user experience. Even small reductions in file size can make a noticeable difference in speed and storage.</p>
-  
-  <h3>Image Optimization Best Practices</h3>
-  <p>To achieve the best balance between quality and performance, keep these tips in mind:</p>
-  
-  <ul>
-    <li>Always compress large images before uploading them to your site or app.</li>
-    <li>For photos, 50–70% quality usually gives a great balance between size and clarity.</li>
-    <li>Use JPEG for photos and colorful images, and PNG only for graphics or images that need transparency.</li>
-    <li>Prefer smaller dimensions for thumbnails and previews instead of resizing large originals in code.</li>
-    <li>Use lazy loading on websites to load images only when visible on screen.</li>
-    <li>Combine this compressor with caching and CDN delivery for maximum site speed.</li>
-  </ul>
-</div>
 
-<!-- FAQ Section -->
-<div class="content-section">
-  <h2>Frequently Asked Questions</h2>
-  
-  <h3>Is this image compressor really free?</h3>
-  <p>Yes, it’s 100% free to use with no watermarks, fees, or registration required. You can compress unlimited images directly from your browser.</p>
-  
-  <h3>Are my images uploaded to your servers?</h3>
-  <p>No — all compression happens locally on your device using the browser’s Canvas API. Your images never leave your computer or phone.</p>
-  
-  <h3>What's the maximum file size I can compress?</h3>
-  <p>The limit depends on your device’s available memory and browser. Most modern browsers easily handle images up to 50MB or higher.</p>
-  
-  <h3>Does compressing reduce image quality?</h3>
-  <p>Yes, slightly — but the tool uses smart compression to maintain excellent visual quality. In most cases, you’ll barely notice any difference.</p>
-  
-  <h3>Can I compress multiple images at once?</h3>
-  <p>Currently, the compressor handles one image at a time. You can compress multiple images sequentially, and we plan to add batch compression soon.</p>
-  
-  <h3>Which browsers are supported?</h3>
-  <p>This tool works with all modern browsers — Chrome, Edge, Firefox, Safari, and Opera — on both desktop and mobile devices.</p>
-</div>
+    <canvas id="canvas" style="display:none"></canvas>
 
-<!-- About DevTemple -->
-<div class="content-section">
-  <h2>About DevTemple</h2>
-  <p>At DevTemple, we’re building a hub for creators, developers, and designers who want to work smarter and faster. Our mission is to empower you with free tools, templates, and components that simplify your workflow.</p>
-  
-  <p>From powerful utilities like this Image Compressor to full-stack web templates and UI kits, we provide resources that are both practical and production-ready. Each tool is designed to be lightweight, fast, and privacy-friendly — because we value your time and your data.</p>
-  
-  <p>DevTemple is not just a toolkit — it’s a community-driven ecosystem where developers can share their creations, learn, and grow together. We believe in building the web better, one project at a time.</p>
-  
-  <p>This free image compressor is just one example of our commitment to open, privacy-focused web tools. Explore our marketplace to find more solutions that help you code faster, launch sooner, and deliver better experiences.</p>
-</div>
+    <!-- About Section -->
+    <div class="content-section">
+      <h2>About This Image Compressor Tool</h2>
+      <p>Welcome to DevTemple's free online image compressor — a powerful browser-based tool designed to reduce image file sizes without noticeably affecting visual quality. It's ideal for developers, designers, and content creators who want faster-loading websites and smaller storage usage.</p>
+      <p>Our compressor runs entirely in your browser using the HTML5 Canvas API, ensuring complete privacy. Unlike online compressors that upload your files to remote servers, this tool processes everything locally on your device — no uploads, no tracking, no risks.</p>
+
+      <h3>Why Use Our Image Compressor?</h3>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.54-2.42 6.86-5 7.93-2.58-1.07-5-4.39-5-7.93V7.18L12 5z"/></svg></div>
+          <h4>100% Private &amp; Secure</h4>
+          <p>All compression happens right in your browser. Your images never leave your device at any point.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5v-5l-2.28 2.28C7.06 18.22 6 15.22 6 12c0-3.93 2.61-7.28 6.21-7.91L11 2.05z"/></svg></div>
+          <h4>Lightning Fast</h4>
+          <p>Compress images instantly with no uploading delays. Everything is processed locally.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></div>
+          <h4>Completely Free</h4>
+          <p>No subscriptions, no limits, no watermarks. Compress unlimited images for free, forever.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></div>
+          <h4>Quality Control</h4>
+          <p>Adjust the quality slider to find the perfect balance between file size and image clarity.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg></div>
+          <h4>Keeps Original Format</h4>
+          <p>PNG stays PNG, JPEG stays JPEG, WebP stays WebP. Your file extension is always preserved.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1l2.753 8.472H23l-7.359 5.348 2.753 8.472L12 18.944l-6.394 4.348 2.753-8.472L2 9.472h8.247z"/></svg></div>
+          <h4>Size Savings Report</h4>
+          <p>See exactly how much you saved — original size vs compressed size shown after every compression.</p>
+        </div>
+      </div>
+
+      <h3>Supported Image Formats</h3>
+      <ul>
+        <li><strong>JPEG:</strong> Ideal for photos and colorful images. The quality slider gives you full control over the size-to-quality tradeoff.</li>
+        <li><strong>PNG:</strong> Lossless by nature. Our tool re-encodes PNGs to strip metadata and reduce file size while preserving full quality and transparency.</li>
+        <li><strong>WebP:</strong> Modern format with excellent compression. Compressed output stays as WebP, keeping the format advantage intact.</li>
+        <li><strong>GIF &amp; BMP:</strong> Supported as input. Output converts to PNG to maximize compatibility.</li>
+      </ul>
+
+      <h3>How to Use</h3>
+      <ol style="margin-left:1.5rem;color:#475569;">
+        <li><strong>Upload:</strong> Click the upload area or drag and drop your image file.</li>
+        <li><strong>Set Quality:</strong> Drag the quality slider — lower values = smaller file, higher values = better clarity.</li>
+        <li><strong>Compress:</strong> Click Compress Image and the tool processes it instantly in your browser.</li>
+        <li><strong>Download:</strong> Check the size savings report then download your compressed file.</li>
+      </ol>
+
+      <h3>Image Optimization Best Practices</h3>
+      <ul>
+        <li>For photos, 75–85% quality gives an excellent size-to-clarity balance.</li>
+        <li>Use PNG only when you need transparency or truly lossless output.</li>
+        <li>Always compress images before uploading them to your website or app.</li>
+        <li>Combine compression with lazy loading for maximum page speed gains.</li>
+        <li>Use a CDN alongside compressed images for the fastest delivery worldwide.</li>
+      </ul>
+    </div>
+
+    <!-- FAQ -->
+    <div class="content-section">
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is this image compressor really free?</h3>
+      <p>Yes, 100% free with no watermarks, fees, or registration. Compress unlimited images directly from your browser.</p>
+      <h3>Are my images uploaded to your servers?</h3>
+      <p>No — all compression happens locally on your device using the browser's Canvas API. Your images never leave your computer or phone.</p>
+      <h3>Does the compressor change my image format?</h3>
+      <p>No. PNG compresses to PNG, JPEG to JPEG, WebP to WebP. Your original file extension is always preserved.</p>
+      <h3>What's the maximum file size I can compress?</h3>
+      <p>The limit depends on your device memory and browser. Most modern devices handle images up to 50MB or higher without issues.</p>
+      <h3>Does compressing reduce image quality?</h3>
+      <p>For JPEG and WebP, yes slightly — but the quality slider lets you control exactly how much. PNG compression is lossless, so quality is never affected.</p>
+      <h3>Can I compress multiple images at once?</h3>
+      <p>Currently one image at a time. Batch compression is planned for a future update.</p>
+      <h3>Which browsers are supported?</h3>
+      <p>All modern browsers — Chrome, Edge, Firefox, Safari, and Opera — on both desktop and mobile.</p>
+    </div>
+
+    <!-- About DevTemple -->
+    <div class="content-section">
+      <h2>About DevTemple</h2>
+      <p>At DevTemple, we're building a hub for creators, developers, and designers who want to work smarter and faster. Our mission is to empower you with free tools, templates, and components that simplify your workflow.</p>
+      <p>From powerful utilities like this Image Compressor to full-stack web templates and UI kits, we provide resources that are practical and production-ready. Each tool is designed to be lightweight, fast, and privacy-friendly.</p>
+      <p>This free image compressor is just one example of our commitment to open, privacy-focused web tools. Explore our marketplace to find more solutions that help you code faster, launch sooner, and deliver better experiences.</p>
     </div>
   </main>
+</div>
+
 <footer class="footer">
   <div class="container">
-    <!-- Main Footer Content -->
     <div class="footer-grid">
-      <!-- Brand Section -->
       <div class="footer-section brand-section">
         <h3>
-          <svg class="svg-icon" viewBox="0 0 640 512" width="20" height="20">
-            <path fill="currentColor" d="M278.9 511.5l-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2l43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6l144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z" />
-          </svg>
+          <img src="//devtem.org/assets/images/logo.png" alt="DevTemple logo" class="sidebar-logo" width="35" height="35">
           DevTemple
         </h3>
         <p>Your trusted marketplace for high-quality templates, UI components, and code snippets. Empowering creators and developers worldwide.</p>
         <div class="footer-social">
           <h4>Follow Us</h4>
           <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61582984827911" aria-label="Facebook">
-              <svg class="svg-icon" viewBox="0 0 320 512" width="16" height="16">
-                <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-              </svg>
-            </a>
-            <a href="https://x.com/fscss_ttr" aria-label="Twitter">
-              <svg class="svg-icon" viewBox="0 0 512 512" width="16" height="16">
-                <path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z" />
-              </svg>
-            </a>
-            <a href="https://github.com/fscss-ttr/" aria-label="GitHub">
-              <svg class="svg-icon" viewBox="0 0 480 512" width="16" height="16">
-                <path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z" />
-              </svg>
-            </a>
-            <a href="https://www.youtube.com/@devtem_org" aria-label="YouTube">
-              <svg class="svg-icon" viewBox="0 0 576 512" width="16" height="16">
-                <path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z" />
-              </svg>
-            </a>
+            <a href="https://www.tiktok.com/@devtem.org" aria-label="TikTok"><svg viewBox="0 0 320 512" width="16" height="16"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a>
+            <a href="https://x.com/fscss_ttr" aria-label="Twitter"><svg viewBox="0 0 512 512" width="16" height="16"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></a>
+            <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><svg viewBox="0 0 480 512" width="16" height="16"><path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg></a>
+            <a href="https://www.youtube.com/@devtem_org" aria-label="YouTube"><svg viewBox="0 0 576 512" width="16" height="16"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></a>
           </div>
         </div>
       </div>
-      
-      <!-- Quick Links -->
       <div class="footer-section">
         <h4>Quick Links</h4>
         <ul class="footer-links">
           <li><a href="/home.html">Home</a></li>
           <li><a href="/index.html#about">About</a></li>
           <li><a href="/home.html">Browse Templates</a></li>
-          <li><a href="#">Payment</a></li>
-          
         </ul>
       </div>
-      
-      <!-- Support -->
       <div class="footer-section">
         <h4>Support</h4>
         <ul class="footer-links">
@@ -387,49 +258,28 @@
           <li><a href="/index.html#contact">Contact Us</a></li>
           <li><a href="/terms/index.html">Terms of Service</a></li>
           <li><a href="/terms/privacy.html">Privacy Policy</a></li>
-          <li><a href="/terms/index.html#payment-refunds-heading">Refund Policy</a></li>
         </ul>
       </div>
-      
-      <!-- Contact Info -->
       <div class="footer-section">
         <h4>Contact</h4>
         <ul class="footer-contact">
-          <li>
-            <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
-              <path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z" />
-            </svg>
-            <a href="mailto:office@devtem.org">office@devtem.org</a>
-          </li>
-          <li>
-            <svg class="svg-icon" viewBox="0 0 496 512" width="14" height="14">
-              <path fill="currentColor" d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z" />
-            </svg>
-            <span>www.devtem.org</span>
-          </li>
-          <li>
-            <svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14">
-              <path fill="currentColor" d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 448c-110.5 0-200-89.5-200-200S145.5 56 256 56s200 89.5 200 200-89.5 200-200 200zm-32-316v116h-67c-10.7 0-16 12.9-8.5 20.5l99 99c4.7 4.7 12.3 4.7 17 0l99-99c7.6-7.6 2.2-20.5-8.5-20.5h-67V140c0-6.6-5.4-12-12-12h-40c-6.6 0-12 5.4-12 12z" />
-            </svg>
-            <span>24/7 Support Available</span>
-          </li>
+          <li><svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14"><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><a href="mailto:office@devtem.org">office@devtem.org</a></li>
+          <li><svg class="svg-icon" viewBox="0 0 496 512" width="14" height="14"><path fill="currentColor" d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg><span>www.devtem.org</span></li>
         </ul>
       </div>
     </div>
-    
-    <!-- Footer Bottom -->
     <div class="footer-bottom">
-      <p>&copy; 2025 DevTemple. All Rights Reserved.</p>
+      <p>&copy; 2026 DevTemple. All Rights Reserved.</p>
       <div class="footer-bottom-links">
-        <a href="/terms/index.html">Terms</a>
-        <span>•</span>
-        <a href="/terms/privacy.html">Privacy</a>
-        <span>•</span>
+        <a href="/terms/index.html">Terms</a><span>•</span>
+        <a href="/terms/privacy.html">Privacy</a><span>•</span>
         <a href="/home.html">Home</a>
       </div>
     </div>
   </div>
 </footer>
-  <script src="/convert-images/script.js"></script>
+
+<script src="assets/scripts/tools.js"></script>
 </body>
 </html>
+
