@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Picker & Palette Generator | DevTemple</title>
+  <meta name="description" content="Professional color picker with HEX, RGB, HSL, RGBA conversion, palette generation, and color extraction from images. Free, private, and 100% browser-based.">
+  <meta name="keywords" content="color picker, color palette generator, hex color picker, rgb color picker, hsl color, color extractor from image, color wheel, complementary colors, triadic palette, analogous palette, devtemple, web tools, dev tools">
+  <meta name="author" content="DevTemple">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  <link rel="icon" href="/assets/images/logo.png">
+  <link rel="stylesheet" href="assets/styles/tools.css">
+  <meta property="og:title" content="Color Picker & Palette Generator | DevTemple">
+  <meta property="og:description" content="Professional color picker: HEX/RGB/HSL/RGBA conversion, palette generation, and color extraction from images. Free and browser-based.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://devtem.org/color-picker">
+  <meta property="og:site_name" content="DevTemple Color Picker">
+  <meta property="og:image" content="https://devtem.org/assets/images/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Color Picker & Palette Generator | DevTemple">
+  <meta name="twitter:description" content="Professional color picker with HEX/RGB/HSL/RGBA conversion and palette generation. Free and browser-based.">
+  <meta name="twitter:image" content="https://devtem.org/assets/images/logo.png">
+  <meta name="twitter:site" content="@fscss_ttr">
+  <meta name="theme-color" content="#3b82f6">
+  <link rel="canonical" href="https://devtem.org/color-picker">
+  <meta name="google-adsense-account" content="ca-pub-8466647951093215">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"DevTemple Color Picker","operatingSystem":"All","applicationCategory":"UtilityApplication","description":"Free professional color picker with HEX, RGB, HSL, RGBA conversion, palette generation, and image color extraction.","url":"https://devtem.org/color-picker","publisher":{"@type":"Organization","name":"DevTemple","logo":{"@type":"ImageObject","url":"https://devtem.org/assets/images/logo.png"}}}</script>
+</head>
+<body>
+
+<section class="top-menu main">
+  <h3 class="name">DevTe<svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>ple</h3>
+  <button class="top-btn" onclick="document.getElementById('imageFile').click()" disabled>
+    <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+    Extract Colors
+  </button>
+</section>
+
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-header" onclick="location.href='/'">
+    <img src="//devtem.org/assets/images/logo.png" alt="DevTemple logo" class="sidebar-logo">
+    <h2>DevTemple</h2>
+  </div>
+  <nav>
+    <ul>
+      <p><strong>Navigation</strong></p>
+      <li><a href="/"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home</a></li>
+      <li><a href="/home.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M7 7h10v2H7zm0 4h10v2H7zm0 4h7v2H7z"/></svg>Templates</a></li>
+      <p><strong>Tools</strong></p>
+      <li><a href="/convert-images"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z"/><path d="M8.5 15H10V9H7v1.5h1.5zm4.5 0h3c.55 0 1-.45 1-1v-4c0-.55-.45-1-1-1h-3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1zm.5-4.5h2v3h-2v-3z"/></svg>Image Converter</a></li>
+      <li><a href="/image-compressor"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.17L4 17.17V4h16v12zM7 9h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z"/></svg>Image Compressor</a></li>
+      <li><a href="/color-picker" class="active"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm-7 10c0-3.86 3.14-7 7-7 1.29 0 2.51.35 3.57.96l-7.61 7.61C5.35 13.51 5 12.29 5 12zm7 7c-1.29 0-2.51-.35-3.57-.96l7.61-7.61c.61 1.06.96 2.28.96 3.57 0 3.86-3.14 7-7 7z"/></svg>Color Picker</a></li>
+      <p><strong>Support</strong></p>
+      <li><a href="/faq.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>FAQs</a></li>
+      <li><a href="/about.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>About</a></li>
+      <li><a href="/contact.html"><svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/></svg>Contact</a></li>
+    </ul>
+  </nav>
+  <div class="sidebar-footer">
+    <p><strong>DevTemple</strong></p>
+    <p>Your trusted marketplace for high-quality templates, UI components, and code snippets.</p>
+  </div>
+</aside>
+
+<div class="overlay" id="overlay"></div>
+<button class="sidebar-toggle" id="sidebarToggle">☰</button>
+
+<div class="main-content">
+  <header>
+    <h1>
+      <svg class="svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm-7 10c0-3.86 3.14-7 7-7 1.29 0 2.51.35 3.57.96l-7.61 7.61C5.35 13.51 5 12.29 5 12zm7 7c-1.29 0-2.51-.35-3.57-.96l7.61-7.61c.61 1.06.96 2.28.96 3.57 0 3.86-3.14 7-7 7z"/></svg>
+      Color Picker &amp; Palette Generator
+    </h1>
+    <p>Pick colors, convert formats, generate palettes, and extract colors from images</p>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <!-- ── LEFT COLUMN ── -->
+      <div>
+
+        <!-- Main Picker Card -->
+        <div class="card">
+          <div class="color-tools">
+            <div class="cp-header">
+              <span class="cp-title">
+                <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm-7 10c0-3.86 3.14-7 7-7 1.29 0 2.51.35 3.57.96l-7.61 7.61C5.35 13.51 5 12.29 5 12zm7 7c-1.29 0-2.51-.35-3.57-.96l7.61-7.61c.61 1.06.96 2.28.96 3.57 0 3.86-3.14 7-7 7z"/></svg>
+                Live Color Picker
+              </span>
+              <span class="small">Click or drag — use hue bar to change hue</span>
+            </div>
+
+            <div class="picker-wrap">
+              <canvas id="svCanvas" class="sv-canvas" width="280" height="280" title="Saturation / Value"></canvas>
+              <div class="picker-side">
+                <canvas id="hueCanvas" class="hue-strip" width="28" height="280" title="Hue"></canvas>
+                <input id="colorInput" type="color" value="#3b82f6" class="native-color-input" title="Native color picker">
+              </div>
+            </div>
+
+            <!-- Format inputs -->
+            <div class="inputs">
+              <div>
+                <label class="small">HEX</label>
+                <div class="input-row">
+                  <input id="hexInput" type="text" placeholder="#3b82f6" spellcheck="false">
+                  <button class="copy-btn" data-copy="hex">Copy</button>
+                </div>
+              </div>
+              <div>
+                <label class="small">RGB</label>
+                <div class="input-row">
+                  <input id="rgbInput" type="text" placeholder="rgb(59, 130, 246)" readonly>
+                  <button class="copy-btn" data-copy="rgb">Copy</button>
+                </div>
+              </div>
+              <div>
+                <label class="small">HSL</label>
+                <div class="input-row">
+                  <input id="hslInput" type="text" placeholder="hsl(217, 91%, 60%)" readonly>
+                  <button class="copy-btn" data-copy="hsl">Copy</button>
+                </div>
+              </div>
+              <div>
+                <label class="small">RGBA</label>
+                <div class="input-row">
+                  <input id="rgbaInput" type="text" placeholder="rgba(59, 130, 246, 1)" readonly>
+                  <button class="copy-btn" data-copy="rgba">Copy</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Preview + save -->
+            <div class="cp-actions">
+              <div class="color-preview card" id="previewBox">#3B82F6</div>
+              <button class="btn btn-primary" id="addToPalette">
+                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                Save
+              </button>
+              <button class="btn btn-ghost" id="clearHistory">
+                <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"/></svg>
+                Clear
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image extractor -->
+        <div class="card">
+          <div class="cp-section-header">
+            <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            <h3>Extract Palette From Image</h3>
+          </div>
+          <label class="upload-card" id="uploadCard">
+            <input id="imageFile" type="file" accept="image/*">
+            <svg class="svg-icon" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" style="color:#3b82f6"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM14 13v4h-4v-4H7l5-5 5 5h-3z"/></svg>
+            <div>
+              <strong>Upload an image</strong>
+              <div class="small">We'll extract the dominant colors</div>
+            </div>
+          </label>
+          <div class="cp-extract-meta">
+            <span class="small">Colors found:</span>
+            <span id="extractedCount" class="small">—</span>
+          </div>
+          <div id="extractedPalette" class="palette-grid"></div>
+          <p class="small" style="margin-top:8px">Click any swatch to set it as the active color.</p>
+        </div>
+
+        <!-- Palette history -->
+        <div class="card">
+          <div class="cp-section-header">
+            <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
+            <h3>Palette History</h3>
+            <span class="small" style="margin-left:auto">Saved locally</span>
+          </div>
+          <div id="history" class="history"></div>
+        </div>
+
+      </div>
+
+      <!-- ── RIGHT COLUMN ── -->
+      <aside>
+
+        <!-- Quick actions -->
+        <div class="card">
+          <div class="cp-section-header" style="margin-bottom:12px">
+            <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M11 17h2v-6h-2v6zm1-15C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zM11 9h2V7h-2v2z"/></svg>
+            <h3>Quick Actions</h3>
+          </div>
+          <div class="cp-quick-actions">
+            <button class="btn btn-primary" id="copyHexLarge">
+              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              Copy HEX
+            </button>
+            <button class="btn btn-ghost" id="copyRgbLarge">
+              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+              Copy RGB
+            </button>
+            <hr class="cp-divider">
+            <p class="small" style="color:#64748b;margin-bottom:4px">Generate palette</p>
+            <button class="btn btn-ghost" id="generateTriadic">
+              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L2 19h20L12 2zm0 3.5L19.5 17h-15L12 5.5z"/></svg>
+              Triadic
+            </button>
+            <button class="btn btn-ghost" id="generateAnalogous">
+              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Analogous
+            </button>
+            <button class="btn btn-ghost" id="generateComplementary">
+              <svg class="svg-icon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2v20M2 12h20" stroke="currentColor" stroke-width="2" fill="none"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+              Complementary
+            </button>
+          </div>
+        </div>
+
+        <!-- Generated palette -->
+        <div class="card" style="margin-top:14px">
+          <div class="cp-section-header" style="margin-bottom:12px">
+            <svg class="svg-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></svg>
+            <h3>Generated Palette</h3>
+          </div>
+          <div id="generated" class="palette-grid"></div>
+          <p class="small" style="margin-top:8px">Click any color to make it active.</p>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- About Section -->
+    <div class="content-section">
+      <h2>About This Color Picker Tool</h2>
+      <p>Welcome to DevTemple's professional color picker and palette generator — an essential tool for designers, developers, and digital creators. Select colors visually with the HSV canvas, convert between HEX, RGB, HSL, and RGBA instantly, generate harmonious palettes, and extract dominant colors from any image — all without leaving your browser.</p>
+      <p>Everything runs locally on your device. No uploads, no tracking, no external servers involved in any part of the process.</p>
+
+      <h3>Why Use Our Color Picker?</h3>
+      <div class="feature-grid">
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.49 2 2 6.49 2 12s4.49 10 10 10 10-4.49 10-10S17.51 2 12 2zm-7 10c0-3.86 3.14-7 7-7 1.29 0 2.51.35 3.57.96l-7.61 7.61C5.35 13.51 5 12.29 5 12zm7 7c-1.29 0-2.51-.35-3.57-.96l7.61-7.61c.61 1.06.96 2.28.96 3.57 0 3.86-3.14 7-7 7z"/></svg></div>
+          <h4>Advanced Color Selection</h4>
+          <p>HSV canvas, hue slider, and native color input give you multiple ways to hit the exact color you need.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/></svg></div>
+          <h4>Instant Format Conversion</h4>
+          <p>HEX, RGB, HSL, and RGBA all stay in sync as you pick — copy any format in one click.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M2 20h20v-4H2v4zm2-3h2v2H4v-2zM2 4v4h20V4H2zm4 3H4V5h2v2zm-4 7h20v-4H2v4zm2-3h2v2H4v-2z"/></svg></div>
+          <h4>Palette Generation</h4>
+          <p>Generate triadic, analogous, and complementary palettes from any base color automatically.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg></div>
+          <h4>Image Color Extraction</h4>
+          <p>Upload any image to extract its dominant color palette — perfect for matching brand colors from visuals.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg></div>
+          <h4>Persistent History</h4>
+          <p>Your saved colors persist across sessions in local browser storage — up to 12 recent colors always accessible.</p>
+        </div>
+        <div class="feature-box">
+          <div class="feat-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.54-2.42 6.86-5 7.93-2.58-1.07-5-4.39-5-7.93V7.18L12 5z"/></svg></div>
+          <h4>100% Private</h4>
+          <p>All processing happens in your browser. Images and colors never leave your device.</p>
+        </div>
+      </div>
+
+      <h3>Supported Color Formats</h3>
+      <ul>
+        <li><strong>HEX:</strong> The standard web format — six-digit hexadecimal prefixed with #. Used in CSS, HTML, and design tools everywhere.</li>
+        <li><strong>RGB:</strong> Specifies colors by red, green, and blue intensity (0–255). The native model for screen-based design.</li>
+        <li><strong>HSL:</strong> Hue, Saturation, Lightness — the most intuitive model for creating color variations and harmonious palettes.</li>
+        <li><strong>RGBA:</strong> RGB with an alpha (opacity) channel. Essential for overlays, transparency effects, and layered UI design.</li>
+      </ul>
+
+      <h3>Color Theory: Palette Types Explained</h3>
+      <p><strong>Triadic:</strong> Three colors equally spaced around the color wheel (120° apart). Creates vibrant, balanced palettes with strong contrast between all three hues.</p>
+      <p><strong>Analogous:</strong> Colors adjacent on the wheel (±20°). Creates cohesive, natural-feeling designs — ideal for calm, harmonious interfaces.</p>
+      <p><strong>Complementary:</strong> Two colors directly opposite each other (180° apart). Maximum contrast — great for bold CTAs and emphasis against neutral backgrounds.</p>
+
+      <h3>How to Use</h3>
+      <ol style="margin-left:1.5rem;color:#475569;">
+        <li><strong>Pick a Color:</strong> Click or drag on the SV canvas to set saturation and lightness. Drag the hue bar to change the hue. Or type directly into the HEX field.</li>
+        <li><strong>Copy a Format:</strong> Hit Copy next to HEX, RGB, HSL, or RGBA to grab the value for your code or design tool.</li>
+        <li><strong>Generate a Palette:</strong> Use the Triadic, Analogous, or Complementary buttons in the sidebar to build a multi-color scheme.</li>
+        <li><strong>Extract from Image:</strong> Upload any photo or graphic — the tool analyzes it and surfaces the most dominant colors as clickable swatches.</li>
+        <li><strong>Save to History:</strong> Click Save to store the current color. Your history persists between sessions and holds up to 12 colors.</li>
+      </ol>
+    </div>
+
+    <!-- FAQ -->
+    <div class="content-section">
+      <h2>Frequently Asked Questions</h2>
+      <h3>Is this color picker completely free?</h3>
+      <p>Yes — no limits, no subscriptions, no watermarks. Use it as many times as you like.</p>
+      <h3>Are my images uploaded to your servers?</h3>
+      <p>No. All color extraction and picking happens entirely in your browser. Nothing ever leaves your device.</p>
+      <h3>What image formats work for color extraction?</h3>
+      <p>JPEG, PNG, WebP, GIF, BMP, and most other common formats. Images up to ~50MB work well; very large files may be slow depending on your device.</p>
+      <h3>How many colors can I extract from an image?</h3>
+      <p>Up to 8 dominant colors per image using a bucket histogram algorithm that identifies the most visually significant hues.</p>
+      <h3>How many colors can I save in history?</h3>
+      <p>Up to 12. The oldest entry is removed when the limit is reached. History is stored in your browser's local storage and clears if you clear browser data.</p>
+      <h3>Which browsers are supported?</h3>
+      <p>All modern browsers — Chrome, Edge, Firefox, Safari, and Opera. The tool requires HTML5 Canvas support, which every major browser has had for years.</p>
+    </div>
+
+    <!-- About DevTemple -->
+    <div class="content-section">
+      <h2>About DevTemple</h2>
+      <p>At DevTemple, we're building a hub for creators, developers, and designers who want to work smarter and faster. Our mission is to empower you with free tools, templates, and components that simplify your workflow.</p>
+      <p>This color picker is one of a growing suite of free browser-based developer tools. Explore our marketplace for premium templates, UI kits, and code snippets that help you ship faster.</p>
+    </div>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-section brand-section">
+        <h3>
+          <img src="//devtem.org/assets/images/logo.png" alt="DevTemple logo" class="sidebar-logo" width="35" height="35">
+          DevTemple
+        </h3>
+        <p>Your trusted marketplace for high-quality templates, UI components, and code snippets. Empowering creators and developers worldwide.</p>
+        <div class="footer-social">
+          <h4>Follow Us</h4>
+          <div class="social-icons">
+            <a href="https://www.tiktok.com/@devtem.org" aria-label="TikTok"><svg viewBox="0 0 320 512" width="16" height="16"><path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"/></svg></a>
+            <a href="https://x.com/fscss_ttr" aria-label="Twitter"><svg viewBox="0 0 512 512" width="16" height="16"><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg></a>
+            <a href="https://github.com/fscss-ttr/" aria-label="GitHub"><svg viewBox="0 0 480 512" width="16" height="16"><path fill="currentColor" d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg></a>
+            <a href="https://www.youtube.com/@devtem_org" aria-label="YouTube"><svg viewBox="0 0 576 512" width="16" height="16"><path fill="currentColor" d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/home.html">Home</a></li>
+          <li><a href="/index.html#about">About</a></li>
+          <li><a href="/home.html">Browse Templates</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Support</h4>
+        <ul class="footer-links">
+          <li><a href="/faq.html">FAQ</a></li>
+          <li><a href="/index.html#contact">Contact Us</a></li>
+          <li><a href="/terms/index.html">Terms of Service</a></li>
+          <li><a href="/terms/privacy.html">Privacy Policy</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Contact</h4>
+        <ul class="footer-contact">
+          <li><svg class="svg-icon" viewBox="0 0 512 512" width="14" height="14"><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"/></svg><a href="mailto:office@devtem.org">office@devtem.org</a></li>
+          <li><svg class="svg-icon" viewBox="0 0 496 512" width="14" height="14"><path fill="currentColor" d="M336.5 160C322 70.7 287.8 8 248 8s-74 62.7-88.5 152h177zM152 256c0 22.2 1.2 43.5 3.3 64h185.3c2.1-20.5 3.3-41.8 3.3-64s-1.2-43.5-3.3-64H155.3c-2.1 20.5-3.3 41.8-3.3 64zm324.7-96c-28.6-67.9-86.5-120.4-158-141.6 24.4 33.8 41.2 84.7 50 141.6h108zM177.2 18.4C105.8 39.6 47.8 92.1 19.3 160h108c8.7-56.9 25.5-107.8 49.9-141.6zM487.4 192H372.7c2.1 21 3.3 42.5 3.3 64s-1.2 43-3.3 64h114.6c5.5-20.5 8.6-41.8 8.6-64s-3.1-43.5-8.5-64zM120 256c0-21.5 1.2-43 3.3-64H8.6C3.2 212.5 0 233.8 0 256s3.2 43.5 8.6 64h114.6c-2-21-3.2-42.5-3.2-64zm39.5 96c14.5 89.3 48.7 152 88.5 152s74-62.7 88.5-152h-177zm159.3 141.6c71.4-21.2 129.4-73.7 158-141.6h-108c-8.8 56.9-25.6 107.8-50 141.6zM19.3 352c28.6 67.9 86.5 120.4 158 141.6-24.4-33.8-41.2-84.7-50-141.6h-108z"/></svg><span>www.devtem.org</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 DevTemple. All Rights Reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="/terms/index.html">Terms</a><span>•</span>
+        <a href="/terms/privacy.html">Privacy</a><span>•</span>
+        <a href="/home.html">Home</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/scripts/tools.js"></script>
+</body>
+</html>
+
