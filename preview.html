@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Live Preview — DevTemple</title>
+  <style>
+    /* ── All styles remain unchanged from your original ── */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Poppins', sans-serif; background: #0d0d0d; color: #fff; height: 100dvh; display: flex; flex-direction: column; }
+    #preview-bar { display: flex; align-items: center; gap: 8px; padding: 6px 14px; background: #111; border-bottom: 1px solid #222; flex-shrink: 0; flex-wrap: wrap; min-height: 48px; }
+    #preview-bar a { color: #06f; font-size: 12px; text-decoration: none; display: flex; align-items: center; gap: 4px; white-space: nowrap; }
+    #preview-title { flex: 1; font-size: 13px; font-weight: 600; color: #eee; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 60px; }
+    .tab-group { display: flex; gap: 2px; background: #1a1a1a; border-radius: 8px; padding: 2px; flex-shrink: 0; }
+    .tab-btn { background: transparent; border: none; color: #888; padding: 5px 14px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer; transition: 0.15s; font-family: inherit; letter-spacing: 0.3px; white-space: nowrap; }
+    .tab-btn:hover { color: #ccc; }
+    .tab-btn.active { background: #06f; color: #fff; box-shadow: 0 2px 8px rgba(0, 102, 255, 0.25); }
+    .vp-btns { display: flex; gap: 4px; flex-shrink: 0; }
+    .vp-btn { background: #1a1a1a; border: 1px solid #333; color: #aaa; border-radius: 6px; padding: 4px 8px; cursor: pointer; font-size: 11px; transition: 0.15s; display: flex; align-items: center; }
+    .vp-btn:hover, .vp-btn.active { background: #06f; color: #fff; border-color: #06f; }
+    #buy-btn { background: #06f; color: #fff !important; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 700; cursor: pointer; font-family: inherit; white-space: nowrap; text-decoration: none; flex-shrink: 0; }
+    #buy-btn:hover { background: #0051cc; }
+    #frame-wrap { flex: 1; display: flex; align-items: flex-start; justify-content: center; overflow: auto; padding: 16px; background: #181818; position: relative; transition: all 0.3s; }
+    #preview-frame { width: 100%; height: 100%; border: none; border-radius: 8px; background: #fff; transition: width 0.3s, height 0.3s; box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5); }
+    #frame-wrap.vp-mobile #preview-frame { width: 390px; height: 844px; flex-shrink: 0; }
+    #frame-wrap.vp-tablet #preview-frame { width: 768px; height: 1024px; flex-shrink: 0; }
+    #frame-wrap.vp-desktop #preview-frame { width: 100%; height: 100%; }
+    #state-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; background: #181818; z-index: 10; border-radius: 8px; }
+    #state-overlay.hidden { display: none; }
+    .state-spinner { width: 36px; height: 36px; border: 3px solid #222; border-top-color: #06f; border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    #state-msg { font-size: 13px; color: #aaa; text-align: center; max-width: 320px; line-height: 1.6; }
+    #state-msg b { color: #fff; }
+    #state-msg a { color: #06f; }
+    #progress-bar { width: 200px; height: 3px; background: #222; border-radius: 2px; overflow: hidden; }
+    #progress-fill { height: 100%; background: #06f; border-radius: 2px; width: 0%; transition: width 0.3s; }
+    #no-preview { display: none; flex-direction: column; align-items: center; justify-content: center; gap: 12px; height: 100%; color: #555; text-align: center; padding: 40px; }
+    #no-preview svg { opacity: 0.3; }
+    #no-preview p { font-size: 14px; line-height: 1.7; }
+    #no-preview.visible { display: flex; }
+    #readme-panel { display: none; width: 100%; height: 100%; background: #fff; border-radius: 8px; overflow: auto; padding: 40px 50px; color: #1a1a1a; font-size: 15px; line-height: 1.8; box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5); }
+    #readme-panel.visible { display: block; }
+    #readme-panel h1, #readme-panel h2, #readme-panel h3 { margin: 1.5em 0 0.5em; font-weight: 600; }
+    #readme-panel h1 { font-size: 2em; border-bottom: 1px solid #eaeaea; padding-bottom: 0.3em; }
+    #readme-panel h2 { font-size: 1.5em; }
+    #readme-panel h3 { font-size: 1.2em; }
+    #readme-panel p { margin: 0 0 1em; }
+    #readme-panel ul, #readme-panel ol { margin: 0 0 1em 2em; }
+    #readme-panel code { background: #f4f4f4; padding: 0.2em 0.4em; border-radius: 4px; font-size: 0.9em; }
+    #readme-panel pre { background: #f4f4f4; padding: 16px; border-radius: 8px; overflow: auto; font-size: 0.9em; line-height: 1.6; }
+    #readme-panel a { color: #06f; }
+    #readme-panel blockquote { border-left: 4px solid #06f; padding-left: 16px; color: #555; margin: 0 0 1em; }
+    #readme-panel img { max-width: 100%; border-radius: 6px; }
+    #readme-panel .readme-empty { color: #888; text-align: center; padding: 60px 20px; font-size: 16px; }
+    #readme-panel .readme-empty svg { opacity: 0.2; margin-bottom: 16px; }
+    @media (max-width: 720px) { #preview-bar { gap: 6px; padding: 6px 10px; } #preview-title { font-size: 11px; min-width: 40px; } .tab-btn { font-size: 10px; padding: 4px 10px; } .vp-btn { padding: 3px 6px; } #buy-btn { font-size: 10px; padding: 4px 10px; } #readme-panel { padding: 20px; font-size: 14px; } }
+    @media (max-width: 480px) { #preview-bar .vp-btns .vp-btn span { display: none; } #frame-wrap.vp-mobile #preview-frame, #frame-wrap.vp-tablet #preview-frame { width: 100%; height: 100%; } }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Top bar ─── -->
+  <div id="preview-bar">
+    <a href="/home" id="back-link">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+      Back
+    </a>
+    <span id="preview-title">Loading preview…</span>
+    <div class="tab-group">
+      <button class="tab-btn active" data-tab="preview">Preview</button>
+      <button class="tab-btn" data-tab="readme">README</button>
+    </div>
+    <div class="vp-btns">
+      <button class="vp-btn" data-vp="vp-mobile" title="Mobile">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <span style="margin-left:3px;">M</span>
+      </button>
+      <button class="vp-btn" data-vp="vp-tablet" title="Tablet">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <span style="margin-left:3px;">T</span>
+      </button>
+      <button class="vp-btn active" data-vp="vp-desktop" title="Desktop">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        <span style="margin-left:3px;">D</span>
+      </button>
+    </div>
+    <a id="buy-btn" href="#">Buy this template</a>
+  </div>
+
+  <!-- ─── Frame ─── -->
+  <div id="frame-wrap" class="vp-desktop">
+    <div id="state-overlay">
+      <div class="state-spinner"></div>
+      <div id="progress-bar"><div id="progress-fill"></div></div>
+      <div id="state-msg">Fetching template…</div>
+    </div>
+    <div id="no-preview">
+      <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+      <p id="no-preview-msg">No HTML preview available for this product.<br />Purchase to download and view the full files.</p>
+      <a id="no-preview-buy" href="#" style="color:#06f;font-size:13px;font-weight:600;">Buy this template →</a>
+    </div>
+    <iframe id="preview-frame" sandbox="allow-scripts allow-same-origin" title="Template preview"></iframe>
+    <div id="readme-panel">
+      <div class="readme-empty">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        <p>No README file found in this template.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Script ─── -->
+  <script src="/assets/scripts/prmain.js"></script>
+
+</body>
+</html>
