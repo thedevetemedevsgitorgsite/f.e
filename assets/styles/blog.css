@@ -349,6 +349,7 @@ button.star svg {
   flex-direction: row;
   align-items: center;
   gap: 10px;
+   cursor: pointer;
 }
 
 .likes-card ul img {
