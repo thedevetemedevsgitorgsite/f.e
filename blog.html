@@ -18,9 +18,9 @@
     <meta property="og:title" content="DevTemple Blog — Web Development Insights & Tutorials">
     <meta property="og:description" content="Explore our collection of articles, tutorials, and insights on web development, digital assets, and creative resources.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://devtem.org/blog.html">
+    <meta property="og:url" content="https://devtem.org/blog">
     <meta property="og:site_name" content="DevTemple Blog">
-    <meta property="og:image" content="https://devtem.org/assets/images/blog-og.png">
+    <meta property="og:image" content="https://devtem.org/assets/images/og.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="DevTemple Blog">
@@ -29,11 +29,11 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="DevTemple Blog — Latest Web Development Articles">
     <meta name="twitter:description" content="Your source for web development tutorials, digital resource guides, and coding insights from DevTemple.">
-    <meta name="twitter:image" content="https://devtem.org/assets/images/logo.png">
+    <meta name="twitter:image" content="https://devtem.org/assets/images/og.jpg">
     <meta name="twitter:site" content="@fscss_ttr">
     
     <!-- Canonical -->
-    <link rel="canonical" href="https://devtem.org/blog.html">
+    <link rel="canonical" href="https://devtem.org/blog">
     
     <!-- JSON-LD for Blog -->
     <script type="application/ld+json">
@@ -53,7 +53,7 @@
         },
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "https://devtem.org/blog.html"
+            "@id": "https://devtem.org/blog"
         }
     }
     </script>
@@ -75,6 +75,20 @@
     <meta name="theme-color" content="#06f">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
+<script>
+    window.OneSignalDeferred = window.OneSignalDeferred || [];
+    OneSignalDeferred.push(async function(OneSignal) {
+        await OneSignal.init({
+            appId: "3ab4afbc-c595-4965-a288-e3566a5ad560",
+        });
+        
+        
+        if (window.location.pathname === "/" || window.location.pathname === "/index.html") {
+            await OneSignal.Notifications.requestPermission();
+        }
+    });
+</script>
 </head>
 
 <body>
@@ -301,7 +315,7 @@
             
             <!-- mistake lolll -->
             
-                        <a href="/blog/web-development-tips-beginners.html" class="quick-search-card">
+                        <a href="/blog/web-development-tips-beginners" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -321,7 +335,7 @@
                 </div>
             </a>
             
-                        <a href="/blog/affiliate-marketing-strategies.html" class="quick-search-card">
+                        <a href="/blog/affiliate-marketing-strategies" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -342,7 +356,7 @@
             </a>
             
             <!-- Blog Post 2 -->
-            <a href="/blog/css-flexbox-vs-grid-complete-guide.html" class="quick-search-card">
+            <a href="/blog/css-flexbox-vs-grid-complete-guide" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -363,7 +377,7 @@
             </a>
             
             <!-- Blog Post 3 -->
-            <a href="/blog/react-performance-optimization-tips.html" class="quick-search-card">
+            <a href="/blog/react-performance-optimization-tips" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1633356122544-f134324a6cee?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -384,7 +398,7 @@
             </a>
             
             <!-- Blog Post 4 -->
-            <a href="/blog/web3-development-beginners-guide.html" class="quick-search-card">
+            <a href="/blog/web3-development-beginners-guide" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -405,7 +419,7 @@
             </a>
             
             <!-- Blog Post 5 -->
-            <a href="/blog/seo-best-practices-2026.html" class="quick-search-card">
+            <a href="/blog/seo-best-practices-2026" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -426,7 +440,7 @@
             </a>
             
             <!-- Blog Post 6 -->
-            <a href="/blog/mobile-first-design-strategies.html" class="quick-search-card">
+            <a href="/blog/mobile-first-design-strategies" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 384 512" width="20" height="20">
@@ -457,7 +471,7 @@
         
         <div class="quick-search-grid">
             
-            <a href="/home.html#search?q=brutalism" class="quick-search-card">
+            <a href="/home#search?q=brutalism" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://i.postimg.cc/qRCg5KbQ/20260105-095829.png);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
@@ -477,7 +491,7 @@
                 </div>
             </a>
             
-            <a href="/home.html#search?q=figma" class="quick-search-card">
+            <a href="/home#search?q=figma" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://i.postimg.cc/qRVq3RQV/20260105-100314.png);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
@@ -540,7 +554,7 @@
             
             
             
-            <a href="/home.html#search?q=loading%20page" class="quick-search-card">
+            <a href="/home#search?q=loading%20page" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://i.postimg.cc/Gp52F0Sz/020a6261-0523-463d-8320-7036a937a184.jpg);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
@@ -561,7 +575,7 @@
             </a>
             
             
-            <a href="/home.html#search?q=portfolio" class="quick-search-card">
+            <a href="/home#search?q=portfolio" class="quick-search-card">
                 <div class="search-card-image" style="background-image:url(https://i.postimg.cc/4d3m9vvw/20260105-094654.png);">
                     <div class="search-overlay">
                         <svg class="svg-icon" viewBox="0 0 512 512" width="20" height="20">
@@ -650,7 +664,7 @@
                     <div class="footer-social">
                         <h4>Follow Us</h4>
                         <div class="social-icons">
-                            <a href="https://www.facebook.com/profile.php?id=61582984827911" aria-label="Facebook">
+                            <a href="/about" aria-label="Facebook">
                                 <svg class="svg-icon" viewBox="0 0 320 512" width="16" height="16">
                                     <path fill="currentColor" d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
                                 </svg>
