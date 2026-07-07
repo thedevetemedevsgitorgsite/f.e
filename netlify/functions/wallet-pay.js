@@ -24,6 +24,8 @@ function maskEmail(email) {
   return `${user.slice(0, 2)}***@${domainName.slice(0, 2)}***.${tld}`;
 }
 
+// ... (Keep your top-level setup, transporter, and maskEmail function identical)
+
 export async function handler(event) {
   const headers = {
     "Content-Type": "application/json",
@@ -32,29 +34,18 @@ export async function handler(event) {
     "Access-Control-Allow-Methods": "POST, OPTIONS",
   };
 
-  if (event.httpMethod === "OPTIONS") {
-    return { statusCode: 200, headers, body: "" };
-  }
-
-  if (event.httpMethod !== "POST") {
-    return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
-  }
+  if (event.httpMethod === "OPTIONS") return { statusCode: 200, headers, body: "" };
+  if (event.httpMethod !== "POST") return { statusCode: 405, headers, body: JSON.stringify({ error: "Method not allowed" }) };
 
   try {
     await transporter.verify();
-    
     const body = JSON.parse(event.body || "{}");
     const { userId, walletSource, totalAmount, rewId, cart } = body;
 
     if (!userId || !walletSource || !totalAmount || !cart || cart.length === 0) {
-      return {
-        statusCode: 400,
-        headers,
-        body: JSON.stringify({ error: "Missing required checkout parameters" }),
-      };
+      return { statusCode: 400, headers, body: JSON.stringify({ error: "Missing required checkout parameters" }) };
     }
 
-    // 1. Fetch Buyer's email to authorize the RPC context profile mappings
     const { data: buyerProfile, error: buyerError } = await supabase
       .from("profiles")
       .select("email")
@@ -62,56 +53,58 @@ export async function handler(event) {
       .single();
 
     if (buyerError || !buyerProfile) {
-      return {
-        statusCode: 404,
-        headers,
-        body: JSON.stringify({ error: "Buyer profile record not found" }),
-      };
+      return { statusCode: 404, headers, body: JSON.stringify({ error: "Buyer profile record not found" }) };
     }
 
     const buyerEmail = buyerProfile.email;
     let downloadLinks = [];
 
-    console.log(`Starting wallet checkout for ${buyerEmail} using ${walletSource} wallet...`);
+    // Track if at least one item was successfully handled
+    let processedAny = false; 
 
-    // 2. Route transactional payments inside a loop for each content creator inside the cart setup
     for (const item of cart) {
       try {
-        if (!item?.id || !item?.sellerId || !item?.price) {
-          console.log("Skipping invalid cart item:", item);
+        // Fallback checks to accommodate both camelCase and snake_case properties seamlessly
+        const itemId = item.id;
+        const sellerId = item.sellerId || item.seller_id;
+        const itemPrice = Number(item.price);
+        const itemTitle = item.title || "Untitled Product";
+        const itemFilePath = item.filePath || item.file_path;
+
+        if (!itemId || !sellerId || isNaN(itemPrice) || itemPrice <= 0) {
+          console.error("Skipping item due to missing identification structural attributes:", item);
           continue;
         }
 
-        const itemPrice = Number(item.price);
-        if (itemPrice <= 0) continue;
-
-        // Execute the secure PostgreSQL database transaction function
+        // Execute the database wallet transaction function 
         const { data: rpcData, error: rpcError } = await supabase.rpc("wallet_transfer", {
           p_sender_id: userId,
-          p_recipient_id: item.sellerId,
+          p_recipient_id: sellerId,
           p_amount: itemPrice,
           p_wallet_source: walletSource,
-          p_note: `Purchase: ${item.title}`
+          p_note: `Purchase: ${itemTitle}`
         });
 
         if (rpcError || !rpcData?.success) {
-          console.error("RPC execution error:", rpcError, rpcData);
-          throw new Error(rpcData?.error || rpcError?.message || "Internal ledger transfer rejection.");
+          console.error("RPC Ledger Transaction Refused:", rpcError, rpcData);
+          throw new Error(rpcData?.error || rpcError?.message || "Internal transaction processing error.");
         }
 
-        // 3. Update the product sales metrics counter
+        processedAny = true; // Mark that a transfer actually executed successfully
+
+        // Update product statistics
         const { data: post, error: postError } = await supabase
           .from("posts")
           .select("sales, name, filePath")
-          .eq("id", item.id)
+          .eq("id", itemId)
           .single();
 
         if (!postError && post) {
           const newSales = (post.sales || 0) + 1;
-          await supabase.from("posts").update({ sales: newSales }).eq("id", item.id);
+          await supabase.from("posts").update({ sales: newSales }).eq("id", itemId);
 
-          // 4. Calculate Referral Commissions (Skip self-referrals)
-          if (rewId && rewId !== item.sellerId) {
+          // Calculate Referral Commissions
+          if (rewId && rewId !== sellerId) {
             const { data: refProfile } = await supabase
               .from("profiles")
               .select("id, status")
@@ -123,7 +116,7 @@ export async function handler(event) {
               await supabase.from("rew").insert({
                 user_id: rewId,
                 amount: rewardAmount,
-                product_title: item.title || post.name || "Untitled Product",
+                product_title: itemTitle || post.name,
                 source: null,
                 country: null
               });
@@ -131,11 +124,11 @@ export async function handler(event) {
           }
         }
 
-        // 5. Notify the Creator (Seller) about the execution sale
+        // Notify Creator
         const { data: sellerProfile } = await supabase
           .from("profiles")
           .select("id, email, full_name")
-          .eq("id", item.sellerId)
+          .eq("id", sellerId)
           .single();
 
         if (sellerProfile?.email) {
@@ -148,39 +141,21 @@ export async function handler(event) {
                 <div style="font-family:system-ui,sans-serif;max-width:520px;margin:auto">
                   <h2 style="color:#111">You made a sale! 🎉</h2>
                   <p>Hi ${sellerProfile.full_name || "there"},</p>
-                  <p>Your product <strong>${item.title || "Untitled Product"}</strong> was purchased using a wallet balance.</p>
+                  <p>Your product <strong>${itemTitle}</strong> was purchased using a wallet balance.</p>
                   <table style="width:100%;border-collapse:collapse;margin:1rem 0">
-                    <tr><td style="padding:8px;color:#555">Product</td><td style="padding:8px"><strong>${item.title || "Untitled Product"}</strong></td></tr>
+                    <tr><td style="padding:8px;color:#555">Product</td><td style="padding:8px"><strong>${itemTitle}</strong></td></tr>
                     <tr style="background:#f9f9f9"><td style="padding:8px;color:#555">Amount</td><td style="padding:8px"><strong>₦${itemPrice.toLocaleString()}</strong></td></tr>
                     <tr><td style="padding:8px;color:#555">Buyer</td><td style="padding:8px">${maskEmail(buyerEmail)}</td></tr>
                   </table>
                   <p><a href="https://devtem.org/dashboard">View dashboard →</a></p>
-                  <hr style="border:none;border-top:1px solid #eee;margin:2rem 0">
-                  <p style="color:#999;font-size:0.85rem">DevTemple</p>
                 </div>
               `,
             });
-          } catch (emailErr) {
-            console.error(`Seller email failed:`, emailErr);
-          }
+          } catch (mErr) { console.error("Mail error ignored:", mErr); }
         }
 
-        // Admin support email auditing
-        if (sellerProfile) {
-          try {
-            await transporter.sendMail({
-              from: `"DevTemple" <office@devtem.org>`,
-              to: "support@devtem.org",
-              subject: `🎉 Wallet Purchase Success Audit Log`,
-              html: `<p>ID: ${sellerProfile.id} | Name: ${sellerProfile.full_name || "User"} sold <strong>${item.title}</strong> to ${buyerEmail} for ₦${itemPrice}.</p>`,
-            });
-          } catch (auditErr) {
-            console.error("Admin audit log mail dropped", auditErr);
-          }
-        }
-
-        // 6. Generate secure time-sensitive signed file downloads 
-        const targetPath = item.filePath || post?.filePath;
+        // Generate Time-sensitive Storage Signed Links
+        const targetPath = itemFilePath || post?.filePath;
         if (targetPath) {
           const { data: signedUrl, error: signedUrlError } = await supabase.storage
             .from("uploads")
@@ -188,21 +163,30 @@ export async function handler(event) {
 
           if (!signedUrlError && signedUrl?.signedUrl) {
             downloadLinks.push({
-              id: item.id,
-              title: item.title || "Download Link",
+              id: itemId,
+              title: itemTitle,
               url: signedUrl.signedUrl,
             });
           }
         }
 
       } catch (itemError) {
-        console.error(`Failure processing item loop context for ${item?.id}:`, itemError.message);
+        console.error(`Item transactional loop step error:`, itemError);
         return {
           statusCode: 400,
           headers,
-          body: JSON.stringify({ error: `Wallet checkout halted: ${itemError.message}` }),
+          body: JSON.stringify({ error: `Wallet process failed: ${itemError.message}` }),
         };
       }
+    }
+
+    // Fail early if nothing was processed
+    if (!processedAny) {
+      return {
+        statusCode: 400,
+        headers,
+        body: JSON.stringify({ error: "No items in your cart could be processed. Verify item data schema parameters." }),
+      };
     }
 
     return {
@@ -218,11 +202,7 @@ export async function handler(event) {
 
   } catch (err) {
     console.error("Wallet global server error:", err);
-    return {
-      statusCode: 500,
-      headers,
-      body: JSON.stringify({ error: err.message }),
-    };
+    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
   }
 }
 
