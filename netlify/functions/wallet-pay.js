@@ -24,8 +24,6 @@ function maskEmail(email) {
   return `${user.slice(0, 2)}***@${domainName.slice(0, 2)}***.${tld}`;
 }
 
-// ... (Keep your top-level setup, transporter, and maskEmail function identical)
-
 export async function handler(event) {
   const headers = {
     "Content-Type": "application/json",
@@ -58,21 +56,38 @@ export async function handler(event) {
 
     const buyerEmail = buyerProfile.email;
     let downloadLinks = [];
-
-    // Track if at least one item was successfully handled
     let processedAny = false; 
 
+    // 2. Route transactional payments safely
     for (const item of cart) {
       try {
-        // Fallback checks to accommodate both camelCase and snake_case properties seamlessly
         const itemId = item.id;
-        const sellerId = item.sellerId || item.seller_id;
-        const itemPrice = Number(item.price);
-        const itemTitle = item.title || "Untitled Product";
-        const itemFilePath = item.filePath || item.file_path;
+        
+        if (!itemId) {
+          console.error("Skipping item: completely missing an item ID");
+          continue;
+        }
 
-        if (!itemId || !sellerId || isNaN(itemPrice) || itemPrice <= 0) {
-          console.error("Skipping item due to missing identification structural attributes:", item);
+        // FETCH the missing master data from the database so we don't trust local storage
+        const { data: post, error: postError } = await supabase
+          .from("posts")
+          .select("sales, name, filePath, user_id, price")
+          .eq("id", itemId)
+          .single();
+
+        if (postError || !post) {
+          console.error(`Skipping item ${itemId}: Not found in posts table`, postError);
+          continue;
+        }
+
+        // Authoritative data matching: prioritize database over client-side cart values
+        const sellerId = post.user_id; 
+        const itemPrice = Number(item.price || post.price);
+        const itemTitle = item.title || post.name || "Untitled Product";
+        const targetPath = post.filePath;
+
+        if (!sellerId || isNaN(itemPrice) || itemPrice <= 0) {
+          console.error(`Skipping item ${itemId}: Invalid price or missing seller_id inside DB configuration`);
           continue;
         }
 
@@ -90,37 +105,29 @@ export async function handler(event) {
           throw new Error(rpcData?.error || rpcError?.message || "Internal transaction processing error.");
         }
 
-        processedAny = true; // Mark that a transfer actually executed successfully
+        processedAny = true; 
 
         // Update product statistics
-        const { data: post, error: postError } = await supabase
-          .from("posts")
-          .select("sales, name, filePath")
-          .eq("id", itemId)
-          .single();
+        const newSales = (post.sales || 0) + 1;
+        await supabase.from("posts").update({ sales: newSales }).eq("id", itemId);
 
-        if (!postError && post) {
-          const newSales = (post.sales || 0) + 1;
-          await supabase.from("posts").update({ sales: newSales }).eq("id", itemId);
+        // Calculate Referral Commissions
+        if (rewId && rewId !== sellerId) {
+          const { data: refProfile } = await supabase
+            .from("profiles")
+            .select("id, status")
+            .eq("id", rewId)
+            .single();
 
-          // Calculate Referral Commissions
-          if (rewId && rewId !== sellerId) {
-            const { data: refProfile } = await supabase
-              .from("profiles")
-              .select("id, status")
-              .eq("id", rewId)
-              .single();
-
-            if (refProfile) {
-              const rewardAmount = refProfile.status === "verified" ? itemPrice * 0.1 : itemPrice * 0.07;
-              await supabase.from("rew").insert({
-                user_id: rewId,
-                amount: rewardAmount,
-                product_title: itemTitle || post.name,
-                source: null,
-                country: null
-              });
-            }
+          if (refProfile) {
+            const rewardAmount = refProfile.status === "verified" ? itemPrice * 0.1 : itemPrice * 0.07;
+            await supabase.from("rew").insert({
+              user_id: rewId,
+              amount: rewardAmount,
+              product_title: itemTitle,
+              source: null,
+              country: null
+            });
           }
         }
 
@@ -155,7 +162,6 @@ export async function handler(event) {
         }
 
         // Generate Time-sensitive Storage Signed Links
-        const targetPath = itemFilePath || post?.filePath;
         if (targetPath) {
           const { data: signedUrl, error: signedUrlError } = await supabase.storage
             .from("uploads")
@@ -180,7 +186,7 @@ export async function handler(event) {
       }
     }
 
-    // Fail early if nothing was processed
+    // Guard checking if everything in the loop got skipped
     if (!processedAny) {
       return {
         statusCode: 400,
@@ -202,7 +208,11 @@ export async function handler(event) {
 
   } catch (err) {
     console.error("Wallet global server error:", err);
-    return { statusCode: 500, headers, body: JSON.stringify({ error: err.message }) };
+    return {
+      statusCode: 500,
+      headers,
+      body: JSON.stringify({ error: err.message }),
+    };
   }
 }
 
