@@ -131,7 +131,7 @@ const safeProductDescription = product_description
   ? `<p>${escapeHtml(product_description).replace(/\n/g, "<br>")}</p>` 
   : "";
 
-const listingUrl = `https://devtem.org/home#search?q=@${safeSellerUsername}`;
+const listingUrl = `https://devtem.org/s?s=@${safeSellerUsername}`;
 
 const html = `
   <p>Hi ${safeFullName},</p>
