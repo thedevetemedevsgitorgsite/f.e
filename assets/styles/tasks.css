@@ -1,6 +1,6 @@
     /* ── Page layout ── */
     .wt-wrap {
-      max-width: 680px;
+      max-width: 100%;
       margin: 0 auto;
       padding: 36px 20px 80px;
     }
