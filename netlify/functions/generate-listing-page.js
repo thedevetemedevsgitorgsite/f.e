@@ -2,9 +2,7 @@ const OWNER = "devlisting";
 const REPO  = "devlisting.github.io";
 
 const ALLOWED_ORIGINS = [
-  "https://devtem.org",
-  "http://localhost:7700",
-  "https://localhost:7700",
+  "https://devtem.org"
 ];
 
 function json(statusCode, body, headers = {}) {
@@ -182,7 +180,7 @@ const seoDes = data.description.slice(0, 300);
   "seller": {
     "@type": "Person",
     "name": ${JSON.stringify(data.sellerName)},
-    "url": ${JSON.stringify(data.authorUrl)}
+    "url": ${JSON.stringify(data.authorLink || data.authorUrl)}
   },
 
   "offers": {
