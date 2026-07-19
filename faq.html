@@ -253,26 +253,13 @@
       display: none;
     }
   </style>
-  <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
-<script>
-  window.OneSignalDeferred = window.OneSignalDeferred || [];
-OneSignalDeferred.push(async function(OneSignal) {
-  await OneSignal.init({
-    appId: "3ab4afbc-c595-4965-a288-e3566a5ad560",
-    safari_web_id: "web.onesignal.auto.15df0189-2d21-4404-bd16-e27bc91473d8",
-    notifyButton: {
-      enable: true,
-    },
-  });
-});
-</script>
 </head>
 <body>
   <main class="container" role="main" aria-labelledby="faq-title">
     <header>
       <h1 id="faq-title">DevTemple — Frequently Asked Questions</h1>
       <p class="muted">Find answers to common questions about our marketplace, policies, and services.</p>
-      <div class="highlight" aria-hidden="true">Last Updated: 30 June 2026</div>
+      <div class="highlight" aria-hidden="true">Last Updated: 19 July 2026</div>
     </header>
 
     <nav aria-label="FAQ navigation">
@@ -380,7 +367,7 @@ OneSignalDeferred.push(async function(OneSignal) {
   </div>
 </div>
 
-      <div class="faq-item" id="live-preview-limitations">
+<div class="faq-item" id="live-preview-limitations">
   <div class="faq-question">
     <span>What types of files can run in the Live Preview?</span>
     <i class="fas fa-chevron-down faq-icon"></i>
@@ -672,6 +659,34 @@ OneSignalDeferred.push(async function(OneSignal) {
                     <a href="/dashboard#/pen/" class="learn-more-link">DASHBOARD &gt; UPLOAD<i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
+      
+      <div class="faq-item" id="text-formatting">
+  <div class="faq-question">
+    <span>What text formatting and markup does DevTemple support?</span>
+    <i class="fas fa-chevron-down faq-icon"></i>
+  </div>
+  <div class="faq-answer">
+    <p>DevTemple uses its own simplified formatting system, not full Markdown. Here's what you can use in product descriptions:</p>
+    <ul>
+      <li><strong>*italic*</strong> — Surround text with single asterisks for italic.</li>
+      <li><strong>**bold**</strong> — Use double asterisks for bold text.</li>
+      <li><strong>___</strong> — Three underscores create a horizontal rule (divider line).</li>
+      <li><strong>#tag</strong> — Add up to five hashtags (e.g., #javascript, #react) to categorize your content.</li>
+      <li><strong>@username</strong> — Mention another user with the @ symbol.</li>
+    </ul>
+    <p>Example of a formatted description:</p>
+    <pre style="background:#f1f5f9; padding:12px; border-radius:6px; overflow-x:auto;">
+Portfolio templates
+**key features:**
+Hello World *something italic*
+___
+ready to use 
+#javascript #next.js #css #portfolio @devtem.org
+    </pre>
+    <p>No other Markdown (headings, lists, links, code blocks) is supported — keep it simple!</p>
+  </div>
+</div>
+      
       <div class="faq-item" id="earnings-withdrawals">
   <div class="faq-question">
     <span>Earnings & Withdrawals</span>
@@ -917,7 +932,7 @@ OneSignalDeferred.push(async function(OneSignal) {
       You can track your community growth right from your profile and dashboard. Your total subscriber count is prominently displayed on your store cards.
     </p>
     <p>
-      By clicking on your <strong>"Subscribers"</strong> count link, a secure overlay modal will open showing your active fanbase. You can view their profile pictures, display names, and handles (e.g., <code>@RealFigsh</code>, <code>@Huxpower</code>) so you know exactly who is engaging with your resources.
+      By clicking on your <strong>"Subscribers"</strong> count link, a secure overlay modal will open showing your active fanbase. You can view their profile pictures, display names, and handles (e.g., <code>@Figsh</code>, <code>@CEOs</code>) so you know exactly who is engaging with your resources.
     </p>
   </div>
 </div>
@@ -1332,7 +1347,7 @@ OneSignalDeferred.push(async function(OneSignal) {
     </section>
 
     <footer aria-label="FAQ footer">
-      <p class="muted">This FAQ was last updated on <time datetime="2026-06-30">30th of June 2026</time>. For the most current information, please refer to our <a href="/terms/privacy">Privacy Policy</a> and <a href="/terms">Terms and Conditions</a>.</p>
+      <p class="muted">This FAQ was last updated on <time datetime="2026-07-19">19th of July 2026</time>. For the most current information, please refer to our <a href="/terms/privacy">Privacy Policy</a> and <a href="/terms">Terms and Conditions</a>.</p>
     </footer>
   </main>
 
