@@ -29,7 +29,6 @@
       overflow-x: hidden;
     }
 
-    /* ── Grid bg ── */
     body::before {
       content: '';
       position: fixed;
@@ -42,7 +41,6 @@
       z-index: 0;
     }
 
-    /* ── Glow orbs ── */
     .orb {
       position: fixed;
       border-radius: 50%;
@@ -67,7 +65,6 @@
       to   { transform: translate(30px, 20px); }
     }
 
-    /* ── Layout ── */
     .page {
       position: relative;
       z-index: 1;
@@ -80,7 +77,6 @@
       text-align: center;
     }
 
-    /* ── Logo ── */
     .logo {
       display: flex;
       align-items: center;
@@ -103,7 +99,6 @@
       font-weight: 400;
     }
 
-    /* ── Icon animation ── */
     .main-icon {
       width: 88px; height: 88px;
       border-radius: 50%;
@@ -120,7 +115,6 @@
       50%       { box-shadow: 0 0 0 18px rgba(0,102,255,0); transform: scale(1.04); }
     }
 
-    /* ── Heading ── */
     .eyebrow {
       font-size: 11px;
       font-weight: 700;
@@ -147,7 +141,6 @@
       margin: 0 auto 36px;
     }
 
-    /* ── Countdown ── */
     .countdown-label {
       font-size: 11px;
       font-weight: 700;
@@ -207,7 +200,6 @@
       margin-top: -8px;
     }
 
-    /* ── Progress bar ── */
     .progress-wrap {
       width: 100%;
       max-width: 340px;
@@ -233,7 +225,6 @@
       transition: width 1s ease;
     }
 
-    /* ── Status chips ── */
     .status-list {
       display: flex;
       flex-direction: column;
@@ -273,7 +264,205 @@
     }
     .status-item-sub { font-size: 11px; color: var(--dim); }
 
-    /* ── Links ── */
+    .divider {
+      width: 100%;
+      max-width: 360px;
+      height: 1px;
+      background: var(--border);
+      margin: 0 auto 32px;
+    }
+
+    /* ── Support section ── */
+    .support-wrap {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto 40px;
+    }
+    .support-card {
+      background: var(--surface);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+    .support-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, #06f, #4d9fff, #06f);
+      background-size: 200% 100%;
+      animation: shimmer-line 2.5s linear infinite;
+    }
+    @keyframes shimmer-line {
+      0%   { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .support-body { padding: 24px 20px 20px; }
+    .support-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #06f;
+      background: rgba(0,102,255,0.1);
+      border: 1px solid rgba(0,102,255,0.2);
+      border-radius: 20px;
+      padding: 3px 10px;
+      margin-bottom: 14px;
+    }
+    .support-title {
+      font-family: 'Audiowide', sans-serif;
+      font-size: clamp(17px, 4vw, 22px);
+      font-weight: 400;
+      color: var(--text);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+    .support-title span { color: #06f; }
+    .support-desc {
+      font-size: 13px;
+      color: var(--dim);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+    .support-desc b { color: rgba(255,255,255,0.75); }
+
+    .support-tiers {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .tier {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      padding: 14px 8px;
+      border-radius: 12px;
+      border: 1.5px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.03);
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      user-select: none;
+    }
+    .tier:hover {
+      border-color: #06f;
+      background: rgba(0,102,255,0.08);
+      transform: translateY(-2px);
+    }
+    .tier.featured {
+      border-color: #06f;
+      background: rgba(0,102,255,0.1);
+    }
+    .tier.featured::after {
+      content: 'Most helpful';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      background: #06f;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #fff;
+      padding: 3px 0;
+      text-align: center;
+    }
+    .tier.featured { padding-top: 22px; }
+    .tier-emoji svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      display: block;
+    }
+    .tier-amount {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 16px;
+      color: var(--text);
+      font-weight: 400;
+    }
+    .tier-label {
+      font-size: 10px;
+      color: var(--dim);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    .support-custom {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .support-custom-input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 14px;
+      font-family: 'Poppins', sans-serif;
+      outline: none;
+      transition: border-color 0.2s;
+      max-width: 75%;
+    }
+    .support-custom-input::placeholder { color: rgba(255,255,255,0.25); }
+    .support-custom-input:focus { border-color: #06f; }
+    .support-custom-btn {
+      padding: 10px 16px;
+      border-radius: 10px;
+      background: #06f;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      font-family: 'Poppins', sans-serif;
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+    .support-custom-btn:hover { background: #0051cc; }
+
+    .support-methods {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: rgba(255,255,255,0.03);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      flex-wrap: wrap;
+    }
+    .support-methods span {
+      font-size: 11px;
+      color: rgba(255,255,255,0.25);
+      margin-right: 4px;
+    }
+    .method-pill {
+      padding: 3px 10px;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      font-size: 10px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.35);
+      letter-spacing: 0.04em;
+    }
+
+    .support-count {
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,0.3);
+      padding: 10px 16px 16px;
+    }
+    .support-count b { color: #06f; }
+
     .available-links {
       display: flex;
       gap: 8px;
@@ -304,7 +493,6 @@
     }
     .avail-btn.secondary:hover { color: var(--text); }
 
-    /* ── Footer ── */
     .maint-footer {
       font-size: 12px;
       color: rgba(255,255,255,0.2);
@@ -314,18 +502,34 @@
     .maint-footer a { color: rgba(255,255,255,0.35); text-decoration: none; }
     .maint-footer a:hover { color: #06f; }
 
-    /* ── Divider ── */
-    .divider {
-      width: 100%;
-      max-width: 360px;
-      height: 1px;
-      background: var(--border);
-      margin: 0 auto 32px;
+    .ty-toast {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #22c55e;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 12px 24px;
+      border-radius: 40px;
+      box-shadow: 0 8px 32px rgba(34,197,94,0.3);
+      z-index: 999;
+      white-space: nowrap;
+      animation: slideUp 0.3s ease;
+    }
+    @keyframes slideUp {
+      from { transform: translateX(-50%) translateY(20px); opacity: 0; }
+      to   { transform: translateX(-50%) translateY(0); opacity: 1; }
     }
 
     @media (max-width: 400px) {
       .cd-num { width: 60px; height: 60px; font-size: 26px; }
       .cd-sep { font-size: 22px; }
+      .support-tiers { gap: 6px; }
+      .tier { padding: 10px 4px; }
+      .tier-amount { font-size: 14px; }
     }
   </style>
 </head>
@@ -339,7 +543,9 @@
   <!-- Logo -->
   <div class="logo">
     <div class="logo-icon">
-<img src="https://devtem.org/assets/images/logo.png" alt="DevTemple" width="40" height="40">
+      <svg viewBox="0 0 448 512" width="20" height="20" fill="#fff">
+        <path d="M160 112c0-44.2 35.8-80 80-80s80 35.8 80 80v48H160v-48zm-48 48H48c-26.5 0-48 21.5-48 48v256c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V208c0-26.5-21.5-48-48-48h-64v-48C336 44.8 291.2 0 240 0S144 44.8 144 112v48z"/>
+      </svg>
     </div>
     <span class="logo-name">DevTemple</span>
   </div>
@@ -427,6 +633,101 @@
 
   <div class="divider"></div>
 
+  <!-- ── Support section ── -->
+  <div class="support-wrap">
+    <div class="support-card">
+      <div class="support-body">
+
+        <div class="support-eyebrow">
+          <!-- Heart SVG (no emoji) -->
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+          Community support
+        </div>
+
+        <div class="support-title">
+          Help us bring<br><span>DevTemple back</span> faster
+        </div>
+
+        <div class="support-desc">
+          This is not a technical error — our infrastructure grew faster than expected and we hit our hosting quota. If DevTemple has helped you, shipping tools, finding assets, or earning as a creator — <b>a small contribution keeps us alive</b> and gets everything back before the deadline.
+          <br><br>
+          Every naira goes directly to hosting costs. No salaries, no overhead — just the platform staying online for the community.
+        </div>
+
+        <!-- Tiers (no emoji, pure SVG) -->
+        <div class="support-tiers">
+          <div class="tier" data-amount="45000" onclick="handleTier(this)">
+            <span class="tier-emoji">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M18 8h-1V6H4v10a6 6 0 006 6h2a6 6 0 006-6v-2h1a4 4 0 000-8zm0 6h-1v-4h1a2 2 0 010 4z" />
+              </svg>
+            </span>
+            <span class="tier-amount">₦45,000</span>
+            <span class="tier-label">Keep the<br>lights on</span>
+          </div>
+
+          <div class="tier featured" data-amount="90000" onclick="handleTier(this)">
+            <span class="tier-emoji">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 2c-4.418 0-8 3.582-8 8v4l-2 6 6-2h4c4.418 0 8-3.582 8-8s-3.582-8-8-8zm0 2c3.309 0 6 2.691 6 6s-2.691 6-6 6H9.586l-2.293 2.293L8 14.586V12c0-3.309 2.691-6 6-6z" />
+              </svg>
+            </span>
+            <span class="tier-amount">₦90,000</span>
+            <span class="tier-label">Bring it<br>back strong</span>
+          </div>
+
+          <div class="tier" data-amount="180000" onclick="handleTier(this)">
+            <span class="tier-emoji">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M17 2H7v2H3v4c0 3.313 2.687 6 6 6h1v2H8v2h8v-2h-2v-2h1c3.313 0 6-2.687 6-6V4h-4V2zm2 6c0 2.206-1.794 4-4 4h-6c-2.206 0-4-1.794-4-4V6h14v2z" />
+              </svg>
+            </span>
+            <span class="tier-amount">₦180,000</span>
+            <span class="tier-label">Platform<br>hero</span>
+          </div>
+        </div>
+
+        <!-- Custom amount -->
+        <div class="support-custom">
+          <input
+            type="number"
+            class="support-custom-input"
+            id="custom-amount"
+            placeholder="Custom amount (₦)"
+            min="1000"
+            step="100">
+          <button class="support-custom-btn" onclick="handleCustom()">
+            Support →
+          </button>
+        </div>
+
+        <div style="font-size:11px;color:rgba(255,255,255,0.25);text-align:center;margin-bottom:0;">
+          Prefer a direct transfer?
+          <a href="mailto:support@devtem.org?subject=DevTemple%20Support%20Contribution" style="color:rgba(0,102,255,0.7);text-decoration:none;">Email us</a>
+          and we'll send account details.
+        </div>
+
+      </div>
+
+      <!-- Payment methods -->
+      <div class="support-methods">
+        <span>Via</span>
+        <span class="method-pill">Paystack</span>
+        <span class="method-pill">Card</span>
+        <span class="method-pill">Bank transfer</span>
+        <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.2);">🔒 Secure</span>
+      </div>
+
+      <div class="support-count" id="support-count">
+        Be among the first to support DevTemple ❤
+      </div>
+
+    </div>
+  </div>
+  <!-- ── / Support section ── -->
+
+  <div class="divider"></div>
+
   <!-- Available links -->
   <p style="font-size:12px;color:var(--dim);margin-bottom:14px;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;">Still available now</p>
   <div class="available-links">
@@ -442,7 +743,7 @@
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
       FAQ
     </a>
-    <a class="avail-btn secondary" href="/marketing-guide">
+    <a class="avail-btn secondary" href="/learn">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
       Learn
     </a>
@@ -456,10 +757,16 @@
 
 </div>
 
+<!-- Toast -->
+<div class="ty-toast" id="ty-toast"></div>
+
+<!-- Paystack Inline -->
+<script src="https://js.paystack.co/v1/inline.js"></script>
+
 <script>
-  // ── Target date: Aug 29 2026 00:00 WAT (UTC+1) ──────────────────────────────
+  // ── Countdown (unchanged) ────────────────────────────────────────────────
   const TARGET = new Date('2026-08-29T00:00:00+01:00').getTime();
-  const START  = new Date('2026-07-28T00:00:00+01:00').getTime(); // billing period start
+  const START  = new Date('2026-07-28T00:00:00+01:00').getTime();
   const TOTAL  = TARGET - START;
 
   function pad(n) { return String(Math.floor(n)).padStart(2, '0'); }
@@ -478,9 +785,8 @@
     document.getElementById('cd-m').textContent = pad(mins);
     document.getElementById('cd-s').textContent = pad(secs);
 
-    // Progress: how far through the maintenance window we are
     const elapsed = Math.max(0, now - START);
-    const pct     = Math.min(100, Math.round((elapsed / TOTAL) * 100));
+    const pct = Math.min(100, Math.round((elapsed / TOTAL) * 100));
     document.getElementById('progress-fill').style.width = pct + '%';
     document.getElementById('progress-pct').textContent  = pct + '%';
 
@@ -495,13 +801,94 @@
   tick();
   const timer = setInterval(tick, 1000);
 
-  // ── Auto-redirect: if user came from /dashboard or /preview send them home ──
-  const came = document.referrer;
-  if (came && (came.includes('/dashboard') || came.includes('/preview'))) {
-    // Already here, do nothing. User will find browse links above.
+  // ── Support functions ──────────────────────────────────────────────────────
+  let supportCount = parseInt(localStorage.getItem('dt_support_count') || '0');
+
+  function updateSupportCount() {
+    const el = document.getElementById('support-count');
+    if (!el) return;
+    if (supportCount > 0) {
+      el.innerHTML = `<b>${supportCount}</b> ${supportCount === 1 ? 'person has' : 'people have'} supported from this browser ❤`;
+    } else {
+      el.textContent = 'Be among the first to support DevTemple ❤';
+    }
   }
+  updateSupportCount();
+
+  function showToast(msg) {
+    const t = document.getElementById('ty-toast');
+    t.textContent = msg;
+    t.style.display = 'block';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => { t.style.display = 'none'; }, 4000);
+  }
+
+  // ── Paystack payment ──
+  function payWithPaystack(email, amount) {
+    const handler = PaystackPop.setup({
+      key: "pk_live_0b0770be1e29f5e7a159b39d2d9bdc2c41785306", // 🔁 Replace with your public key
+      email: email,
+      amount: amount * 100, // kobo
+      currency: "NGN",
+      ref: "DT_SUPPORT_" + Date.now(),
+      callback: async (response) => {
+        try {
+          const res = await fetch("/.netlify/functions/paystack-support", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              reference: response.reference,
+              email: email,
+              amount: amount,
+            }),
+          });
+          const data = await res.json();
+          if (data.success) {
+            showToast(`✅ Thank you for your support (₦${amount})!`);
+            supportCount++;
+            localStorage.setItem('dt_support_count', supportCount);
+            updateSupportCount();
+          } else {
+            showToast("⚠️ Payment verified but we couldn't send a receipt. Please contact support.");
+          }
+        } catch (err) {
+          console.error("Verification error:", err);
+          showToast("⚠️ Could not verify payment. Please contact support.");
+        }
+      },
+      onClose: () => {
+        showToast("Payment window closed. You can try again.");
+      },
+    });
+    handler.openIframe();
+  }
+
+  // ── Tier handler ──
+  function handleTier(el) {
+    const amount = parseInt(el.dataset.amount);
+    if (!amount) return;
+    const email = prompt("Enter your email to receive a receipt:", "you@example.com");
+    if (!email) return;
+    payWithPaystack(email, amount);
+  }
+
+  // ── Custom amount handler ──
+  function handleCustom() {
+    const val = parseInt(document.getElementById('custom-amount').value);
+    if (!val || val < 1000) {
+      showToast("Please enter at least ₦1,000");
+      return;
+    }
+    const email = prompt("Enter your email to receive a receipt:", "you@example.com");
+    if (!email) return;
+    payWithPaystack(email, val);
+  }
+
+  // Enter key on custom input
+  document.getElementById('custom-amount')?.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleCustom();
+  });
 </script>
 
 </body>
-</html>
-
+  </html>
