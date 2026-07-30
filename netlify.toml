@@ -13,4 +13,20 @@
     Access-Control-Allow-Origin = "*"
     Access-Control-Allow-Methods = "GET, POST, PUT, DELETE, OPTIONS"
     Access-Control-Allow-Headers = "Content-Type, Authorization, apikey"
-  
+[[redirects]]
+  from = "/dashboard"
+  to   = "/maintenance"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/dashboard/*"
+  to   = "/maintenance"
+  status = 302
+  force = true
+
+[[redirects]]
+  from = "/preview"
+  to   = "/maintenance"
+  status = 302
+  force = true
