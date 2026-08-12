@@ -1,0 +1,124 @@
+// netlify/functions/upload-asset.js
+// D Invites image uploads — pushes to GitHub Pages repo, served via cdn.devtem.org/inv/...
+// Images are NOT stored in Supabase — this keeps the DB tiny and free-tier friendly.
+
+export default async (request) => {
+  const ALLOWED_ORIGINS = [
+    "https://invites.devtem.org",
+    "https://thedevetemedevsgitorgsite.github.io",
+    "https://devtem.org",
+    "http://localhost:7700",
+    "https://localhost:7700",
+  ];
+
+  const incomingOrigin = request.headers.get("origin");
+  const isAllowed = ALLOWED_ORIGINS.includes(incomingOrigin);
+
+  const corsHeaders = {
+    "Access-Control-Allow-Origin": isAllowed ? incomingOrigin : ALLOWED_ORIGINS[0],
+    "Access-Control-Allow-Headers": "Content-Type, X-App-Upload-Token",
+    "Access-Control-Allow-Methods": "POST, OPTIONS",
+  };
+
+  if (request.method === "OPTIONS") {
+    return new Response(null, { status: 204, headers: corsHeaders });
+  }
+
+  if (request.method !== "POST") {
+    return new Response(JSON.stringify({ error: "Method not allowed" }), {
+      status: 405,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
+  if (!isAllowed) {
+    return new Response(JSON.stringify({ error: "Unauthorized Origin: Access Denied." }), {
+      status: 403,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  try {
+    const { fileName, fileData, userDir } = await request.json();
+
+    if (!fileName || !fileData) {
+      return new Response(JSON.stringify({ error: "Missing required file data." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    // ---- Basic safety checks (size + type) before it ever hits GitHub ----
+    const mimeMatch = fileData.match(/^data:(image\/(png|jpeg|jpg|webp));base64,/);
+    if (!mimeMatch) {
+      return new Response(JSON.stringify({ error: "Only PNG, JPEG, or WEBP images are allowed." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const cleanBase64 = fileData.split(",")[1];
+    const approxBytes = cleanBase64.length * 0.75;
+    const MAX_BYTES = 4 * 1024 * 1024; // 4MB cap — keeps repo + CDN lean
+    if (approxBytes > MAX_BYTES) {
+      return new Response(JSON.stringify({ error: "Image too large — 4MB max." }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const OWNER = "thedevetemedevsgitorgsite";
+    const REPO = "thedevetemedevsgitorgsite.github.io";
+
+    const safeFileName = fileName.replace(/\s+/g, "-").replace(/[^a-zA-Z0-9._-]/g, "");
+    const dir = userDir || "unknown";
+    const uid = crypto.randomUUID().slice(0, 8);
+
+    // ---- D Invites lives under /inv/ so cdn.devtem.org/inv/... resolves ----
+    const filePath = `inv/${dir}/assets/images/${uid}-${safeFileName}`;
+
+    const token = process.env.GITHUB_PAT;
+    if (!token) {
+      return new Response(JSON.stringify({ error: "Server missing GitHub Auth Configuration Token." }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const githubUrl = `https://api.github.com/repos/${OWNER}/${REPO}/contents/${filePath}`;
+
+    const githubResponse = await fetch(githubUrl, {
+      method: "PUT",
+      headers: {
+        Authorization: `Bearer ${token}`,
+        Accept: "application/vnd.github+json",
+        "Content-Type": "application/json",
+        "User-Agent": "D-Invites-Upload-Pipeline",
+      },
+      body: JSON.stringify({
+        message: `inv-upload: added asset ${safeFileName}`,
+        content: cleanBase64,
+      }),
+    });
+
+    const githubResult = await githubResponse.json();
+
+    if (!githubResponse.ok) {
+      return new Response(JSON.stringify({ error: githubResult.message || "Failed pushing to GitHub repo." }), {
+        status: githubResponse.status,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const finalPublicUrl = `https://cdn.devtem.org/${filePath}`;
+
+    return new Response(
+      JSON.stringify({ success: true, url: finalPublicUrl, path: filePath }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err.message }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+};
