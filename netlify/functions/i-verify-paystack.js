@@ -142,7 +142,7 @@ export const handler = async (event) => {
                 <h2 style="margin:0 0 12px">You're upgraded to ${TIER_LABEL[tier]}</h2>
                 <p style="color:#555;line-height:1.6">Payment of ₦${paidAmount} confirmed. Your plan is active until ${new Date(expiresAt).toDateString()}.</p>
                 <p style="color:#555;line-height:1.6">Reference: <strong>${reference}</strong></p>
-                <a href="https://invites.devtem.org/dashboard" style="display:inline-block;margin-top:16px;padding:12px 22px;background:#00E6A0;color:#06120E;text-decoration:none;border-radius:24px;font-weight:700">Go to dashboard</a>
+                <a href="https://invites.devtem.org/dashboard#" style="display:inline-block;margin-top:16px;padding:12px 22px;background:#00E6A0;color:#06120E;text-decoration:none;border-radius:24px;font-weight:700">Go to dashboard</a>
                 <p style="font-size:12px;color:#999;margin-top:32px">D Invites · support.d-invite@devtem.org</p>
               </div>
             `,
